@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3zg-A4-arl">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Markets-->
+        <scene sceneID="oh5-iK-rkz">
+            <objects>
+                <viewController id="h3Y-f2-U0u" customClass="MarketsViewController" customModule="CryptoManager" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dc8-fi-uKF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Markets" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nUC-AU-Cfb">
+                                <rect key="frame" x="176.5" y="437.5" width="61.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="nUC-AU-Cfb" firstAttribute="centerX" secondItem="dc8-fi-uKF" secondAttribute="centerX" id="QLa-av-DkO"/>
+                            <constraint firstItem="nUC-AU-Cfb" firstAttribute="centerY" secondItem="dc8-fi-uKF" secondAttribute="centerY" id="dfh-vy-2iU"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="25g-tk-JAx"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Markets" id="U1D-0h-J7O"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xp6-lZ-S4o" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-162" y="-601"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="wd8-KZ-QgF">
+            <objects>
+                <tabBarController id="3zg-A4-arl" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="kHi-te-HMg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="lNE-Cb-hTZ" kind="relationship" relationship="viewControllers" id="EMa-ae-afS"/>
+                        <segue destination="Dkm-lg-Ri2" kind="relationship" relationship="viewControllers" id="Sk4-OG-7Ei"/>
+                        <segue destination="h3Y-f2-U0u" kind="relationship" relationship="viewControllers" id="D6m-lE-910"/>
+                        <segue destination="Vtb-cG-bL7" kind="relationship" relationship="viewControllers" id="6y7-Gz-w31"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mmh-LV-bxk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1101" y="-952"/>
+        </scene>
+        <!--News-->
+        <scene sceneID="cIz-kk-3sm">
+            <objects>
+                <viewController id="Dkm-lg-Ri2" customClass="NewsViewController" customModule="CryptoManager" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UFc-4X-1wr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="News" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MoN-H3-xOF">
+                                <rect key="frame" x="185.5" y="437.5" width="43" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="MoN-H3-xOF" firstAttribute="centerX" secondItem="UFc-4X-1wr" secondAttribute="centerX" id="bjk-AP-izq"/>
+                            <constraint firstItem="MoN-H3-xOF" firstAttribute="centerY" secondItem="UFc-4X-1wr" secondAttribute="centerY" id="xxm-II-xM6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ZX9-Gr-YAU"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="News" id="EZ5-0p-4jk"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oES-3k-tsE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-175.36231884057972" y="-1263.6160714285713"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="OpV-tq-iz7">
+            <objects>
+                <viewController id="Vtb-cG-bL7" customClass="SettingsViewController" customModule="CryptoManager" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="a0m-AO-LfN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dhs-qX-z8j">
+                                <rect key="frame" x="175.5" y="437.5" width="63.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="dhs-qX-z8j" firstAttribute="centerY" secondItem="a0m-AO-LfN" secondAttribute="centerY" id="dVO-LX-blS"/>
+                            <constraint firstItem="dhs-qX-z8j" firstAttribute="centerX" secondItem="a0m-AO-LfN" secondAttribute="centerX" id="eWO-V9-Nuj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="iZu-o2-22v"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Settings" id="eU9-GS-NAW"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hXC-9z-92m" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-113" y="116"/>
+        </scene>
+        <!--Portfolio-->
+        <scene sceneID="dw1-hL-oiY">
+            <objects>
+                <viewController id="lNE-Cb-hTZ" customClass="PortfolioViewController" customModule="CryptoManager" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AfD-Ky-PTR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Portfolio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6nl-vv-a61">
+                                <rect key="frame" x="174.5" y="437.5" width="65" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="6nl-vv-a61" firstAttribute="centerY" secondItem="AfD-Ky-PTR" secondAttribute="centerY" id="1aF-Oc-r5S"/>
+                            <constraint firstItem="6nl-vv-a61" firstAttribute="centerX" secondItem="AfD-Ky-PTR" secondAttribute="centerX" id="V6u-dT-j91"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="mkm-5n-e90"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Portfolio" id="cnO-hc-bAf"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gh2-vz-gAE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-161" y="-1948"/>
+        </scene>
+    </scenes>
+</document>
