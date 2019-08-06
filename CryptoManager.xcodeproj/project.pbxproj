@@ -11,6 +11,7 @@
 		A04A7FF122F82CC0008FC4DE /* SettingsViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04A7FF022F82CC0008FC4DE /* SettingsViewDelegate.swift */; };
 		A04A7FF322F82F76008FC4DE /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04A7FF222F82F76008FC4DE /* SettingsPresenter.swift */; };
 		A04A7FFA22F8BDA5008FC4DE /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04A7FF922F8BDA5008FC4DE /* MainTabBarController.swift */; };
+		A04A7FFD22F97C51008FC4DE /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04A7FFC22F97C51008FC4DE /* SplashViewController.swift */; };
 		A055EAC722F757F4003A2F24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055EAC622F757F4003A2F24 /* AppDelegate.swift */; };
 		A055EAC922F757F4003A2F24 /* PortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055EAC822F757F4003A2F24 /* PortfolioViewController.swift */; };
 		A055EACE22F757F6003A2F24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A055EACD22F757F6003A2F24 /* Assets.xcassets */; };
@@ -44,6 +45,7 @@
 		A04A7FF022F82CC0008FC4DE /* SettingsViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewDelegate.swift; sourceTree = "<group>"; };
 		A04A7FF222F82F76008FC4DE /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
 		A04A7FF922F8BDA5008FC4DE /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		A04A7FFC22F97C51008FC4DE /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		A055EAC322F757F4003A2F24 /* CryptoManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A055EAC622F757F4003A2F24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A055EAC822F757F4003A2F24 /* PortfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioViewController.swift; sourceTree = "<group>"; };
@@ -129,6 +131,14 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		A04A7FFB22F97C2F008FC4DE /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				A04A7FFC22F97C51008FC4DE /* SplashViewController.swift */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
 		A055EABA22F757F4003A2F24 = {
 			isa = PBXGroup;
 			children = (
@@ -152,6 +162,7 @@
 		A055EAC522F757F4003A2F24 /* CryptoManager */ = {
 			isa = PBXGroup;
 			children = (
+				A04A7FFB22F97C2F008FC4DE /* Splash */,
 				A04A7FF822F8BD6C008FC4DE /* Main */,
 				A04A7FEB22F82690008FC4DE /* Settings */,
 				A04A7FEA22F82688008FC4DE /* News */,
@@ -317,6 +328,7 @@
 				A055EAF522F76831003A2F24 /* MarketsViewController.swift in Sources */,
 				A04A7FFA22F8BDA5008FC4DE /* MainTabBarController.swift in Sources */,
 				A055EAC722F757F4003A2F24 /* AppDelegate.swift in Sources */,
+				A04A7FFD22F97C51008FC4DE /* SplashViewController.swift in Sources */,
 				A04A7FF122F82CC0008FC4DE /* SettingsViewDelegate.swift in Sources */,
 				A04A7FF322F82F76008FC4DE /* SettingsPresenter.swift in Sources */,
 				A055EAF922F76E4B003A2F24 /* SettingsViewController.swift in Sources */,

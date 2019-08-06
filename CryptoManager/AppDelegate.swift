@@ -19,7 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow()
         window?.makeKeyAndVisible()
         
-        window?.rootViewController = SplashViewController()
+        let navController = UINavigationController(rootViewController:
+            SplashViewController())
+        
+        window?.rootViewController = navController
         
         return true
     }
