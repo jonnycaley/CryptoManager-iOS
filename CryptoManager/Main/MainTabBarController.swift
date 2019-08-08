@@ -8,13 +8,17 @@
 
 import UIKit
 
-class MainTabBarController: UITabBarController {
+class MainTabBarController: UITabBarController, ThemeChangeProtocol {
+    
+//    var themeChangeDelegate: ThemeChangeProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupTabBar()
-
+        
+        
+        
         // Do any additional setup after loading the view.
     }
     
@@ -31,10 +35,15 @@ class MainTabBarController: UITabBarController {
         
         let settingsViewController = SettingsViewController()
         settingsViewController.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(named: "nav_settings"), selectedImage: UIImage(named: "nav_settings"))
+        settingsViewController.themeChangeDelegate = self
         
         let tabBarList = [portfolioViewController, marketsViewController, newsViewController, settingsViewController]
         viewControllers = tabBarList
         
+    }
+    
+    
+    func onThemeChanged() {
         
     }
     

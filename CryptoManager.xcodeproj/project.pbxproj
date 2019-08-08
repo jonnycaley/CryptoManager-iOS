@@ -23,6 +23,12 @@
 		A055EAF522F76831003A2F24 /* MarketsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055EAF422F76831003A2F24 /* MarketsViewController.swift */; };
 		A055EAF722F76E3A003A2F24 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055EAF622F76E3A003A2F24 /* NewsViewController.swift */; };
 		A055EAF922F76E4B003A2F24 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055EAF822F76E4B003A2F24 /* SettingsViewController.swift */; };
+		A0FC979A22FC2C6C00C9C399 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FC979922FC2C6C00C9C399 /* Theme.swift */; };
+		A0FC979D22FC2CF200C9C399 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0FC979C22FC2CF200C9C399 /* Roboto-Regular.ttf */; };
+		A0FC979F22FC2F9D00C9C399 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0FC979E22FC2F9D00C9C399 /* Colors.xcassets */; };
+		A0FC97A222FC358600C9C399 /* ThemeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FC97A122FC358600C9C399 /* ThemeProtocol.swift */; };
+		A0FC97A422FC36D500C9C399 /* LightTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FC97A322FC36D500C9C399 /* LightTheme.swift */; };
+		A0FC97A622FC36DF00C9C399 /* DarkTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FC97A522FC36DF00C9C399 /* DarkTheme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +71,13 @@
 		A055EAF422F76831003A2F24 /* MarketsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketsViewController.swift; sourceTree = "<group>"; };
 		A055EAF622F76E3A003A2F24 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		A055EAF822F76E4B003A2F24 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		A0FC979722FC2BC900C9C399 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Regular.ttf"; path = "../../../Downloads/Roboto (3)/Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		A0FC979922FC2C6C00C9C399 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		A0FC979C22FC2CF200C9C399 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		A0FC979E22FC2F9D00C9C399 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		A0FC97A122FC358600C9C399 /* ThemeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeProtocol.swift; sourceTree = "<group>"; };
+		A0FC97A322FC36D500C9C399 /* LightTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightTheme.swift; sourceTree = "<group>"; };
+		A0FC97A522FC36DF00C9C399 /* DarkTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkTheme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +162,7 @@
 				A055EADA22F757F6003A2F24 /* CryptoManagerTests */,
 				A055EAE522F757F6003A2F24 /* CryptoManagerUITests */,
 				A055EAC422F757F4003A2F24 /* Products */,
+				A0FC979722FC2BC900C9C399 /* Roboto-Regular.ttf */,
 			);
 			sourceTree = "<group>";
 		};
@@ -165,6 +179,7 @@
 		A055EAC522F757F4003A2F24 /* CryptoManager */ = {
 			isa = PBXGroup;
 			children = (
+				A0FC979822FC2C5900C9C399 /* Resources */,
 				A04A7FFB22F97C2F008FC4DE /* Splash */,
 				A04A7FF822F8BD6C008FC4DE /* Main */,
 				A04A7FEB22F82690008FC4DE /* Settings */,
@@ -222,6 +237,27 @@
 				A04A7FF222F82F76008FC4DE /* SettingsPresenter.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		A0FC979822FC2C5900C9C399 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A0FC97A022FC357300C9C399 /* Theme */,
+				A0FC979C22FC2CF200C9C399 /* Roboto-Regular.ttf */,
+				A0FC979E22FC2F9D00C9C399 /* Colors.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A0FC97A022FC357300C9C399 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				A0FC979922FC2C6C00C9C399 /* Theme.swift */,
+				A0FC97A122FC358600C9C399 /* ThemeProtocol.swift */,
+				A0FC97A322FC36D500C9C399 /* LightTheme.swift */,
+				A0FC97A522FC36DF00C9C399 /* DarkTheme.swift */,
+			);
+			path = Theme;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -328,6 +364,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0FC979D22FC2CF200C9C399 /* Roboto-Regular.ttf in Resources */,
+				A0FC979F22FC2F9D00C9C399 /* Colors.xcassets in Resources */,
 				A055EAD122F757F6003A2F24 /* LaunchScreen.storyboard in Resources */,
 				A055EACE22F757F6003A2F24 /* Assets.xcassets in Resources */,
 			);
@@ -357,7 +395,10 @@
 				A055EAC922F757F4003A2F24 /* PortfolioViewController.swift in Sources */,
 				A055EAF522F76831003A2F24 /* MarketsViewController.swift in Sources */,
 				A04A7FFA22F8BDA5008FC4DE /* MainTabBarController.swift in Sources */,
+				A0FC97A222FC358600C9C399 /* ThemeProtocol.swift in Sources */,
+				A0FC97A422FC36D500C9C399 /* LightTheme.swift in Sources */,
 				A055EAC722F757F4003A2F24 /* AppDelegate.swift in Sources */,
+				A0FC979A22FC2C6C00C9C399 /* Theme.swift in Sources */,
 				A04A7FFD22F97C51008FC4DE /* SplashViewController.swift in Sources */,
 				A04A7FF122F82CC0008FC4DE /* SettingsViewDelegate.swift in Sources */,
 				A04A800122FAF2EF008FC4DE /* SettingsSection.swift in Sources */,
@@ -366,6 +407,7 @@
 				A04A7FEF22F8291C008FC4DE /* SettingsService.swift in Sources */,
 				A055EAF722F76E3A003A2F24 /* NewsViewController.swift in Sources */,
 				A04A7FFF22F99586008FC4DE /* SettingsCell.swift in Sources */,
+				A0FC97A622FC36DF00C9C399 /* DarkTheme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

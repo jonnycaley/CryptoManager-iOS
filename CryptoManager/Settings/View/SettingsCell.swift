@@ -12,21 +12,30 @@ class SettingsCell: UITableViewCell {
     
     // MARK: - Properties
     
+    var delegate: ThemeChangeProtocol?
+    
     var sectionType: SectionType? {
         didSet {
             guard let sectionType = sectionType else { return }
             textLabel?.text = sectionType.description
+            
+            textLabel?.font = UIFont(name: Theme.current.mainFontName, size: Theme.current.textSizeBody2)
+            textLabel?.textColor = Theme.current.text
+            
+            backgroundColor = Theme.current.background
+            
             switchControl.isHidden = !sectionType.containsSwitch
         }
     }
     
     lazy var switchControl: UISwitch = {
         let switchControl = UISwitch()
-        switchControl.isOn = true
+                
+        switchControl.isOn = UserDefaults.standard.bool(forKey: "isDarkTheme")
         switchControl.onTintColor = UIColor(red: 55/255, green: 120/255, blue: 250/255, alpha: 1)
         switchControl.translatesAutoresizingMaskIntoConstraints = false
         switchControl.addTarget(self, action: #selector(handleSwitchAction), for: .valueChanged)
-        return  switchControl
+        return switchControl
     }()
     
     // MARK: - Init
@@ -37,6 +46,7 @@ class SettingsCell: UITableViewCell {
         addSubview(switchControl)
         switchControl.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         switchControl.rightAnchor.constraint(equalTo: rightAnchor, constant: -12).isActive = true
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -46,11 +56,14 @@ class SettingsCell: UITableViewCell {
     // MARK: - Selectors
     
     @objc func handleSwitchAction(sender: UISwitch) {
-        if sender.isOn {
-            print("Turned on")
-        } else {
-            print("Turned off")
-        }
+        Theme.current = sender.isOn ? DarkTheme() : LightTheme()
+        
+        UserDefaults.standard.set(sender.isOn, forKey: "isDarkTheme")
+        
+        self.delegate?.onThemeChanged()
     }
-    
+}
+
+protocol ThemeChangeProtocol {
+    func onThemeChanged()
 }

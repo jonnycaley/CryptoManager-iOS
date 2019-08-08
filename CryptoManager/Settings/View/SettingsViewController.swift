@@ -11,11 +11,13 @@ import Foundation
 
 private let reuseIdentifier = "SettingsCell"
 
-class SettingsViewController: UIViewController, SettingsViewDelegate {
+class SettingsViewController: UIViewController, SettingsViewDelegate, ThemeChangeProtocol {
     
     private let settingsPresenter = SettingsPresenter(settingsService: SettingsService())
     
     var tableView: UITableView!
+    
+    var themeChangeDelegate: ThemeChangeProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,8 +43,19 @@ class SettingsViewController: UIViewController, SettingsViewDelegate {
         tableView.frame = view.frame
     }
     
+    fileprivate func applyTheme() {
+        tableView.reloadData()
+        
+    }
+    
     func displaySettings(settings: (Array<String>)) {
         print(settings)
+    }
+    
+    func onThemeChanged() {
+        
+        applyTheme()
+        self.themeChangeDelegate?.onThemeChanged()
     }
 }
 
@@ -66,7 +79,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         let title = UILabel()
         title.font = UIFont.boldSystemFont(ofSize: 16)
         title.textColor = .black
-        title.text = SettingsSection(rawValue: section)?.description
+        title.text = SettingsSection(rawValue: section)?.description    
         view.addSubview(title)
         title.translatesAutoresizingMaskIntoConstraints = false
         title.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
@@ -80,6 +93,9 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! SettingsCell
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
+        
+        cell.delegate = self //to allow for the SettingsCellProtocol methods to be called from the SettingsCell class (for theme changing)
         
         guard let section = SettingsSection(rawValue: indexPath.section) else { return UITableViewCell() }
         
