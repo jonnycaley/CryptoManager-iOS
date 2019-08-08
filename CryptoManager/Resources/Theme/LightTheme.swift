@@ -8,10 +8,13 @@
 
 import UIKit
 
-class LightTheme: ThemeProtocol {
+class LightTheme: ThemeProtocol {    
     var mainFontName: String = "Roboto-Regular"
+    
     var textSizeBody2: CGFloat = 14 as CGFloat
+    
     var accent: UIColor = UIColor(named: "Accent")!
     var background: UIColor = UIColor(named: "BackgroundLightTheme")!
     var text: UIColor = UIColor(named: "TextLightTheme")!
+    var backgroundSecondary: UIColor = UIColor(named: "BackgroundSecondaryLightTheme")!
 }

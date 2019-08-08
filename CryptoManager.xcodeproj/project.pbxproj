@@ -17,7 +17,6 @@
 		A055EAC722F757F4003A2F24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055EAC622F757F4003A2F24 /* AppDelegate.swift */; };
 		A055EAC922F757F4003A2F24 /* PortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055EAC822F757F4003A2F24 /* PortfolioViewController.swift */; };
 		A055EACE22F757F6003A2F24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A055EACD22F757F6003A2F24 /* Assets.xcassets */; };
-		A055EAD122F757F6003A2F24 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A055EACF22F757F6003A2F24 /* LaunchScreen.storyboard */; };
 		A055EADC22F757F6003A2F24 /* CryptoManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055EADB22F757F6003A2F24 /* CryptoManagerTests.swift */; };
 		A055EAE722F757F6003A2F24 /* CryptoManagerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055EAE622F757F6003A2F24 /* CryptoManagerUITests.swift */; };
 		A055EAF522F76831003A2F24 /* MarketsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055EAF422F76831003A2F24 /* MarketsViewController.swift */; };
@@ -60,7 +59,6 @@
 		A055EAC622F757F4003A2F24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A055EAC822F757F4003A2F24 /* PortfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioViewController.swift; sourceTree = "<group>"; };
 		A055EACD22F757F6003A2F24 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A055EAD022F757F6003A2F24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A055EAD222F757F6003A2F24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A055EAD722F757F6003A2F24 /* CryptoManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CryptoManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A055EADB22F757F6003A2F24 /* CryptoManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoManagerTests.swift; sourceTree = "<group>"; };
@@ -187,7 +185,6 @@
 				A04A7FE922F82670008FC4DE /* Markets */,
 				A04A7FE822F8265D008FC4DE /* Portfolio */,
 				A055EAC622F757F4003A2F24 /* AppDelegate.swift */,
-				A055EACF22F757F6003A2F24 /* LaunchScreen.storyboard */,
 				A055EAD222F757F6003A2F24 /* Info.plist */,
 				A055EACD22F757F6003A2F24 /* Assets.xcassets */,
 			);
@@ -366,7 +363,6 @@
 			files = (
 				A0FC979D22FC2CF200C9C399 /* Roboto-Regular.ttf in Resources */,
 				A0FC979F22FC2F9D00C9C399 /* Colors.xcassets in Resources */,
-				A055EAD122F757F6003A2F24 /* LaunchScreen.storyboard in Resources */,
 				A055EACE22F757F6003A2F24 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -441,17 +437,6 @@
 			targetProxy = A055EAE322F757F6003A2F24 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		A055EACF22F757F6003A2F24 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A055EAD022F757F6003A2F24 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		A055EAE922F757F6003A2F24 /* Debug */ = {

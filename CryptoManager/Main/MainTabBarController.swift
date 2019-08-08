@@ -17,8 +17,6 @@ class MainTabBarController: UITabBarController, ThemeChangeProtocol {
         
         setupTabBar()
         
-        
-        
         // Do any additional setup after loading the view.
     }
     
@@ -40,22 +38,12 @@ class MainTabBarController: UITabBarController, ThemeChangeProtocol {
         let tabBarList = [portfolioViewController, marketsViewController, newsViewController, settingsViewController]
         viewControllers = tabBarList
         
+        onThemeChanged()
     }
     
     
     func onThemeChanged() {
-        
+        print(Theme.current.background)
+        self.tabBar.barTintColor = Theme.current.background
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

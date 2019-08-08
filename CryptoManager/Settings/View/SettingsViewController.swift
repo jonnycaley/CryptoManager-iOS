@@ -16,7 +16,8 @@ class SettingsViewController: UIViewController, SettingsViewDelegate, ThemeChang
     private let settingsPresenter = SettingsPresenter(settingsService: SettingsService())
     
     var tableView: UITableView!
-    
+    var customView: UIView!
+
     var themeChangeDelegate: ThemeChangeProtocol?
     
     override func viewDidLoad() {
@@ -28,24 +29,54 @@ class SettingsViewController: UIViewController, SettingsViewDelegate, ThemeChang
         settingsPresenter.getSettings()
     }
     
+    
     func configureUI() {
+        
         configureTableView()
+        configureNavigationBar() //has to happen after configureTableView
+        configureStatusBarColor()
+    }
+    
+    func configureStatusBarColor() {
+        if(UserDefaults.standard.bool(forKey: "isDarkTheme")) {
+            UIApplication.shared.statusBarStyle = .lightContent
+        } else {
+            UIApplication.shared.statusBarStyle = .default
+        }
+    }
+    
+    func configureNavigationBar() {
+        self.navigationController?.isNavigationBarHidden = true
+        
+        customView =  UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
+        customView.backgroundColor = Theme.current.background
+        view.addSubview(customView)
     }
     
     func configureTableView() {
-        tableView = UITableView()
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.rowHeight = 60
         
-        tableView.register(SettingsCell.self, forCellReuseIdentifier: reuseIdentifier)
-        view.addSubview(tableView)
-        tableView.frame = view.frame
+        if(tableView == nil){
+            
+            tableView = UITableView()
+            tableView.delegate = self
+            tableView.dataSource = self
+            tableView.rowHeight = 60
+            
+            // the following line configure table view for top space
+            tableView.translatesAutoresizingMaskIntoConstraints = false
+            
+            tableView.register(SettingsCell.self, forCellReuseIdentifier: reuseIdentifier)
+            view.addSubview(tableView)
+            tableView.frame = view.frame
+        } else {
+            
+            tableView.reloadData()
+        }
+        tableView.backgroundColor = Theme.current.background
     }
     
     fileprivate func applyTheme() {
-        tableView.reloadData()
-        
+        configureUI()
     }
     
     func displaySettings(settings: (Array<String>)) {
@@ -74,11 +105,11 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView()
-        view.backgroundColor = UIColor.lightGray
+        view.backgroundColor = Theme.current.backgroundSecondary
         
         let title = UILabel()
         title.font = UIFont.boldSystemFont(ofSize: 16)
-        title.textColor = .black
+        title.textColor = Theme.current.text
         title.text = SettingsSection(rawValue: section)?.description    
         view.addSubview(title)
         title.translatesAutoresizingMaskIntoConstraints = false

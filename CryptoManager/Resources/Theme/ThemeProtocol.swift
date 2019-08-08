@@ -9,9 +9,15 @@
 import UIKit
 
 protocol ThemeProtocol {
+//  fonts
     var mainFontName: String { get }
+    
+//  text sizes
     var textSizeBody2: CGFloat { get }
+    
+//  colors
     var accent: UIColor { get }
     var background: UIColor { get }
     var text: UIColor { get }
+    var backgroundSecondary: UIColor { get }
 }

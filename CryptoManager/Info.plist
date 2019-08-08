@@ -43,5 +43,7 @@
 	<array>
 		<string>Roboto-Regular.ttf</string>
 	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 </dict>
 </plist>
