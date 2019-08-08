@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         
         let navController = UINavigationController(rootViewController:
-            SplashViewController())
+            MainTabBarController())
         
         window?.rootViewController = navController
         

@@ -12,6 +12,8 @@
 		A04A7FF322F82F76008FC4DE /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04A7FF222F82F76008FC4DE /* SettingsPresenter.swift */; };
 		A04A7FFA22F8BDA5008FC4DE /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04A7FF922F8BDA5008FC4DE /* MainTabBarController.swift */; };
 		A04A7FFD22F97C51008FC4DE /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04A7FFC22F97C51008FC4DE /* SplashViewController.swift */; };
+		A04A7FFF22F99586008FC4DE /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04A7FFE22F99586008FC4DE /* SettingsCell.swift */; };
+		A04A800122FAF2EF008FC4DE /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04A800022FAF2EF008FC4DE /* SettingsSection.swift */; };
 		A055EAC722F757F4003A2F24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055EAC622F757F4003A2F24 /* AppDelegate.swift */; };
 		A055EAC922F757F4003A2F24 /* PortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055EAC822F757F4003A2F24 /* PortfolioViewController.swift */; };
 		A055EACE22F757F6003A2F24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A055EACD22F757F6003A2F24 /* Assets.xcassets */; };
@@ -46,6 +48,8 @@
 		A04A7FF222F82F76008FC4DE /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
 		A04A7FF922F8BDA5008FC4DE /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		A04A7FFC22F97C51008FC4DE /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		A04A7FFE22F99586008FC4DE /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
+		A04A800022FAF2EF008FC4DE /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
 		A055EAC322F757F4003A2F24 /* CryptoManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A055EAC622F757F4003A2F24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A055EAC822F757F4003A2F24 /* PortfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioViewController.swift; sourceTree = "<group>"; };
@@ -115,10 +119,9 @@
 		A04A7FEB22F82690008FC4DE /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				A055EAF822F76E4B003A2F24 /* SettingsViewController.swift */,
-				A04A7FEE22F8291C008FC4DE /* SettingsService.swift */,
-				A04A7FF022F82CC0008FC4DE /* SettingsViewDelegate.swift */,
-				A04A7FF222F82F76008FC4DE /* SettingsPresenter.swift */,
+				A0FC979222FC1FFD00C9C399 /* Presenter */,
+				A0FC979122FC1FF700C9C399 /* View */,
+				A0FC979022FC1FF200C9C399 /* Model */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -192,6 +195,33 @@
 				A055EAE822F757F6003A2F24 /* Info.plist */,
 			);
 			path = CryptoManagerUITests;
+			sourceTree = "<group>";
+		};
+		A0FC979022FC1FF200C9C399 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A04A800022FAF2EF008FC4DE /* SettingsSection.swift */,
+				A04A7FEE22F8291C008FC4DE /* SettingsService.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A0FC979122FC1FF700C9C399 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A04A7FFE22F99586008FC4DE /* SettingsCell.swift */,
+				A055EAF822F76E4B003A2F24 /* SettingsViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A0FC979222FC1FFD00C9C399 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				A04A7FF022F82CC0008FC4DE /* SettingsViewDelegate.swift */,
+				A04A7FF222F82F76008FC4DE /* SettingsPresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -330,10 +360,12 @@
 				A055EAC722F757F4003A2F24 /* AppDelegate.swift in Sources */,
 				A04A7FFD22F97C51008FC4DE /* SplashViewController.swift in Sources */,
 				A04A7FF122F82CC0008FC4DE /* SettingsViewDelegate.swift in Sources */,
+				A04A800122FAF2EF008FC4DE /* SettingsSection.swift in Sources */,
 				A04A7FF322F82F76008FC4DE /* SettingsPresenter.swift in Sources */,
 				A055EAF922F76E4B003A2F24 /* SettingsViewController.swift in Sources */,
 				A04A7FEF22F8291C008FC4DE /* SettingsService.swift in Sources */,
 				A055EAF722F76E3A003A2F24 /* NewsViewController.swift in Sources */,
+				A04A7FFF22F99586008FC4DE /* SettingsCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
