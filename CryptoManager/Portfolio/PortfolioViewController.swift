@@ -29,4 +29,3 @@ class PortfolioViewController: UIViewController, ThemeChangeProtocol {
         configureUI()
     }
 }
-
