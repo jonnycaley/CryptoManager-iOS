@@ -22,6 +22,7 @@
 		A055EAF522F76831003A2F24 /* MarketsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055EAF422F76831003A2F24 /* MarketsViewController.swift */; };
 		A055EAF722F76E3A003A2F24 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055EAF622F76E3A003A2F24 /* NewsViewController.swift */; };
 		A055EAF922F76E4B003A2F24 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055EAF822F76E4B003A2F24 /* SettingsViewController.swift */; };
+		A0F2E3A822FD5ED600406AFC /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F2E3A722FD5ED600406AFC /* NavigationBar.swift */; };
 		A0FC979A22FC2C6C00C9C399 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FC979922FC2C6C00C9C399 /* Theme.swift */; };
 		A0FC979D22FC2CF200C9C399 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0FC979C22FC2CF200C9C399 /* Roboto-Regular.ttf */; };
 		A0FC979F22FC2F9D00C9C399 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0FC979E22FC2F9D00C9C399 /* Colors.xcassets */; };
@@ -69,6 +70,7 @@
 		A055EAF422F76831003A2F24 /* MarketsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketsViewController.swift; sourceTree = "<group>"; };
 		A055EAF622F76E3A003A2F24 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		A055EAF822F76E4B003A2F24 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		A0F2E3A722FD5ED600406AFC /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		A0FC979722FC2BC900C9C399 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Regular.ttf"; path = "../../../Downloads/Roboto (3)/Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		A0FC979922FC2C6C00C9C399 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		A0FC979C22FC2CF200C9C399 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 		A055EAC522F757F4003A2F24 /* CryptoManager */ = {
 			isa = PBXGroup;
 			children = (
+				A0F2E3A722FD5ED600406AFC /* NavigationBar.swift */,
 				A0FC979822FC2C5900C9C399 /* Resources */,
 				A04A7FFB22F97C2F008FC4DE /* Splash */,
 				A04A7FF822F8BD6C008FC4DE /* Main */,
@@ -388,6 +391,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0F2E3A822FD5ED600406AFC /* NavigationBar.swift in Sources */,
 				A055EAC922F757F4003A2F24 /* PortfolioViewController.swift in Sources */,
 				A055EAF522F76831003A2F24 /* MarketsViewController.swift in Sources */,
 				A04A7FFA22F8BDA5008FC4DE /* MainTabBarController.swift in Sources */,

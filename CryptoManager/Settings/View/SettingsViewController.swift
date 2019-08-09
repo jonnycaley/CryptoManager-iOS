@@ -29,7 +29,6 @@ class SettingsViewController: UIViewController, SettingsViewDelegate, ThemeChang
         settingsPresenter.getSettings()
     }
     
-    
     func configureUI() {
         
         configureTableView()
@@ -48,9 +47,7 @@ class SettingsViewController: UIViewController, SettingsViewDelegate, ThemeChang
     func configureNavigationBar() {
         self.navigationController?.isNavigationBarHidden = true
         
-        customView =  UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
-        customView.backgroundColor = Theme.current.background
-        view.addSubview(customView)
+        view.addSubview(NavigationBar())
     }
     
     func configureTableView() {
@@ -75,17 +72,13 @@ class SettingsViewController: UIViewController, SettingsViewDelegate, ThemeChang
         tableView.backgroundColor = Theme.current.background
     }
     
-    fileprivate func applyTheme() {
-        configureUI()
-    }
-    
     func displaySettings(settings: (Array<String>)) {
         print(settings)
     }
     
     func onThemeChanged() {
         
-        applyTheme()
+        configureUI()
         self.themeChangeDelegate?.onThemeChanged()
     }
 }
