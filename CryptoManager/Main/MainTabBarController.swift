@@ -20,30 +20,47 @@ class MainTabBarController: UITabBarController, ThemeChangeProtocol {
         // Do any additional setup after loading the view.
     }
     
+    var portfolioViewController: PortfolioViewController!
+    var marketsViewController: MarketsViewController!
+    var newsViewController: NewsViewController!
+    var settingsViewController: SettingsViewController!
+    
     func setupTabBar() {
         
-        let portfolioViewController = PortfolioViewController()
+        portfolioViewController = PortfolioViewController()
         portfolioViewController.tabBarItem = UITabBarItem(title: "Portfolio", image: UIImage(named: "nav_home"), selectedImage: UIImage(named: "nav_home"))
+//        portfolioViewController.themeChangeDelegate = self
         
-        let marketsViewController = MarketsViewController()
+        marketsViewController = MarketsViewController()
         marketsViewController.tabBarItem = UITabBarItem(title: "Markets", image: UIImage(named: "nav_candlestick"), selectedImage: UIImage(named: "nav_candlestick"))
+//        marketsViewController.themeChangeDelegate = self
         
-        let newsViewController = NewsViewController()
+        newsViewController = NewsViewController()
         newsViewController.tabBarItem = UITabBarItem(title: "News", image: UIImage(named: "nav_newspaper"), selectedImage: UIImage(named: "nav_newspaper"))
         
-        let settingsViewController = SettingsViewController()
+        settingsViewController = SettingsViewController()
         settingsViewController.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(named: "nav_settings"), selectedImage: UIImage(named: "nav_settings"))
+        
         settingsViewController.themeChangeDelegate = self
         
         let tabBarList = [portfolioViewController, marketsViewController, newsViewController, settingsViewController]
-        viewControllers = tabBarList
+        viewControllers = tabBarList as! [UIViewController]
         
         onThemeChanged()
     }
     
     
     func onThemeChanged() {
-        print(Theme.current.background)
+        if (portfolioViewController != nil) {
+            portfolioViewController.onThemeChanged()
+        }
+        if (marketsViewController != nil) {
+            marketsViewController.onThemeChanged()
+        }
+        if (newsViewController != nil) {
+            newsViewController.onThemeChanged()
+        }
+        
         self.tabBar.barTintColor = Theme.current.background
     }
 }

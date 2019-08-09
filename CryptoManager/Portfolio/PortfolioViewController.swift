@@ -8,13 +8,25 @@
 
 import UIKit
 
-class PortfolioViewController: UIViewController {
-
+class PortfolioViewController: UIViewController, ThemeChangeProtocol {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        configureUI()
     }
-
-
+    
+    func configureUI() {
+        configureNavigationBar() //has to happen after configureTableView
+    }
+    
+    func configureNavigationBar() {
+        self.navigationController?.isNavigationBarHidden = true
+        view.addSubview(NavigationBar())
+    }
+    
+    func onThemeChanged() {
+        configureUI()
+    }
 }
 
