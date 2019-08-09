@@ -9,15 +9,11 @@
 import UIKit
 
 class MainTabBarController: UITabBarController, ThemeChangeProtocol {
-    
-//    var themeChangeDelegate: ThemeChangeProtocol?
-
+     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupTabBar()
-        
-        // Do any additional setup after loading the view.
     }
     
     var portfolioViewController: PortfolioViewController!
@@ -29,28 +25,28 @@ class MainTabBarController: UITabBarController, ThemeChangeProtocol {
         
         portfolioViewController = PortfolioViewController()
         portfolioViewController.tabBarItem = UITabBarItem(title: "Portfolio", image: UIImage(named: "nav_home"), selectedImage: UIImage(named: "nav_home"))
-//        portfolioViewController.themeChangeDelegate = self
         
         marketsViewController = MarketsViewController()
         marketsViewController.tabBarItem = UITabBarItem(title: "Markets", image: UIImage(named: "nav_candlestick"), selectedImage: UIImage(named: "nav_candlestick"))
-//        marketsViewController.themeChangeDelegate = self
         
         newsViewController = NewsViewController()
         newsViewController.tabBarItem = UITabBarItem(title: "News", image: UIImage(named: "nav_newspaper"), selectedImage: UIImage(named: "nav_newspaper"))
         
         settingsViewController = SettingsViewController()
         settingsViewController.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(named: "nav_settings"), selectedImage: UIImage(named: "nav_settings"))
-        
         settingsViewController.themeChangeDelegate = self
         
         let tabBarList = [portfolioViewController, marketsViewController, newsViewController, settingsViewController]
         viewControllers = tabBarList as! [UIViewController]
         
-        onThemeChanged()
+        self.tabBar.barTintColor = Theme.current.background
+        
+//        onThemeChanged()
     }
     
     
     func onThemeChanged() {
+        print("Theme Changed")
         if (portfolioViewController != nil) {
             portfolioViewController.onThemeChanged()
         }

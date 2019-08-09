@@ -24,7 +24,6 @@ class SettingsViewController: UIViewController, SettingsViewDelegate, ThemeChang
         super.viewDidLoad()
         
         configureUI()
-        
         settingsPresenter.setViewDelegate(settingsViewDelegate: self)
         settingsPresenter.getSettings()
     }
@@ -46,7 +45,6 @@ class SettingsViewController: UIViewController, SettingsViewDelegate, ThemeChang
     
     func configureNavigationBar() {
         self.navigationController?.isNavigationBarHidden = true
-        
         view.addSubview(NavigationBar())
     }
     

@@ -12,12 +12,12 @@ class PortfolioViewController: UIViewController, ThemeChangeProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        configureUI()
+                
+        self.configureUI()
     }
     
     func configureUI() {
-        configureNavigationBar() //has to happen after configureTableView
+        self.configureNavigationBar() //has to happen after configureTableView
     }
     
     func configureNavigationBar() {
@@ -26,6 +26,6 @@ class PortfolioViewController: UIViewController, ThemeChangeProtocol {
     }
     
     func onThemeChanged() {
-        configureUI()
+        self.configureUI()
     }
 }

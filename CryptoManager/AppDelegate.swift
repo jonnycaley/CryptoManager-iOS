@@ -21,8 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow()
         window?.makeKeyAndVisible()
         
-        let navController = UINavigationController(rootViewController:
-            MainTabBarController())
+        let navController = UINavigationController(rootViewController: SplashViewController())
         
         window?.rootViewController = navController
         

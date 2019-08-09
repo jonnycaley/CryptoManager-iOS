@@ -23,6 +23,9 @@
 		A055EAF722F76E3A003A2F24 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055EAF622F76E3A003A2F24 /* NewsViewController.swift */; };
 		A055EAF922F76E4B003A2F24 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055EAF822F76E4B003A2F24 /* SettingsViewController.swift */; };
 		A0F2E3A822FD5ED600406AFC /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F2E3A722FD5ED600406AFC /* NavigationBar.swift */; };
+		A0F2E3AF22FDE8DD00406AFC /* SplashService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F2E3AE22FDE8DD00406AFC /* SplashService.swift */; };
+		A0F2E3B122FDE93E00406AFC /* SplashViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F2E3B022FDE93E00406AFC /* SplashViewDelegate.swift */; };
+		A0F2E3B322FDE95100406AFC /* SplashPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F2E3B222FDE95100406AFC /* SplashPresenter.swift */; };
 		A0FC979A22FC2C6C00C9C399 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FC979922FC2C6C00C9C399 /* Theme.swift */; };
 		A0FC979D22FC2CF200C9C399 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0FC979C22FC2CF200C9C399 /* Roboto-Regular.ttf */; };
 		A0FC979F22FC2F9D00C9C399 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0FC979E22FC2F9D00C9C399 /* Colors.xcassets */; };
@@ -71,6 +74,9 @@
 		A055EAF622F76E3A003A2F24 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		A055EAF822F76E4B003A2F24 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		A0F2E3A722FD5ED600406AFC /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
+		A0F2E3AE22FDE8DD00406AFC /* SplashService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashService.swift; sourceTree = "<group>"; };
+		A0F2E3B022FDE93E00406AFC /* SplashViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewDelegate.swift; sourceTree = "<group>"; };
+		A0F2E3B222FDE95100406AFC /* SplashPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashPresenter.swift; sourceTree = "<group>"; };
 		A0FC979722FC2BC900C9C399 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Regular.ttf"; path = "../../../Downloads/Roboto (3)/Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		A0FC979922FC2C6C00C9C399 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		A0FC979C22FC2CF200C9C399 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
@@ -150,7 +156,9 @@
 		A04A7FFB22F97C2F008FC4DE /* Splash */ = {
 			isa = PBXGroup;
 			children = (
-				A04A7FFC22F97C51008FC4DE /* SplashViewController.swift */,
+				A0F2E3AD22FDE89400406AFC /* Model */,
+				A0F2E3AC22FDE89200406AFC /* View */,
+				A0F2E3AB22FDE88E00406AFC /* Presenter */,
 			);
 			path = Splash;
 			sourceTree = "<group>";
@@ -212,6 +220,31 @@
 			path = CryptoManagerUITests;
 			sourceTree = "<group>";
 		};
+		A0F2E3AB22FDE88E00406AFC /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				A0F2E3B222FDE95100406AFC /* SplashPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		A0F2E3AC22FDE89200406AFC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A0F2E3B022FDE93E00406AFC /* SplashViewDelegate.swift */,
+				A04A7FFC22F97C51008FC4DE /* SplashViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A0F2E3AD22FDE89400406AFC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A0F2E3AE22FDE8DD00406AFC /* SplashService.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		A0FC979022FC1FF200C9C399 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -226,6 +259,7 @@
 			children = (
 				A04A7FFE22F99586008FC4DE /* SettingsCell.swift */,
 				A055EAF822F76E4B003A2F24 /* SettingsViewController.swift */,
+				A04A7FF022F82CC0008FC4DE /* SettingsViewDelegate.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -233,7 +267,6 @@
 		A0FC979222FC1FFD00C9C399 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				A04A7FF022F82CC0008FC4DE /* SettingsViewDelegate.swift */,
 				A04A7FF222F82F76008FC4DE /* SettingsPresenter.swift */,
 			);
 			path = Presenter;
@@ -402,11 +435,14 @@
 				A04A7FFD22F97C51008FC4DE /* SplashViewController.swift in Sources */,
 				A04A7FF122F82CC0008FC4DE /* SettingsViewDelegate.swift in Sources */,
 				A04A800122FAF2EF008FC4DE /* SettingsSection.swift in Sources */,
+				A0F2E3B322FDE95100406AFC /* SplashPresenter.swift in Sources */,
 				A04A7FF322F82F76008FC4DE /* SettingsPresenter.swift in Sources */,
 				A055EAF922F76E4B003A2F24 /* SettingsViewController.swift in Sources */,
 				A04A7FEF22F8291C008FC4DE /* SettingsService.swift in Sources */,
 				A055EAF722F76E3A003A2F24 /* NewsViewController.swift in Sources */,
 				A04A7FFF22F99586008FC4DE /* SettingsCell.swift in Sources */,
+				A0F2E3AF22FDE8DD00406AFC /* SplashService.swift in Sources */,
+				A0F2E3B122FDE93E00406AFC /* SplashViewDelegate.swift in Sources */,
 				A0FC97A622FC36DF00C9C399 /* DarkTheme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
