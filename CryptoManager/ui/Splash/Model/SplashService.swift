@@ -10,6 +10,7 @@ import Foundation
 import RxSwift
 import Alamofire
 import SQLite
+import SwiftyJSON
 
 class SplashService {
     
@@ -56,7 +57,7 @@ class SplashService {
         
         return Single.create { single -> Disposable in
             
-            AF.request(Constants.CRYPTOCOMPARE_URL,
+            AF.request(Constants.CRYPTOCOMPARE_URL + Constants.CRYPTOCOMPARE_ALLCRYPTO,
                        method: .get,
                        parameters: [Constants.CRYPTOCOMPARE_NAME: Constants.CRYPTOCOMPARE_KEY],
                        encoding: URLEncoding(destination: .queryString),
@@ -148,6 +149,8 @@ class SplashService {
     let fullName = Expression<String>("fullName")
     let sortOrder = Expression<String>("sortOrder")
     
+    let test = Expression<Array<String>>("test")
+    
     func createCryptoTable() -> Bool {
         let createTable = self.cryptoTable.create { (table) in
             table.column(self.id, primaryKey: true)
@@ -207,6 +210,59 @@ class SplashService {
             }
         } catch {
             print(error)
+        }
+    }
+    
+    let exchangesTable = Table("Exchanges")
+    
+    func createExchangesTable() -> Bool {
+        let createTable = self.exchangesTable.create { (table) in
+            //TODO
+        }
+        do {
+            try self.database.run(createTable)
+            return true
+        } catch {
+            print(error)
+            return false
+        }
+    }
+    
+    func getExchanges() -> Single<String> {
+        
+        return Single.create { single -> Disposable in
+            
+            AF.request(Constants.CRYPTOCOMPARE_URL + Constants.CRYPTOCOMPARE_ALLEXCHANGES,
+                       method: .get,
+                       parameters: [Constants.CRYPTOCOMPARE_NAME: Constants.CRYPTOCOMPARE_KEY],
+                       encoding: URLEncoding(destination: .queryString),
+                       headers: nil)
+                .validate()
+                .responseJSON { response in
+                    switch response.result {
+                    case .success:
+                        guard let data = response.data else {
+                            // if no error provided by alamofire return .notFound error instead.
+                            // .notFound should never happen here?
+                            single(.error(response.error ?? NewtorkFailureReason.notFound))
+                            return
+                        }
+                        do {
+                            let response = String(data: data, encoding: .utf8)
+                            single(.success(response ?? ""))
+                        } catch {
+                            single(.error(error))
+                        }
+                    case .failure(let error):
+                        if let statusCode = response.response?.statusCode,
+                            let reason = NewtorkFailureReason(rawValue: statusCode)
+                        {
+                            single(.error(reason))
+                        }
+                        single(.error(error))
+                    }
+            }
+            return Disposables.create()
         }
     }
 }

@@ -10,6 +10,8 @@ import Foundation
 import RxSwift
 import RxCocoa
 import SQLite
+import SwiftyJSON
+
 
 class SplashPresenter {
     
@@ -33,19 +35,18 @@ class SplashPresenter {
             print("loading base fiats")
             loadBaseFiats()
         }
-        
+        print("A")
         if(splashService.createCryptoTable()){
             print("loading cryptos")
             loadCryptoCurrencies()
         }
-        
-        if(splashService.createExchangesTable()){
-            
-        }
+//        if(splashService.createExchangesTable()){
+//            loadExchanges()
+//        }
+        loadExchanges()
     }
     
     func loadBaseFiats() {
-        
         splashService.getExchangeRates()
             .subscribe { event in
                 switch event {
@@ -59,7 +60,6 @@ class SplashPresenter {
     }
     
     func loadCryptoCurrencies() {
-        
         splashService.getCryptoCurrencies()
             .subscribe { event in
                 switch event {
@@ -70,6 +70,52 @@ class SplashPresenter {
                 }
             }
             .disposed(by: disposeBag)
+    }
+    
+    func loadExchanges() {
+        splashService.getExchanges()
+            .subscribe { event in
+                switch event {
+                case .success(let json):
+                    self.formatExchanges(str: json)
+                case .error(let error):
+                    print("Error: ", error)
+                }
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    func formatExchanges(str: String) {
         
+        do {
+            if let dataFromString = str.data(using: .utf8, allowLossyConversion: false) {
+                let json = try JSON(data: dataFromString)
+                
+                var exchanges = [Exchanges]()
+                
+                for (exchange, subJson1):(String, JSON) in json {
+                    
+                    var exchangeCurrencies = [CurrencyAndConversions]()
+                    for (crypto, converters):(String, JSON) in subJson1 {
+                        var convertersArr:[String] = converters.arrayValue.map { $0.stringValue}
+                        exchangeCurrencies.append(CurrencyAndConversions.init(base: crypto, rates: convertersArr))
+                    }
+                    exchanges.append(Exchanges.init(exchange: exchange, currencyConversions: exchangeCurrencies))
+                }
+                
+                exchanges.forEach { (exchange) in
+                    print("Exchange", exchange.exchange)
+                    print("Currencies")
+                    exchange.currencyConversions.forEach({ (CurrencyAndConversions) in
+                        print(CurrencyAndConversions.base)
+                        print(CurrencyAndConversions.rates)
+                    })
+                }
+                
+                //TODO: CREATE AND SAVE THE VALUES TO THE EXCHANGES TABLE WOOOOO
+            }
+        } catch {
+            print(error)
+        }
     }
 }

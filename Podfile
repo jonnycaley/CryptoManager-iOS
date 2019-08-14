@@ -7,4 +7,5 @@ target 'CryptoManager' do
   pod 'RxCocoa', '~> 5'
   pod 'Alamofire', '~> 5.0.0-beta.5'
   pod 'SQLite.swift', '~> 0.12.0'
+  pod 'SwiftyJSON', '~> 4.0'
 end

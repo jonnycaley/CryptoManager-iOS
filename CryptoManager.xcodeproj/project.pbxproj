@@ -27,6 +27,7 @@
 		A08B8AD92302F38700D6615F /* Rates.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08B8AD82302F38700D6615F /* Rates.swift */; };
 		A08B8ADE230316C400D6615F /* SQLExchangeRates.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08B8ADD230316C400D6615F /* SQLExchangeRates.swift */; };
 		A08B8AE42304181A00D6615F /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08B8AE32304181A00D6615F /* Crypto.swift */; };
+		A08B8AEB230489B900D6615F /* Exchanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08B8AEA230489B900D6615F /* Exchanges.swift */; };
 		A0F2E3A822FD5ED600406AFC /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F2E3A722FD5ED600406AFC /* NavigationBar.swift */; };
 		A0F2E3AF22FDE8DD00406AFC /* SplashService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F2E3AE22FDE8DD00406AFC /* SplashService.swift */; };
 		A0F2E3B122FDE93E00406AFC /* SplashViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F2E3B022FDE93E00406AFC /* SplashViewDelegate.swift */; };
@@ -84,6 +85,7 @@
 		A08B8AD82302F38700D6615F /* Rates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rates.swift; sourceTree = "<group>"; };
 		A08B8ADD230316C400D6615F /* SQLExchangeRates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLExchangeRates.swift; sourceTree = "<group>"; };
 		A08B8AE32304181A00D6615F /* Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crypto.swift; sourceTree = "<group>"; };
+		A08B8AEA230489B900D6615F /* Exchanges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exchanges.swift; sourceTree = "<group>"; };
 		A0F2E3A722FD5ED600406AFC /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		A0F2E3AE22FDE8DD00406AFC /* SplashService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashService.swift; sourceTree = "<group>"; };
 		A0F2E3B022FDE93E00406AFC /* SplashViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewDelegate.swift; sourceTree = "<group>"; };
@@ -281,7 +283,7 @@
 		A08B8ADF2303177400D6615F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A08B8AE22304180F00D6615F /* CryproCompare */,
+				A08B8AE22304180F00D6615F /* CryptoCompare */,
 				A08B8AE12303179E00D6615F /* Exchange Rates */,
 				A08B8AE02303178E00D6615F /* SQL */,
 			);
@@ -291,6 +293,7 @@
 		A08B8AE02303178E00D6615F /* SQL */ = {
 			isa = PBXGroup;
 			children = (
+				A08B8AE92304899700D6615F /* Exchanges */,
 				A08B8ADD230316C400D6615F /* SQLExchangeRates.swift */,
 			);
 			path = SQL;
@@ -304,12 +307,13 @@
 			path = "Exchange Rates";
 			sourceTree = "<group>";
 		};
-		A08B8AE22304180F00D6615F /* CryproCompare */ = {
+		A08B8AE22304180F00D6615F /* CryptoCompare */ = {
 			isa = PBXGroup;
 			children = (
+				A08B8AE623046DA700D6615F /* AllExchanges */,
 				A08B8AE5230422D800D6615F /* AllCurrencies */,
 			);
-			path = CryproCompare;
+			path = CryptoCompare;
 			sourceTree = "<group>";
 		};
 		A08B8AE5230422D800D6615F /* AllCurrencies */ = {
@@ -318,6 +322,21 @@
 				A08B8AE32304181A00D6615F /* Crypto.swift */,
 			);
 			path = AllCurrencies;
+			sourceTree = "<group>";
+		};
+		A08B8AE623046DA700D6615F /* AllExchanges */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AllExchanges;
+			sourceTree = "<group>";
+		};
+		A08B8AE92304899700D6615F /* Exchanges */ = {
+			isa = PBXGroup;
+			children = (
+				A08B8AEA230489B900D6615F /* Exchanges.swift */,
+			);
+			path = Exchanges;
 			sourceTree = "<group>";
 		};
 		A0F2E3AB22FDE88E00406AFC /* Presenter */ = {
@@ -591,6 +610,7 @@
 				A04A7FFF22F99586008FC4DE /* SettingsCell.swift in Sources */,
 				A0F2E3AF22FDE8DD00406AFC /* SplashService.swift in Sources */,
 				A0F2E3B122FDE93E00406AFC /* SplashViewDelegate.swift in Sources */,
+				A08B8AEB230489B900D6615F /* Exchanges.swift in Sources */,
 				A0FC97A622FC36DF00C9C399 /* DarkTheme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
