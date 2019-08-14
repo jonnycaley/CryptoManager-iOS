@@ -18,10 +18,17 @@ class SplashViewController: UIViewController, SplashViewDelegate {
                 
 //        let mainViewController = MainTabBarController()
 //        self.present(mainViewController, animated: false, completion: nil)
+        
+        configureNavigationBar()
 
         splashPresenter.setViewDelegate(splashViewDelegate: self)
         splashPresenter.onInit()
-//        splashPresenter.getFiatsRates()
+    }
+    
+    
+    func configureNavigationBar() {
+        self.navigationController?.isNavigationBarHidden = true
+        view.addSubview(NavigationBar())
     }
     
     func loadBaseFiats(fiats: [String : Double]) {
