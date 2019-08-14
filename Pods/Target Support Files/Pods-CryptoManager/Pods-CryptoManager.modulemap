@@ -1,0 +1,6 @@
+framework module Pods_CryptoManager {
+  umbrella header "Pods-CryptoManager-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06149108116CD0D9296FA104 /* Pods_CryptoManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3A7D4541333211354F267D2 /* Pods_CryptoManager.framework */; };
 		A04A7FEF22F8291C008FC4DE /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04A7FEE22F8291C008FC4DE /* SettingsService.swift */; };
 		A04A7FF122F82CC0008FC4DE /* SettingsViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04A7FF022F82CC0008FC4DE /* SettingsViewDelegate.swift */; };
 		A04A7FF322F82F76008FC4DE /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04A7FF222F82F76008FC4DE /* SettingsPresenter.swift */; };
@@ -22,6 +23,10 @@
 		A055EAF522F76831003A2F24 /* MarketsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055EAF422F76831003A2F24 /* MarketsViewController.swift */; };
 		A055EAF722F76E3A003A2F24 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055EAF622F76E3A003A2F24 /* NewsViewController.swift */; };
 		A055EAF922F76E4B003A2F24 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055EAF822F76E4B003A2F24 /* SettingsViewController.swift */; };
+		A08B8AD52302EA6B00D6615F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08B8AD42302EA6B00D6615F /* Constants.swift */; };
+		A08B8AD92302F38700D6615F /* Rates.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08B8AD82302F38700D6615F /* Rates.swift */; };
+		A08B8ADE230316C400D6615F /* SQLExchangeRates.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08B8ADD230316C400D6615F /* SQLExchangeRates.swift */; };
+		A08B8AE42304181A00D6615F /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08B8AE32304181A00D6615F /* Crypto.swift */; };
 		A0F2E3A822FD5ED600406AFC /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F2E3A722FD5ED600406AFC /* NavigationBar.swift */; };
 		A0F2E3AF22FDE8DD00406AFC /* SplashService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F2E3AE22FDE8DD00406AFC /* SplashService.swift */; };
 		A0F2E3B122FDE93E00406AFC /* SplashViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F2E3B022FDE93E00406AFC /* SplashViewDelegate.swift */; };
@@ -52,6 +57,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		213DC25A89A4C3CD013D00D3 /* Pods-CryptoManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoManager.debug.xcconfig"; path = "Target Support Files/Pods-CryptoManager/Pods-CryptoManager.debug.xcconfig"; sourceTree = "<group>"; };
+		9F2F2F9945E6CAE4B530B452 /* Pods-CryptoManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoManager.release.xcconfig"; path = "Target Support Files/Pods-CryptoManager/Pods-CryptoManager.release.xcconfig"; sourceTree = "<group>"; };
 		A04A7FEE22F8291C008FC4DE /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
 		A04A7FF022F82CC0008FC4DE /* SettingsViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewDelegate.swift; sourceTree = "<group>"; };
 		A04A7FF222F82F76008FC4DE /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
@@ -73,6 +80,10 @@
 		A055EAF422F76831003A2F24 /* MarketsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketsViewController.swift; sourceTree = "<group>"; };
 		A055EAF622F76E3A003A2F24 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		A055EAF822F76E4B003A2F24 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		A08B8AD42302EA6B00D6615F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A08B8AD82302F38700D6615F /* Rates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rates.swift; sourceTree = "<group>"; };
+		A08B8ADD230316C400D6615F /* SQLExchangeRates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLExchangeRates.swift; sourceTree = "<group>"; };
+		A08B8AE32304181A00D6615F /* Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crypto.swift; sourceTree = "<group>"; };
 		A0F2E3A722FD5ED600406AFC /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		A0F2E3AE22FDE8DD00406AFC /* SplashService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashService.swift; sourceTree = "<group>"; };
 		A0F2E3B022FDE93E00406AFC /* SplashViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +95,7 @@
 		A0FC97A122FC358600C9C399 /* ThemeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeProtocol.swift; sourceTree = "<group>"; };
 		A0FC97A322FC36D500C9C399 /* LightTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightTheme.swift; sourceTree = "<group>"; };
 		A0FC97A522FC36DF00C9C399 /* DarkTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkTheme.swift; sourceTree = "<group>"; };
+		B3A7D4541333211354F267D2 /* Pods_CryptoManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CryptoManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06149108116CD0D9296FA104 /* Pods_CryptoManager.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,6 +124,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3ED4E768D27727C8D50B3E8B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				213DC25A89A4C3CD013D00D3 /* Pods-CryptoManager.debug.xcconfig */,
+				9F2F2F9945E6CAE4B530B452 /* Pods-CryptoManager.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		8EE37FEE9C866452FE04795F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B3A7D4541333211354F267D2 /* Pods_CryptoManager.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A04A7FE822F8265D008FC4DE /* Portfolio */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,9 +186,9 @@
 		A04A7FFB22F97C2F008FC4DE /* Splash */ = {
 			isa = PBXGroup;
 			children = (
-				A0F2E3AD22FDE89400406AFC /* Model */,
 				A0F2E3AC22FDE89200406AFC /* View */,
 				A0F2E3AB22FDE88E00406AFC /* Presenter */,
+				A0F2E3AD22FDE89400406AFC /* Model */,
 			);
 			path = Splash;
 			sourceTree = "<group>";
@@ -171,6 +201,8 @@
 				A055EAE522F757F6003A2F24 /* CryptoManagerUITests */,
 				A055EAC422F757F4003A2F24 /* Products */,
 				A0FC979722FC2BC900C9C399 /* Roboto-Regular.ttf */,
+				3ED4E768D27727C8D50B3E8B /* Pods */,
+				8EE37FEE9C866452FE04795F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -187,14 +219,9 @@
 		A055EAC522F757F4003A2F24 /* CryptoManager */ = {
 			isa = PBXGroup;
 			children = (
-				A0F2E3A722FD5ED600406AFC /* NavigationBar.swift */,
-				A0FC979822FC2C5900C9C399 /* Resources */,
-				A04A7FFB22F97C2F008FC4DE /* Splash */,
-				A04A7FF822F8BD6C008FC4DE /* Main */,
-				A04A7FEB22F82690008FC4DE /* Settings */,
-				A04A7FEA22F82688008FC4DE /* News */,
-				A04A7FE922F82670008FC4DE /* Markets */,
-				A04A7FE822F8265D008FC4DE /* Portfolio */,
+				A08B8ADA2302F73E00D6615F /* data */,
+				A08B8ADB2302F74400D6615F /* ui */,
+				A08B8ADC2302F75600D6615F /* utils */,
 				A055EAC622F757F4003A2F24 /* AppDelegate.swift */,
 				A055EAD222F757F6003A2F24 /* Info.plist */,
 				A055EACD22F757F6003A2F24 /* Assets.xcassets */,
@@ -218,6 +245,79 @@
 				A055EAE822F757F6003A2F24 /* Info.plist */,
 			);
 			path = CryptoManagerUITests;
+			sourceTree = "<group>";
+		};
+		A08B8ADA2302F73E00D6615F /* data */ = {
+			isa = PBXGroup;
+			children = (
+				A08B8ADF2303177400D6615F /* Model */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		A08B8ADB2302F74400D6615F /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				A04A7FFB22F97C2F008FC4DE /* Splash */,
+				A04A7FF822F8BD6C008FC4DE /* Main */,
+				A04A7FEB22F82690008FC4DE /* Settings */,
+				A04A7FEA22F82688008FC4DE /* News */,
+				A04A7FE922F82670008FC4DE /* Markets */,
+				A04A7FE822F8265D008FC4DE /* Portfolio */,
+			);
+			path = ui;
+			sourceTree = "<group>";
+		};
+		A08B8ADC2302F75600D6615F /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				A08B8AD42302EA6B00D6615F /* Constants.swift */,
+				A0F2E3A722FD5ED600406AFC /* NavigationBar.swift */,
+				A0FC979822FC2C5900C9C399 /* Resources */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+		A08B8ADF2303177400D6615F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A08B8AE22304180F00D6615F /* CryproCompare */,
+				A08B8AE12303179E00D6615F /* Exchange Rates */,
+				A08B8AE02303178E00D6615F /* SQL */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A08B8AE02303178E00D6615F /* SQL */ = {
+			isa = PBXGroup;
+			children = (
+				A08B8ADD230316C400D6615F /* SQLExchangeRates.swift */,
+			);
+			path = SQL;
+			sourceTree = "<group>";
+		};
+		A08B8AE12303179E00D6615F /* Exchange Rates */ = {
+			isa = PBXGroup;
+			children = (
+				A08B8AD82302F38700D6615F /* Rates.swift */,
+			);
+			path = "Exchange Rates";
+			sourceTree = "<group>";
+		};
+		A08B8AE22304180F00D6615F /* CryproCompare */ = {
+			isa = PBXGroup;
+			children = (
+				A08B8AE5230422D800D6615F /* AllCurrencies */,
+			);
+			path = CryproCompare;
+			sourceTree = "<group>";
+		};
+		A08B8AE5230422D800D6615F /* AllCurrencies */ = {
+			isa = PBXGroup;
+			children = (
+				A08B8AE32304181A00D6615F /* Crypto.swift */,
+			);
+			path = AllCurrencies;
 			sourceTree = "<group>";
 		};
 		A0F2E3AB22FDE88E00406AFC /* Presenter */ = {
@@ -300,9 +400,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A055EAEB22F757F6003A2F24 /* Build configuration list for PBXNativeTarget "CryptoManager" */;
 			buildPhases = (
+				F8BE57ABC904FC29FAF39A69 /* [CP] Check Pods Manifest.lock */,
 				A055EABF22F757F4003A2F24 /* Sources */,
 				A055EAC022F757F4003A2F24 /* Frameworks */,
 				A055EAC122F757F4003A2F24 /* Resources */,
+				BD32C62BD42AD9C1CEC02575 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -419,22 +521,68 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		BD32C62BD42AD9C1CEC02575 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CryptoManager/Pods-CryptoManager-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CryptoManager/Pods-CryptoManager-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CryptoManager/Pods-CryptoManager-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F8BE57ABC904FC29FAF39A69 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CryptoManager-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A055EABF22F757F4003A2F24 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A08B8AE42304181A00D6615F /* Crypto.swift in Sources */,
 				A0F2E3A822FD5ED600406AFC /* NavigationBar.swift in Sources */,
 				A055EAC922F757F4003A2F24 /* PortfolioViewController.swift in Sources */,
 				A055EAF522F76831003A2F24 /* MarketsViewController.swift in Sources */,
+				A08B8ADE230316C400D6615F /* SQLExchangeRates.swift in Sources */,
 				A04A7FFA22F8BDA5008FC4DE /* MainTabBarController.swift in Sources */,
 				A0FC97A222FC358600C9C399 /* ThemeProtocol.swift in Sources */,
 				A0FC97A422FC36D500C9C399 /* LightTheme.swift in Sources */,
 				A055EAC722F757F4003A2F24 /* AppDelegate.swift in Sources */,
 				A0FC979A22FC2C6C00C9C399 /* Theme.swift in Sources */,
 				A04A7FFD22F97C51008FC4DE /* SplashViewController.swift in Sources */,
+				A08B8AD92302F38700D6615F /* Rates.swift in Sources */,
 				A04A7FF122F82CC0008FC4DE /* SettingsViewDelegate.swift in Sources */,
 				A04A800122FAF2EF008FC4DE /* SettingsSection.swift in Sources */,
+				A08B8AD52302EA6B00D6615F /* Constants.swift in Sources */,
 				A0F2E3B322FDE95100406AFC /* SplashPresenter.swift in Sources */,
 				A04A7FF322F82F76008FC4DE /* SettingsPresenter.swift in Sources */,
 				A055EAF922F76E4B003A2F24 /* SettingsViewController.swift in Sources */,
@@ -597,6 +745,7 @@
 		};
 		A055EAEC22F757F6003A2F24 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 213DC25A89A4C3CD013D00D3 /* Pods-CryptoManager.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -615,6 +764,7 @@
 		};
 		A055EAED22F757F6003A2F24 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9F2F2F9945E6CAE4B530B452 /* Pods-CryptoManager.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
