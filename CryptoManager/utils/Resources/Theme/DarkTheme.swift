@@ -17,4 +17,6 @@ class DarkTheme: ThemeProtocol {
     var background: UIColor = UIColor(named: "BackgroundDarkTheme")!
     var text: UIColor = UIColor(named: "TextDarkTheme")!
     var backgroundSecondary: UIColor = UIColor(named: "BackgroundSecondaryDarkTheme")!
+    
+    var icons: UIColor = UIColor(named: "IconDarkTheme")!
 }

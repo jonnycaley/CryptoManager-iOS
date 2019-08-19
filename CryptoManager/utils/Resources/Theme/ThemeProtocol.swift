@@ -20,4 +20,5 @@ protocol ThemeProtocol {
     var background: UIColor { get }
     var text: UIColor { get }
     var backgroundSecondary: UIColor { get }
+    var icons: UIColor { get }
 }

@@ -17,4 +17,6 @@ class LightTheme: ThemeProtocol {
     var background: UIColor = UIColor(named: "BackgroundLightTheme")!
     var text: UIColor = UIColor(named: "TextLightTheme")!
     var backgroundSecondary: UIColor = UIColor(named: "BackgroundSecondaryLightTheme")!
+    
+    var icons: UIColor = UIColor(named: "IconLightTheme")!
 }
