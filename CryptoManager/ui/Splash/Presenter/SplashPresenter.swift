@@ -35,15 +35,16 @@ class SplashPresenter {
             print("loading base fiats")
             loadBaseFiats()
         }
-        print("A")
         if(splashService.createCryptoTable()){
             print("loading cryptos")
             loadCryptoCurrencies()
         }
-//        if(splashService.createExchangesTable()){
-//            loadExchanges()
-//        }
-        loadExchanges()
+        if(splashService.createExchangesTable()){
+            print("loading exchanges")
+            loadExchanges()
+        }
+        
+        self.splashViewDelegate?.toMainTabActivity()
     }
     
     func loadBaseFiats() {
@@ -77,7 +78,8 @@ class SplashPresenter {
             .subscribe { event in
                 switch event {
                 case .success(let json):
-                    self.formatExchanges(str: json)
+                    var formattedExchanges = self.formatExchanges(str: json)
+                    self.splashService.sqlLoadExchanges(exchanges: formattedExchanges)
                 case .error(let error):
                     print("Error: ", error)
                 }
@@ -85,7 +87,7 @@ class SplashPresenter {
             .disposed(by: disposeBag)
     }
     
-    func formatExchanges(str: String) {
+    func formatExchanges(str: String) -> [SQLExchange]? {
         
         do {
             if let dataFromString = str.data(using: .utf8, allowLossyConversion: false) {
@@ -102,20 +104,34 @@ class SplashPresenter {
                     }
                     exchanges.append(Exchanges.init(exchange: exchange, currencyConversions: exchangeCurrencies))
                 }
+                var sqlExchanges = [SQLExchange]()
                 
                 exchanges.forEach { (exchange) in
-                    print("Exchange", exchange.exchange)
-                    print("Currencies")
-                    exchange.currencyConversions.forEach({ (CurrencyAndConversions) in
-                        print(CurrencyAndConversions.base)
-                        print(CurrencyAndConversions.rates)
+//                    print("Exchange", exchange.exchange)
+//                    print("Currencies")
+                    var currencyAndConverters = [String: [String]]()
+            
+                    exchange.currencyConversions.forEach({ (currencyAndConversions) in
+                        currencyAndConverters[currencyAndConversions.base] = currencyAndConversions.rates
+//                        print(CurrencyAndConversions.base)
+//                        print(CurrencyAndConversions.rates)
                     })
+                    
+                    sqlExchanges.append(SQLExchange.init(exchange: exchange.exchange, currencyConversions: currencyAndConverters.description))
                 }
+                
+                sqlExchanges.forEach { (exchange) in
+                    print(exchange.exchange)
+                    print(exchange.currencyConversions)
+                }
+                
+                return sqlExchanges
                 
                 //TODO: CREATE AND SAVE THE VALUES TO THE EXCHANGES TABLE WOOOOO
             }
         } catch {
             print(error)
         }
+        return nil
     }
 }

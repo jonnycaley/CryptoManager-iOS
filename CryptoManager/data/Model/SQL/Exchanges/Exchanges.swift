@@ -12,9 +12,3 @@ struct Exchanges : Codable {
     let exchange: String
     let currencyConversions: [CurrencyAndConversions]
 }
-
-// MARK: - Rates
-struct CurrencyAndConversions: Codable {
-    let base: String
-    let rates: [String]
-}

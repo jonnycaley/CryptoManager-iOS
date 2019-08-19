@@ -10,14 +10,11 @@ import UIKit
 import SQLite
 
 class SplashViewController: UIViewController, SplashViewDelegate {
-
+    
     private let splashPresenter = SplashPresenter(splashService: SplashService())
 
     override func viewDidLoad() {
         super.viewDidLoad()
-                
-//        let mainViewController = MainTabBarController()
-//        self.present(mainViewController, animated: false, completion: nil)
         
         configureNavigationBar()
 
@@ -28,7 +25,12 @@ class SplashViewController: UIViewController, SplashViewDelegate {
     
     func configureNavigationBar() {
         self.navigationController?.isNavigationBarHidden = true
-        view.addSubview(NavigationBar())
+//        view.addSubview(NavigationBar())
+    }
+    
+    func toMainTabActivity() {
+        let mainViewController = MainTabBarController()
+        self.present(mainViewController, animated: false, completion: nil)
     }
     
     func loadBaseFiats(fiats: [String : Double]) {

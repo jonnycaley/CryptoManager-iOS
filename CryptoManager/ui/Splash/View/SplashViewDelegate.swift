@@ -11,5 +11,6 @@ import Foundation
 protocol SplashViewDelegate: NSObjectProtocol {
     
     func loadBaseFiats(fiats: [String : Double])
+    func toMainTabActivity()
     
 }

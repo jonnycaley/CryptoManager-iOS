@@ -215,9 +215,14 @@ class SplashService {
     
     let exchangesTable = Table("Exchanges")
     
+    let exchangesName = Expression<String>("name")
+    let currenciesAndConversions = Expression<String>("currenciesAndConversions")
+    
     func createExchangesTable() -> Bool {
         let createTable = self.exchangesTable.create { (table) in
             //TODO
+            table.column(self.exchangesName, primaryKey: true)
+            table.column(self.currenciesAndConversions)
         }
         do {
             try self.database.run(createTable)
@@ -225,6 +230,23 @@ class SplashService {
         } catch {
             print(error)
             return false
+        }
+    }
+    
+    func sqlLoadExchanges(exchanges: [SQLExchange]?) {
+        exchanges?.forEach { (exchange) in
+            let name = exchange.exchange
+            let currencyConversions = exchange.currencyConversions
+            
+            let insertExchange = self.exchangesTable.insert(
+                self.exchangesName <- name,
+                self.currenciesAndConversions <- currencyConversions)
+            do {
+                try self.database.run(insertExchange)
+                print("Insterted exchange")
+            } catch {
+                print(error)
+            }
         }
     }
     
