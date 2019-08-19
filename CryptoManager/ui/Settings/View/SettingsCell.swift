@@ -67,3 +67,7 @@ class SettingsCell: UITableViewCell {
 protocol ThemeChangeProtocol {
     func onThemeChanged()
 }
+
+protocol NewViewControllerProtocol {
+    func onNewView(destinationController : UIViewController)
+}

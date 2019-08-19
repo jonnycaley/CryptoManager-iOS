@@ -8,12 +8,21 @@
 
 import UIKit
 
-class MainTabBarController: UITabBarController, ThemeChangeProtocol {
+class TabBarController: UITabBarController, ThemeChangeProtocol, NewViewControllerProtocol {
      
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+//        configureNavigationBar() doesnt work as navigationcontroller is nil here - moved to view will appear
+//        setupTabBar()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         setupTabBar()
+        configureNavigationBar()
+    }
+    
+    func configureNavigationBar() {
+        self.navigationController?.isNavigationBarHidden = true
     }
     
     var portfolioViewController: PortfolioViewController!
@@ -35,6 +44,7 @@ class MainTabBarController: UITabBarController, ThemeChangeProtocol {
         settingsViewController = SettingsViewController()
         settingsViewController.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(named: "nav_settings"), selectedImage: UIImage(named: "nav_settings"))
         settingsViewController.themeChangeDelegate = self
+        settingsViewController.newViewDelegate = self
         
         let tabBarList = [portfolioViewController, marketsViewController, newsViewController, settingsViewController]
         viewControllers = tabBarList as! [UIViewController]
@@ -43,7 +53,6 @@ class MainTabBarController: UITabBarController, ThemeChangeProtocol {
         
 //        onThemeChanged()
     }
-    
     
     func onThemeChanged() {
         print("Theme Changed")
@@ -58,5 +67,20 @@ class MainTabBarController: UITabBarController, ThemeChangeProtocol {
         }
         
         self.tabBar.barTintColor = Theme.current.background
+    }
+    
+    func onNewView(destinationController: UIViewController) {
+        print("Onclicker")
+        
+        self.navigationController!.pushViewController(SelectBaseCurrencyViewController(), animated: true)
+        
+//        self.show(destinationController, sender: self)
+//        
+//        let window = UIWindow(frame: UIScreen.main.bounds)
+//        window.makeKeyAndVisible()
+//        window.rootViewController = UINavigationController(rootViewController: destinationController)
+        
+//        self.present(destinationController, animated: true, completion: nil)
+//        self.navigationController?.pushViewController(destinationController, animated: true)
     }
 }

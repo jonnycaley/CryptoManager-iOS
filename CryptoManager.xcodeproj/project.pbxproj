@@ -10,10 +10,12 @@
 		06149108116CD0D9296FA104 /* Pods_CryptoManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3A7D4541333211354F267D2 /* Pods_CryptoManager.framework */; };
 		A04391F3230AB3A9009FF454 /* CurrencyAndConversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04391F2230AB3A9009FF454 /* CurrencyAndConversions.swift */; };
 		A04391F5230ABC1B009FF454 /* SQLExchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04391F4230ABC1B009FF454 /* SQLExchange.swift */; };
+		A04391F9230ADE5B009FF454 /* SelectBaseCurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04391F8230ADE5B009FF454 /* SelectBaseCurrencyViewController.swift */; };
+		A0439201230AF200009FF454 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0439200230AF200009FF454 /* RootViewController.swift */; };
 		A04A7FEF22F8291C008FC4DE /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04A7FEE22F8291C008FC4DE /* SettingsService.swift */; };
 		A04A7FF122F82CC0008FC4DE /* SettingsViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04A7FF022F82CC0008FC4DE /* SettingsViewDelegate.swift */; };
 		A04A7FF322F82F76008FC4DE /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04A7FF222F82F76008FC4DE /* SettingsPresenter.swift */; };
-		A04A7FFA22F8BDA5008FC4DE /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04A7FF922F8BDA5008FC4DE /* MainTabBarController.swift */; };
+		A04A7FFA22F8BDA5008FC4DE /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04A7FF922F8BDA5008FC4DE /* TabBarController.swift */; };
 		A04A7FFD22F97C51008FC4DE /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04A7FFC22F97C51008FC4DE /* SplashViewController.swift */; };
 		A04A7FFF22F99586008FC4DE /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04A7FFE22F99586008FC4DE /* SettingsCell.swift */; };
 		A04A800122FAF2EF008FC4DE /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04A800022FAF2EF008FC4DE /* SettingsSection.swift */; };
@@ -64,10 +66,12 @@
 		9F2F2F9945E6CAE4B530B452 /* Pods-CryptoManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoManager.release.xcconfig"; path = "Target Support Files/Pods-CryptoManager/Pods-CryptoManager.release.xcconfig"; sourceTree = "<group>"; };
 		A04391F2230AB3A9009FF454 /* CurrencyAndConversions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyAndConversions.swift; sourceTree = "<group>"; };
 		A04391F4230ABC1B009FF454 /* SQLExchange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLExchange.swift; sourceTree = "<group>"; };
+		A04391F8230ADE5B009FF454 /* SelectBaseCurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectBaseCurrencyViewController.swift; sourceTree = "<group>"; };
+		A0439200230AF200009FF454 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		A04A7FEE22F8291C008FC4DE /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
 		A04A7FF022F82CC0008FC4DE /* SettingsViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewDelegate.swift; sourceTree = "<group>"; };
 		A04A7FF222F82F76008FC4DE /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
-		A04A7FF922F8BDA5008FC4DE /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		A04A7FF922F8BDA5008FC4DE /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		A04A7FFC22F97C51008FC4DE /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		A04A7FFE22F99586008FC4DE /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		A04A800022FAF2EF008FC4DE /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
@@ -155,6 +159,46 @@
 			path = ExchangeRates;
 			sourceTree = "<group>";
 		};
+		A04391F7230ADE3C009FF454 /* SelectBaseCurrency */ = {
+			isa = PBXGroup;
+			children = (
+				A04391FC230ADEBB009FF454 /* Model */,
+				A04391FB230ADEB6009FF454 /* Presenter */,
+				A04391FA230ADEB1009FF454 /* View */,
+			);
+			path = SelectBaseCurrency;
+			sourceTree = "<group>";
+		};
+		A04391FA230ADEB1009FF454 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A04391F8230ADE5B009FF454 /* SelectBaseCurrencyViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A04391FB230ADEB6009FF454 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		A04391FC230ADEBB009FF454 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A04391FD230AF110009FF454 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				A0439200230AF200009FF454 /* RootViewController.swift */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
 		A04A7FE822F8265D008FC4DE /* Portfolio */ = {
 			isa = PBXGroup;
 			children = (
@@ -189,12 +233,12 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
-		A04A7FF822F8BD6C008FC4DE /* Main */ = {
+		A04A7FF822F8BD6C008FC4DE /* Tabs */ = {
 			isa = PBXGroup;
 			children = (
-				A04A7FF922F8BDA5008FC4DE /* MainTabBarController.swift */,
+				A04A7FF922F8BDA5008FC4DE /* TabBarController.swift */,
 			);
-			path = Main;
+			path = Tabs;
 			sourceTree = "<group>";
 		};
 		A04A7FFB22F97C2F008FC4DE /* Splash */ = {
@@ -272,8 +316,10 @@
 		A08B8ADB2302F74400D6615F /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				A04391FD230AF110009FF454 /* Root */,
+				A04391F7230ADE3C009FF454 /* SelectBaseCurrency */,
 				A04A7FFB22F97C2F008FC4DE /* Splash */,
-				A04A7FF822F8BD6C008FC4DE /* Main */,
+				A04A7FF822F8BD6C008FC4DE /* Tabs */,
 				A04A7FEB22F82690008FC4DE /* Settings */,
 				A04A7FEA22F82688008FC4DE /* News */,
 				A04A7FE922F82670008FC4DE /* Markets */,
@@ -606,7 +652,8 @@
 				A055EAC922F757F4003A2F24 /* PortfolioViewController.swift in Sources */,
 				A055EAF522F76831003A2F24 /* MarketsViewController.swift in Sources */,
 				A08B8ADE230316C400D6615F /* SQLExchangeRates.swift in Sources */,
-				A04A7FFA22F8BDA5008FC4DE /* MainTabBarController.swift in Sources */,
+				A0439201230AF200009FF454 /* RootViewController.swift in Sources */,
+				A04A7FFA22F8BDA5008FC4DE /* TabBarController.swift in Sources */,
 				A0FC97A222FC358600C9C399 /* ThemeProtocol.swift in Sources */,
 				A0FC97A422FC36D500C9C399 /* LightTheme.swift in Sources */,
 				A055EAC722F757F4003A2F24 /* AppDelegate.swift in Sources */,
@@ -627,6 +674,7 @@
 				A0F2E3B122FDE93E00406AFC /* SplashViewDelegate.swift in Sources */,
 				A08B8AEB230489B900D6615F /* Exchanges.swift in Sources */,
 				A04391F3230AB3A9009FF454 /* CurrencyAndConversions.swift in Sources */,
+				A04391F9230ADE5B009FF454 /* SelectBaseCurrencyViewController.swift in Sources */,
 				A0FC97A622FC36DF00C9C399 /* DarkTheme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -19,7 +19,8 @@ class SettingsViewController: UIViewController, SettingsViewDelegate, ThemeChang
     var customView: UIView!
 
     var themeChangeDelegate: ThemeChangeProtocol?
-    
+    var newViewDelegate: NewViewControllerProtocol?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,11 +29,13 @@ class SettingsViewController: UIViewController, SettingsViewDelegate, ThemeChang
         settingsPresenter.getSettings()
     }
     
+    
     func configureUI() {
         
         configureTableView()
-        configureNavigationBar() //has to happen after configureTableView
+        addStatusHeader() //has to happen after configureTableView
         configureStatusBarColor()
+        view.addSubview(NavigationBar())
     }
     
     func configureStatusBarColor() {
@@ -43,8 +46,7 @@ class SettingsViewController: UIViewController, SettingsViewDelegate, ThemeChang
         }
     }
     
-    func configureNavigationBar() {
-        self.navigationController?.isNavigationBarHidden = true
+    func addStatusHeader() {
         view.addSubview(NavigationBar())
     }
     
@@ -116,7 +118,6 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! SettingsCell
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
-        
         cell.delegate = self //to allow for the SettingsCellProtocol methods to be called from the SettingsCell class (for theme changing)
         
         guard let section = SettingsSection(rawValue: indexPath.section) else { return UITableViewCell() }
@@ -132,7 +133,6 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             let about = AboutOptions(rawValue: indexPath.row)
             cell.sectionType = about
         }
-        
         return cell
     }
     
@@ -145,11 +145,28 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         
         switch section {
         case .General:
-            print(GeneralOptions(rawValue: indexPath.row)?.description)
+            switch GeneralOptions(rawValue: indexPath.row) {
+            case GeneralOptions(rawValue: 0)?:
+                print("Onclick")
+                toActivity(destinationController: SelectBaseCurrencyViewController())
+            case GeneralOptions(rawValue: 1)?:
+                break
+            case .none:
+                break
+            case .some(_):
+                break
+            }
+            
         case .Data:
             print(DataOptions(rawValue: indexPath.row)?.description)
         case .About:
             print(AboutOptions(rawValue: indexPath.row)?.description)
         }
+    }
+    
+    func toActivity(destinationController : UIViewController) {
+        self.newViewDelegate?.onNewView(destinationController: destinationController)
+//        self.navigationController?.pushViewController(destinationController, animated: true)
+//        self.present(destinationController, animated: true, completion: nil)
     }
 }

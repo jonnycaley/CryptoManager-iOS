@@ -17,11 +17,10 @@ class PortfolioViewController: UIViewController, ThemeChangeProtocol {
     }
     
     func configureUI() {
-        configureNavigationBar() //has to happen after configureTableView
+        addStatusHeader() //has to happen after configureTableView
     }
     
-    func configureNavigationBar() {
-        self.navigationController?.isNavigationBarHidden = true
+    func addStatusHeader() {
         view.addSubview(NavigationBar())
     }
     
