@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NavigationBar: UIView {
+class StatusBarCover: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))

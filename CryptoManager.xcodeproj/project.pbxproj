@@ -10,7 +10,7 @@
 		06149108116CD0D9296FA104 /* Pods_CryptoManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3A7D4541333211354F267D2 /* Pods_CryptoManager.framework */; };
 		A04391F3230AB3A9009FF454 /* CurrencyAndConversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04391F2230AB3A9009FF454 /* CurrencyAndConversions.swift */; };
 		A04391F5230ABC1B009FF454 /* SQLExchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04391F4230ABC1B009FF454 /* SQLExchange.swift */; };
-		A04391F9230ADE5B009FF454 /* SelectBaseCurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04391F8230ADE5B009FF454 /* SelectBaseCurrencyViewController.swift */; };
+		A04391F9230ADE5B009FF454 /* SelectFiatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04391F8230ADE5B009FF454 /* SelectFiatViewController.swift */; };
 		A0439201230AF200009FF454 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0439200230AF200009FF454 /* RootViewController.swift */; };
 		A0439209230B17B4009FF454 /* Bar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0439208230B17B4009FF454 /* Bar.swift */; };
 		A04A7FEF22F8291C008FC4DE /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04A7FEE22F8291C008FC4DE /* SettingsService.swift */; };
@@ -20,6 +20,12 @@
 		A04A7FFD22F97C51008FC4DE /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04A7FFC22F97C51008FC4DE /* SplashViewController.swift */; };
 		A04A7FFF22F99586008FC4DE /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04A7FFE22F99586008FC4DE /* SettingsCell.swift */; };
 		A04A800122FAF2EF008FC4DE /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04A800022FAF2EF008FC4DE /* SettingsSection.swift */; };
+		A0513C35230C00C50094D7E7 /* SelectFiatPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0513C34230C00C50094D7E7 /* SelectFiatPresenter.swift */; };
+		A0513C39230C02510094D7E7 /* SelectFiatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0513C38230C02510094D7E7 /* SelectFiatService.swift */; };
+		A0513C3C230C055C0094D7E7 /* Fiat.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0513C3B230C055C0094D7E7 /* Fiat.swift */; };
+		A0513C40230C08130094D7E7 /* SelectFiatViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0513C3F230C08130094D7E7 /* SelectFiatViewDelegate.swift */; };
+		A0513C42230C0FA90094D7E7 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0513C41230C0FA90094D7E7 /* Utils.swift */; };
+		A0513C44230C11C80094D7E7 /* FiatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0513C43230C11C80094D7E7 /* FiatCell.swift */; };
 		A055EAC722F757F4003A2F24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055EAC622F757F4003A2F24 /* AppDelegate.swift */; };
 		A055EAC922F757F4003A2F24 /* PortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055EAC822F757F4003A2F24 /* PortfolioViewController.swift */; };
 		A055EACE22F757F6003A2F24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A055EACD22F757F6003A2F24 /* Assets.xcassets */; };
@@ -33,7 +39,7 @@
 		A08B8ADE230316C400D6615F /* SQLExchangeRates.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08B8ADD230316C400D6615F /* SQLExchangeRates.swift */; };
 		A08B8AE42304181A00D6615F /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08B8AE32304181A00D6615F /* Crypto.swift */; };
 		A08B8AEB230489B900D6615F /* Exchanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08B8AEA230489B900D6615F /* Exchanges.swift */; };
-		A0F2E3A822FD5ED600406AFC /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F2E3A722FD5ED600406AFC /* NavigationBar.swift */; };
+		A0F2E3A822FD5ED600406AFC /* StatusBarCover.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F2E3A722FD5ED600406AFC /* StatusBarCover.swift */; };
 		A0F2E3AF22FDE8DD00406AFC /* SplashService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F2E3AE22FDE8DD00406AFC /* SplashService.swift */; };
 		A0F2E3B122FDE93E00406AFC /* SplashViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F2E3B022FDE93E00406AFC /* SplashViewDelegate.swift */; };
 		A0F2E3B322FDE95100406AFC /* SplashPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F2E3B222FDE95100406AFC /* SplashPresenter.swift */; };
@@ -67,7 +73,7 @@
 		9F2F2F9945E6CAE4B530B452 /* Pods-CryptoManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoManager.release.xcconfig"; path = "Target Support Files/Pods-CryptoManager/Pods-CryptoManager.release.xcconfig"; sourceTree = "<group>"; };
 		A04391F2230AB3A9009FF454 /* CurrencyAndConversions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyAndConversions.swift; sourceTree = "<group>"; };
 		A04391F4230ABC1B009FF454 /* SQLExchange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLExchange.swift; sourceTree = "<group>"; };
-		A04391F8230ADE5B009FF454 /* SelectBaseCurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectBaseCurrencyViewController.swift; sourceTree = "<group>"; };
+		A04391F8230ADE5B009FF454 /* SelectFiatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectFiatViewController.swift; sourceTree = "<group>"; };
 		A0439200230AF200009FF454 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		A0439208230B17B4009FF454 /* Bar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bar.swift; sourceTree = "<group>"; };
 		A04A7FEE22F8291C008FC4DE /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
@@ -77,6 +83,12 @@
 		A04A7FFC22F97C51008FC4DE /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		A04A7FFE22F99586008FC4DE /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		A04A800022FAF2EF008FC4DE /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
+		A0513C34230C00C50094D7E7 /* SelectFiatPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectFiatPresenter.swift; sourceTree = "<group>"; };
+		A0513C38230C02510094D7E7 /* SelectFiatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectFiatService.swift; sourceTree = "<group>"; };
+		A0513C3B230C055C0094D7E7 /* Fiat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fiat.swift; sourceTree = "<group>"; };
+		A0513C3F230C08130094D7E7 /* SelectFiatViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectFiatViewDelegate.swift; sourceTree = "<group>"; };
+		A0513C41230C0FA90094D7E7 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		A0513C43230C11C80094D7E7 /* FiatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiatCell.swift; sourceTree = "<group>"; };
 		A055EAC322F757F4003A2F24 /* CryptoManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A055EAC622F757F4003A2F24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A055EAC822F757F4003A2F24 /* PortfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioViewController.swift; sourceTree = "<group>"; };
@@ -96,7 +108,7 @@
 		A08B8ADD230316C400D6615F /* SQLExchangeRates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLExchangeRates.swift; sourceTree = "<group>"; };
 		A08B8AE32304181A00D6615F /* Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crypto.swift; sourceTree = "<group>"; };
 		A08B8AEA230489B900D6615F /* Exchanges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exchanges.swift; sourceTree = "<group>"; };
-		A0F2E3A722FD5ED600406AFC /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
+		A0F2E3A722FD5ED600406AFC /* StatusBarCover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarCover.swift; sourceTree = "<group>"; };
 		A0F2E3AE22FDE8DD00406AFC /* SplashService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashService.swift; sourceTree = "<group>"; };
 		A0F2E3B022FDE93E00406AFC /* SplashViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewDelegate.swift; sourceTree = "<group>"; };
 		A0F2E3B222FDE95100406AFC /* SplashPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashPresenter.swift; sourceTree = "<group>"; };
@@ -161,21 +173,23 @@
 			path = ExchangeRates;
 			sourceTree = "<group>";
 		};
-		A04391F7230ADE3C009FF454 /* SelectBaseCurrency */ = {
+		A04391F7230ADE3C009FF454 /* SelectFiat */ = {
 			isa = PBXGroup;
 			children = (
 				A04391FC230ADEBB009FF454 /* Model */,
 				A04391FB230ADEB6009FF454 /* Presenter */,
 				A04391FA230ADEB1009FF454 /* View */,
 			);
-			path = SelectBaseCurrency;
+			path = SelectFiat;
 			sourceTree = "<group>";
 		};
 		A04391FA230ADEB1009FF454 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A04391F8230ADE5B009FF454 /* SelectBaseCurrencyViewController.swift */,
+				A0513C3F230C08130094D7E7 /* SelectFiatViewDelegate.swift */,
+				A04391F8230ADE5B009FF454 /* SelectFiatViewController.swift */,
 				A0439208230B17B4009FF454 /* Bar.swift */,
+				A0513C43230C11C80094D7E7 /* FiatCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -183,6 +197,7 @@
 		A04391FB230ADEB6009FF454 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				A0513C34230C00C50094D7E7 /* SelectFiatPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -190,6 +205,7 @@
 		A04391FC230ADEBB009FF454 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A0513C38230C02510094D7E7 /* SelectFiatService.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -252,6 +268,14 @@
 				A0F2E3AD22FDE89400406AFC /* Model */,
 			);
 			path = Splash;
+			sourceTree = "<group>";
+		};
+		A0513C3A230C04F10094D7E7 /* Fiats */ = {
+			isa = PBXGroup;
+			children = (
+				A0513C3B230C055C0094D7E7 /* Fiat.swift */,
+			);
+			path = Fiats;
 			sourceTree = "<group>";
 		};
 		A055EABA22F757F4003A2F24 = {
@@ -320,7 +344,7 @@
 			isa = PBXGroup;
 			children = (
 				A04391FD230AF110009FF454 /* Root */,
-				A04391F7230ADE3C009FF454 /* SelectBaseCurrency */,
+				A04391F7230ADE3C009FF454 /* SelectFiat */,
 				A04A7FFB22F97C2F008FC4DE /* Splash */,
 				A04A7FF822F8BD6C008FC4DE /* Tabs */,
 				A04A7FEB22F82690008FC4DE /* Settings */,
@@ -335,8 +359,9 @@
 			isa = PBXGroup;
 			children = (
 				A08B8AD42302EA6B00D6615F /* Constants.swift */,
-				A0F2E3A722FD5ED600406AFC /* NavigationBar.swift */,
+				A0F2E3A722FD5ED600406AFC /* StatusBarCover.swift */,
 				A0FC979822FC2C5900C9C399 /* Resources */,
+				A0513C41230C0FA90094D7E7 /* Utils.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -354,6 +379,7 @@
 		A08B8AE02303178E00D6615F /* SQL */ = {
 			isa = PBXGroup;
 			children = (
+				A0513C3A230C04F10094D7E7 /* Fiats */,
 				A04391F6230ABC5C009FF454 /* ExchangeRates */,
 				A08B8AE92304899700D6615F /* Exchanges */,
 			);
@@ -651,14 +677,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				A08B8AE42304181A00D6615F /* Crypto.swift in Sources */,
-				A0F2E3A822FD5ED600406AFC /* NavigationBar.swift in Sources */,
+				A0513C40230C08130094D7E7 /* SelectFiatViewDelegate.swift in Sources */,
+				A0F2E3A822FD5ED600406AFC /* StatusBarCover.swift in Sources */,
 				A055EAC922F757F4003A2F24 /* PortfolioViewController.swift in Sources */,
 				A055EAF522F76831003A2F24 /* MarketsViewController.swift in Sources */,
 				A08B8ADE230316C400D6615F /* SQLExchangeRates.swift in Sources */,
 				A0439201230AF200009FF454 /* RootViewController.swift in Sources */,
 				A04A7FFA22F8BDA5008FC4DE /* TabBarController.swift in Sources */,
+				A0513C39230C02510094D7E7 /* SelectFiatService.swift in Sources */,
 				A0FC97A222FC358600C9C399 /* ThemeProtocol.swift in Sources */,
+				A0513C42230C0FA90094D7E7 /* Utils.swift in Sources */,
+				A0513C35230C00C50094D7E7 /* SelectFiatPresenter.swift in Sources */,
 				A0FC97A422FC36D500C9C399 /* LightTheme.swift in Sources */,
+				A0513C44230C11C80094D7E7 /* FiatCell.swift in Sources */,
 				A055EAC722F757F4003A2F24 /* AppDelegate.swift in Sources */,
 				A0FC979A22FC2C6C00C9C399 /* Theme.swift in Sources */,
 				A04A7FFD22F97C51008FC4DE /* SplashViewController.swift in Sources */,
@@ -677,8 +708,9 @@
 				A0F2E3B122FDE93E00406AFC /* SplashViewDelegate.swift in Sources */,
 				A0439209230B17B4009FF454 /* Bar.swift in Sources */,
 				A08B8AEB230489B900D6615F /* Exchanges.swift in Sources */,
+				A0513C3C230C055C0094D7E7 /* Fiat.swift in Sources */,
 				A04391F3230AB3A9009FF454 /* CurrencyAndConversions.swift in Sources */,
-				A04391F9230ADE5B009FF454 /* SelectBaseCurrencyViewController.swift in Sources */,
+				A04391F9230ADE5B009FF454 /* SelectFiatViewController.swift in Sources */,
 				A0FC97A622FC36DF00C9C399 /* DarkTheme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

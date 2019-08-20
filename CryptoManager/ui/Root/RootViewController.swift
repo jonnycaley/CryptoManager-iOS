@@ -28,7 +28,13 @@ class RootViewController: UIViewController {
         
         addChild(current)
         current.view.frame = view.bounds
+        
+//        current.view.translatesAutoresizingMaskIntoConstraints = false
+//        current.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+//        current.view.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+
         view.addSubview(current.view)
+        
         current.didMove(toParent: self)
     }
     
@@ -43,15 +49,14 @@ class RootViewController: UIViewController {
         let new = UINavigationController(rootViewController: mainViewController)
         animateFadeTransition(to: new)
         
-        addChild(new)                    // 2
-        new.view.frame = view.bounds                   // 3
-        view.addSubview(new.view)                      // 4
-        new.didMove(toParent: self)      // 5
-        current.willMove(toParent: nil)  // 6
-        current.view.removeFromSuperview()            // 7
-        current.removeFromParent()       // 8
-        current = new                                  // 9
-        
+        addChild(new)                
+        new.view.frame = view.bounds
+        view.addSubview(new.view)
+        new.didMove(toParent: self)
+        current.willMove(toParent: nil)
+        current.view.removeFromSuperview()
+        current.removeFromParent()
+        current = new
     }
     
     private func animateFadeTransition(to new: UIViewController, completion: (() -> Void)? = nil) {
@@ -66,19 +71,5 @@ class RootViewController: UIViewController {
             completion?()  //1
         }
     }
-//
-//    private func animateDismissTransition(to new: UIViewController, completion: (() -> Void)? = nil) {
-//        let initialFrame = CGRect(x: -view.bounds.width, y: 0, width: view.bounds.width, height: view.bounds.height)
-//        current.willMove(toParent: nil)
-//        addChild(new)
-//        transition(from: current, to: new, duration: 0.3, options: [], animations: {
-//            new.view.frame = self.view.bounds
-//        }) { completed in
-//            self.current.removeFromParent()
-//            new.didMove(toParent: self)
-//            self.current = new
-//            completion?()
-//        }
-//    }
 
 }

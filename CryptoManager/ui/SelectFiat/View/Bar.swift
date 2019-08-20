@@ -18,46 +18,37 @@ class Bar: UINavigationBar {
         
         self.isTranslucent = false
         self.barTintColor = Theme.current.background
+        
+        //enables autolayout
         self.translatesAutoresizingMaskIntoConstraints = false
         
-        let backButton = item
- 
-        createBackBarButton(navigationItem: backButton)
-        self.items = [backButton]
+        self.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.shadowImage = UIImage()
+        
+        let navButton = navItem
+        createBackBarButton(navigationItem: navButton)
+        
+        self.items = [navButton]
     }
     
-    
     func createBackBarButton(navigationItem:UINavigationItem){
-        
         let backBarButton = UIBarButtonItem(customView: backButton)
         navigationItem.leftBarButtonItems = [backBarButton]
     }
     
-    func configureConstraints(view: UIView) {
-        
-        self.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        self.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        self.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-    }
-    
-    
     lazy var backButton: UIButton = {
-        
         let backButtonImage = UIImage(named: "arrow_back_black")
         let tintedImage = backButtonImage?.withRenderingMode(.alwaysTemplate)
         
         let backButton = UIButton(frame: CGRect(x: 0, y: 0, width: backButtonImage!.size.width, height: backButtonImage!.size.height))
-        
-        
         backButton.addTarget(self, action: #selector(backBarButtonTapped), for: .touchUpInside)
-        
         backButton.setImage(tintedImage!, for: .normal)
         backButton.tintColor = Theme.current.icons
         
         return backButton
     }()
     
-    lazy var item : UINavigationItem = {
+    lazy var navItem : UINavigationItem = {
         let navItem = UINavigationItem()
         return navItem
     }()

@@ -55,7 +55,6 @@ class TabBarController: UITabBarController, ThemeChangeProtocol, NewViewControll
     }
     
     func onThemeChanged() {
-        print("Theme Changed")
         if (portfolioViewController != nil) {
             portfolioViewController.onThemeChanged()
         }
@@ -65,22 +64,10 @@ class TabBarController: UITabBarController, ThemeChangeProtocol, NewViewControll
         if (newsViewController != nil) {
             newsViewController.onThemeChanged()
         }
-        
         self.tabBar.barTintColor = Theme.current.background
     }
     
     func onNewView(destinationController: UIViewController) {
-        print("Onclicker")
-        
-        self.navigationController!.pushViewController(SelectBaseCurrencyViewController(), animated: true)
-        
-//        self.show(destinationController, sender: self)
-//        
-//        let window = UIWindow(frame: UIScreen.main.bounds)
-//        window.makeKeyAndVisible()
-//        window.rootViewController = UINavigationController(rootViewController: destinationController)
-        
-//        self.present(destinationController, animated: true, completion: nil)
-//        self.navigationController?.pushViewController(destinationController, animated: true)
+        self.navigationController!.pushViewController(SelectFiatViewController(), animated: true)
     }
 }

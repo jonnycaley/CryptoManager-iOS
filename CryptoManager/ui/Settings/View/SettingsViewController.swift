@@ -34,20 +34,11 @@ class SettingsViewController: UIViewController, SettingsViewDelegate, ThemeChang
         
         configureTableView()
         addStatusHeader() //has to happen after configureTableView
-        configureStatusBarColor()
-        view.addSubview(NavigationBar())
-    }
-    
-    func configureStatusBarColor() {
-        if(UserDefaults.standard.bool(forKey: "isDarkTheme")) {
-            UIApplication.shared.statusBarStyle = .lightContent
-        } else {
-            UIApplication.shared.statusBarStyle = .default
-        }
+        view.addSubview(StatusBarCover())
     }
     
     func addStatusHeader() {
-        view.addSubview(NavigationBar())
+        view.addSubview(StatusBarCover())
     }
     
     func configureTableView() {
@@ -58,6 +49,7 @@ class SettingsViewController: UIViewController, SettingsViewDelegate, ThemeChang
             tableView.delegate = self
             tableView.dataSource = self
             tableView.rowHeight = 60
+            tableView.tableFooterView = UIView()
             
             // the following line configure table view for top space
             tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -66,7 +58,6 @@ class SettingsViewController: UIViewController, SettingsViewDelegate, ThemeChang
             view.addSubview(tableView)
             tableView.frame = view.frame
         } else {
-            
             tableView.reloadData()
         }
         tableView.backgroundColor = Theme.current.background
@@ -103,7 +94,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         let title = UILabel()
         title.font = UIFont.boldSystemFont(ofSize: 16)
         title.textColor = Theme.current.text
-        title.text = SettingsSection(rawValue: section)?.description    
+        title.text = SettingsSection(rawValue: section)?.description
         view.addSubview(title)
         title.translatesAutoresizingMaskIntoConstraints = false
         title.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
@@ -148,7 +139,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             switch GeneralOptions(rawValue: indexPath.row) {
             case GeneralOptions(rawValue: 0)?:
                 print("Onclick")
-                toActivity(destinationController: SelectBaseCurrencyViewController())
+                toActivity(destinationController: SelectFiatViewController())
             case GeneralOptions(rawValue: 1)?:
                 break
             case .none:

@@ -21,7 +21,7 @@ class PortfolioViewController: UIViewController, ThemeChangeProtocol {
     }
     
     func addStatusHeader() {
-        view.addSubview(NavigationBar())
+        view.addSubview(StatusBarCover())
     }
     
     func onThemeChanged() {
