@@ -108,11 +108,13 @@ class SplashService {
     
     let fiat = Expression<String>("fiat")
     let rate = Expression<Double>("rate")
-    
+    let isBaseFiat = Expression<Bool>("isBaseFiat")
+
     func createFiatsTable() -> Bool {
         let createTable = self.fiatsTable.create { (table) in
             table.column(self.fiat, primaryKey: true)
             table.column(self.rate)
+            table.column(self.isBaseFiat)
         }
         do {
             try self.database.run(createTable)
@@ -124,11 +126,11 @@ class SplashService {
         }
     }
     
-    func sqlLoadFiats(fiats: [String : Double]) {
+    func sqlLoadFiats(fiats: [Fiat]) {
         
         fiats.forEach { (fiat) in
-            let (key, value) = fiat
-            let insertFiat = self.fiatsTable.insert(self.fiat <- key, self.rate <- value)
+            
+            let insertFiat = self.fiatsTable.insert(self.fiat <- fiat.fiat, self.rate <- fiat.rate, self.isBaseFiat <- fiat.isBaseRate)
             do {
                 try self.database.run(insertFiat)
                 print("inserted fiat")

@@ -52,7 +52,12 @@ class SplashPresenter {
             .subscribe { event in
                 switch event {
                 case .success(let json):
-                    self.splashService.sqlLoadFiats(fiats: json.rates)
+                    var fiats = [Fiat]()
+                    json.rates.forEach({ (arg0) in
+                        let (key, value) = arg0
+                        fiats.append(Fiat.init(fiat: key, rate: value, isBaseRate: (key == "GBP")))
+                    })
+                    self.splashService.sqlLoadFiats(fiats: fiats)
                 case .error(let error):
                     print("Error: ", error)
                 }

@@ -177,8 +177,8 @@
 			isa = PBXGroup;
 			children = (
 				A04391FC230ADEBB009FF454 /* Model */,
-				A04391FB230ADEB6009FF454 /* Presenter */,
 				A04391FA230ADEB1009FF454 /* View */,
+				A04391FB230ADEB6009FF454 /* Presenter */,
 			);
 			path = SelectFiat;
 			sourceTree = "<group>";
@@ -188,8 +188,8 @@
 			children = (
 				A0513C3F230C08130094D7E7 /* SelectFiatViewDelegate.swift */,
 				A04391F8230ADE5B009FF454 /* SelectFiatViewController.swift */,
-				A0439208230B17B4009FF454 /* Bar.swift */,
 				A0513C43230C11C80094D7E7 /* FiatCell.swift */,
+				A0439208230B17B4009FF454 /* Bar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";

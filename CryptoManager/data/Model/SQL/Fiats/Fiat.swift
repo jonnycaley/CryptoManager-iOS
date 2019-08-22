@@ -11,4 +11,5 @@ import Foundation
 struct Fiat : Codable {
     let fiat: String
     let rate: Double
+    let isBaseRate: Bool
 }

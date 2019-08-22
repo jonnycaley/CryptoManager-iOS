@@ -49,7 +49,7 @@ class SelectFiatViewController: UIViewController, BackClickProtocol, SelectFiatV
     func placeNavigationBar() {
         navigationBar.buttonClickDelegate = self
         view.addSubview(navigationBar)
-        navigationBar.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.safeAreaLayoutGuide.trailingAnchor)
+        navigationBar.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.safeAreaLayoutGuide.trailingAnchor, centerX: nil, centerY: nil)
     }
     
     func onBackPressed() {
@@ -67,31 +67,39 @@ class SelectFiatViewController: UIViewController, BackClickProtocol, SelectFiatV
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.frame = self.view.frame
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 60
         tableView.delegate = self
         tableView.dataSource = self
         view.addSubview(tableView)
         
         tableView.tableFooterView = UIView()
-        tableView.anchor(top: navigationBar.bottomAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor)
+        tableView.anchor(top: navigationBar.bottomAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: view.bottomAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor, centerX: nil, centerY: nil)
         
         tableView.register(FiatCell.self, forCellReuseIdentifier: reuseIdentifier)
     }
 }
 
 extension UIView {
-    func anchor(top: NSLayoutYAxisAnchor?, leading: NSLayoutXAxisAnchor?, bottom: NSLayoutYAxisAnchor?, trailing: NSLayoutXAxisAnchor?, padding: UIEdgeInsets = .zero, size: CGSize = .zero) {
+    func anchor(top: NSLayoutYAxisAnchor?, leading: NSLayoutXAxisAnchor?, bottom: NSLayoutYAxisAnchor?, trailing: NSLayoutXAxisAnchor?, centerX: NSLayoutXAxisAnchor?, centerY: NSLayoutYAxisAnchor?, padding: UIEdgeInsets = .zero, size: CGSize = .zero) {
         
         if let top = top {
             topAnchor.constraint(equalTo: top, constant: padding.top).isActive = true
         }
         if let leading = leading {
-            leadingAnchor.constraint(equalTo: leading, constant: padding.left).isActive = true
+            leadingAnchor.constraint(equalTo: leading, constant: padding.left).isActive = true //leftest part
         }
         if let bottom = bottom {
             bottomAnchor.constraint(equalTo: bottom, constant: -padding.bottom).isActive = true
         }
         if let trailing = trailing {
-            trailingAnchor.constraint(equalTo: trailing, constant: -padding.right).isActive = true
+            trailingAnchor.constraint(equalTo: trailing, constant: -padding.right).isActive = true //rightest part
+        }
+        if let centerX = centerX {
+            centerXAnchor.constraint(equalTo: centerX).isActive = true
+        }
+        if let centerY = centerY {
+            centerYAnchor.constraint(equalTo: centerY).isActive = true
         }
         
         if size.width != 0 {
@@ -114,10 +122,14 @@ extension SelectFiatViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? FiatCell else {fatalError("unable to create cell")}
         cell.fiatName.text = Utils.getFiatName(fiat: fiats?[indexPath.row].fiat)
-        cell.fiatAbbreviaition.text = fiats?[indexPath.row].fiat
+        cell.fiatCircle.text = fiats?[indexPath.row].fiat
         
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
     }
 }
 

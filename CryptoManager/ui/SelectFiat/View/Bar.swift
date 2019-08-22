@@ -33,7 +33,7 @@ class Bar: UINavigationBar {
     
     func createBackBarButton(navigationItem:UINavigationItem){
         let backBarButton = UIBarButtonItem(customView: backButton)
-        navigationItem.leftBarButtonItems = [backBarButton]
+        navigationItem.leftBarButtonItem = backBarButton
     }
     
     lazy var backButton: UIButton = {

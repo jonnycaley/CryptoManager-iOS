@@ -65,6 +65,7 @@ class TabBarController: UITabBarController, ThemeChangeProtocol, NewViewControll
             newsViewController.onThemeChanged()
         }
         self.tabBar.barTintColor = Theme.current.background
+        Utils.configureStatusBarColor()
     }
     
     func onNewView(destinationController: UIViewController) {

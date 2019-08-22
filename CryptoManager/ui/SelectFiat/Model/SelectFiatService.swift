@@ -28,13 +28,13 @@ class SelectFiatService {
     
     let fiat = Expression<String>("fiat")
     let rate = Expression<Double>("rate")
-    
+    let isBaseFiat = Expression<Bool>("isBaseFiat")
+
     func getFiats() -> [Fiat] {
         var fiats = [Fiat]()
-        
         do {
             for fiat in try self.database.prepare(self.fiatsTable) {
-                let newFiat = Fiat(fiat: fiat[self.fiat], rate: fiat[rate])
+                let newFiat = Fiat(fiat: fiat[self.fiat], rate: fiat[self.rate], isBaseRate: fiat[self.isBaseFiat])
                 fiats.append(newFiat)
             }
         } catch {
