@@ -25,14 +25,11 @@ class SettingsViewController: UIViewController, SettingsViewDelegate, ThemeChang
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print("viewDidLoad")
-        
         settingsPresenter.setViewDelegate(settingsViewDelegate: self)
         settingsPresenter.getSettings()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         if(baseFiat != nil) {
             settingsPresenter.getSettings()
         }
@@ -50,7 +47,6 @@ class SettingsViewController: UIViewController, SettingsViewDelegate, ThemeChang
     
     func configureTableView() {
         if(tableView == nil){
-            print("nil")
             tableView = UITableView()
             print(tableView == nil)
             tableView.delegate = self
@@ -66,7 +62,6 @@ class SettingsViewController: UIViewController, SettingsViewDelegate, ThemeChang
             
             tableView.frame = view.frame
         } else {
-            print("notNil")
             UIView.setAnimationsEnabled(false)
             tableView.beginUpdates()
             tableView.reloadData()
@@ -173,8 +168,6 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func toActivity(destinationController : UIViewController) {
-        //        self.newViewDelegate?.onNewView(destinationController: destinationController)
         self.navigationController?.pushViewController(destinationController, animated: true)
-        //        self.present(destinationController, animated: true, completion: nil)
     }
 }
