@@ -24,6 +24,9 @@ class SettingsCell: UITableViewCell {
             
             backgroundColor = Theme.current.background
             
+            if(sectionType.arrowIndicator) {
+                self.accessoryType = .disclosureIndicator
+            }
             switchControl.isHidden = !sectionType.containsSwitch
         }
     }
@@ -32,7 +35,7 @@ class SettingsCell: UITableViewCell {
         let switchControl = UISwitch()
                 
         switchControl.isOn = UserDefaults.standard.bool(forKey: "isDarkTheme")
-        switchControl.onTintColor = UIColor(red: 55/255, green: 120/255, blue: 250/255, alpha: 1)
+        switchControl.onTintColor = Theme.current.theme
         switchControl.translatesAutoresizingMaskIntoConstraints = false
         switchControl.addTarget(self, action: #selector(handleSwitchAction), for: .valueChanged)
         return switchControl

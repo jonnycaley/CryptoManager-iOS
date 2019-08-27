@@ -29,35 +29,81 @@ class SplashPresenter {
     }
     
     func onInit() {
-        splashService.loadDatabase()
+//        splashService.loadDatabase()
         
-        if(splashService.createFiatsTable()){
-            print("loading base fiats")
-            loadBaseFiats()
-        }
-        if(splashService.createCryptoTable()){
-            print("loading cryptos")
-            loadCryptoCurrencies()
-        }
-        if(splashService.createExchangesTable()){
-            print("loading exchanges")
-            loadExchanges()
-        }
+        splashService.createFiatsTable()
+            .subscribe { event in
+                switch event {
+                case .success(let isTableCreated):
+                    if(isTableCreated){
+                        print("fiatTableCreated")
+                        self.loadBaseFiats()
+                    } else {
+                        print("fiatIsTable NOT Created")
+                    }
+                case .error(let error):
+                    print("Error: ", error)
+                }
+            }
+            .disposed(by: disposeBag)
+        
+//        if(splashService.createFiatsTable()){
+//            print("loading base fiats")
+//            loadBaseFiats()
+//        }
+        
+        splashService.createCryptoTable()
+            .subscribe { event in
+                switch event {
+                case .success(let isTableCreated):
+                    if(isTableCreated){
+                        print("cryptoTableCreated")
+                        self.loadCryptoCurrencies()
+                    } else {
+                        print("cryptoTable NOT Created")
+                    }
+                case .error(let error):
+                    print("Error: ", error)
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        
+        
+        splashService.createExchangesTable()
+            .subscribe { event in
+                switch event {
+                case .success(let isTableCreated):
+                    if(isTableCreated){
+                        print("exchangesTableCreated")
+                        self.loadExchanges()
+                    } else {
+                        print("exchangesTable NOT Created")
+                    }
+                case .error(let error):
+                    print("Error: ", error)
+                }
+            }
+            .disposed(by: disposeBag)
+        
         
         self.splashViewDelegate?.toMainTabActivity()
     }
     
     func loadBaseFiats() {
         splashService.getExchangeRates()
+            .flatMapCompletable({ (json) -> Completable in
+                var fiats = [SQLFiat]()
+                json.rates.forEach({ (arg0) in
+                    let (key, value) = arg0
+                    fiats.append(SQLFiat.init(name: key, rate: value, isBaseFiat: (key == "GBP")))
+                })
+                return self.splashService.sqlLoadFiats(fiats: fiats)
+            })
             .subscribe { event in
                 switch event {
-                case .success(let json):
-                    var fiats = [Fiat]()
-                    json.rates.forEach({ (arg0) in
-                        let (key, value) = arg0
-                        fiats.append(Fiat.init(fiat: key, rate: value, isBaseRate: (key == "GBP")))
-                    })
-                    self.splashService.sqlLoadFiats(fiats: fiats)
+                case .completed:
+                    print("completed")
                 case .error(let error):
                     print("Error: ", error)
                 }
@@ -67,10 +113,13 @@ class SplashPresenter {
     
     func loadCryptoCurrencies() {
         splashService.getCryptoCurrencies()
+            .flatMapCompletable({ (cryptos) -> Completable in
+                self.splashService.sqlLoadCrypto(cryptos: cryptos)
+            })
             .subscribe { event in
                 switch event {
-                case .success(let json):
-                    self.splashService.sqlLoadCrypto(cryptos: json)
+                case .completed:
+                    print("Complete")
                 case .error(let error):
                     print("Error: ", error)
                 }
@@ -80,11 +129,15 @@ class SplashPresenter {
     
     func loadExchanges() {
         splashService.getExchanges()
+            .flatMapCompletable({ (json) -> Completable in
+                var formattedExchanges = self.formatExchanges(str: json)
+                 return
+                    self.splashService.sqlLoadExchanges(exchanges: formattedExchanges)
+            })
             .subscribe { event in
                 switch event {
-                case .success(let json):
-                    var formattedExchanges = self.formatExchanges(str: json)
-                    self.splashService.sqlLoadExchanges(exchanges: formattedExchanges)
+                case .completed:
+                    print("Success")
                 case .error(let error):
                     print("Error: ", error)
                 }
@@ -92,7 +145,7 @@ class SplashPresenter {
             .disposed(by: disposeBag)
     }
     
-    func formatExchanges(str: String) -> [SQLExchange]? {
+    func formatExchanges(str: String) -> [SQLExchange] {
         
         do {
             if let dataFromString = str.data(using: .utf8, allowLossyConversion: false) {
@@ -122,13 +175,13 @@ class SplashPresenter {
 //                        print(CurrencyAndConversions.rates)
                     })
                     
-                    sqlExchanges.append(SQLExchange.init(exchange: exchange.exchange, currencyConversions: currencyAndConverters.description))
+                    sqlExchanges.append(SQLExchange.init(name: exchange.exchange, currencyConversions: currencyAndConverters.description))
                 }
                 
-                sqlExchanges.forEach { (exchange) in
-                    print(exchange.exchange)
-                    print(exchange.currencyConversions)
-                }
+//                sqlExchanges.forEach { (exchange) in
+//                    print(exchange.exchange)
+//                    print(exchange.currencyConversions)
+//                }
                 
                 return sqlExchanges
                 
@@ -137,6 +190,6 @@ class SplashPresenter {
         } catch {
             print(error)
         }
-        return nil
+        return [SQLExchange]()
     }
 }

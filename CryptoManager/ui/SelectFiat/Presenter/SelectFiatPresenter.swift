@@ -7,11 +7,15 @@
 //
 
 import Foundation
+import RxSwift
 
 class SelectFiatPresenter {
     
     private let selectFiatService: SelectFiatService //model
     weak private var selectFiatViewDelegate: SelectFiatViewDelegate?
+
+    let disposeBag = DisposeBag()
+
     
     init(selectFiatService: SelectFiatService) {
         self.selectFiatService = selectFiatService
@@ -22,10 +26,28 @@ class SelectFiatPresenter {
     }
     
     func onInit() {
-        selectFiatService.loadDatabase()
+        selectFiatService.getFiats()
+            .subscribe { event in
+                switch event {
+                case .success(let fiats):
+                    self.selectFiatViewDelegate?.loadFiats(fiats: fiats)
+                
+                case .error(let error):
+                    print("Error: ", error)
+                }
+        }.disposed(by: disposeBag)
+    }
+    
+    func setBaseFiat(chosenFiat: SQLFiat) {
+        selectFiatService.setBaseFiat(chosenFiat: chosenFiat)
+            .subscribe { event in
+                switch event {
+                case .completed:
+                    print("Complete")
+                case .error(let error):
+                    print("Error: ", error)
+                }
+            }.disposed(by: disposeBag)
         
-        let fiats = selectFiatService.getFiats()
-        
-        self.selectFiatViewDelegate?.loadFiats(fiats: fiats)
     }
 }

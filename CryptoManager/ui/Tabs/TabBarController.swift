@@ -12,13 +12,19 @@ class TabBarController: UITabBarController, ThemeChangeProtocol, NewViewControll
      
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupTabBar()
 //        configureNavigationBar() doesnt work as navigationcontroller is nil here - moved to view will appear
 //        setupTabBar()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        setupTabBar()
+        super.viewDidAppear(animated)
         configureNavigationBar()
+        
+//        print("appearing")
+//        setupTabBar()
+//        configureNavigationBar()
     }
     
     func configureNavigationBar() {
@@ -49,6 +55,7 @@ class TabBarController: UITabBarController, ThemeChangeProtocol, NewViewControll
         let tabBarList = [portfolioViewController, marketsViewController, newsViewController, settingsViewController]
         viewControllers = tabBarList as! [UIViewController]
         
+        self.tabBar.tintColor = Theme.current.theme
         self.tabBar.barTintColor = Theme.current.background
         
 //        onThemeChanged()
@@ -69,6 +76,7 @@ class TabBarController: UITabBarController, ThemeChangeProtocol, NewViewControll
     }
     
     func onNewView(destinationController: UIViewController) {
-        self.navigationController!.pushViewController(SelectFiatViewController(), animated: true)
+//        self.tabBarController?.show(SelectFiatViewController(), sender: self)
+        self.tabBarController?.navigationController!.pushViewController(destinationController, animated: true)
     }
 }

@@ -10,6 +10,6 @@ import Foundation
 
 protocol SettingsViewDelegate: NSObjectProtocol {
     
-    func displaySettings(settings:(Array<String>))
+    func displaySettings(settings: Array<String>, baseFiat:SQLFiat)
     
 }

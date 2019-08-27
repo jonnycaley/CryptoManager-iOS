@@ -7,3 +7,186 @@
 //
 
 import Foundation
+import SQLite
+import RxGRDB
+import GRDB
+import RxSwift
+
+class SQLiteDataBase {
+    static let sharedInstance = SQLiteDataBase()
+    //    var database: Connection!
+    var dbQueue: DatabaseQueue!
+    var dbPool: DatabasePool!
+    
+    private init() {
+        do {
+            print("init")
+            let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+            let fileUrl = documentDirectory.appendingPathComponent("fiats").appendingPathExtension("sqlite3")
+            
+            //            let database = try Connection(fileUrl.path)
+            //            self.database = database
+            self.dbQueue = try DatabaseQueue(path: fileUrl.path)
+            self.dbPool = try DatabasePool(path: fileUrl.path)
+        } catch {
+            print(error)
+            self.dbPool = nil
+            //            self.database = nil
+            self.dbQueue = nil
+        }
+    }
+    
+    func createFiatsTable() -> Single<Bool> {
+        
+        return dbQueue.rx.writeAndReturn { db -> Bool in
+            do {
+                try db.create(table: "SQLFiat") { table in
+                    table.column("name", .text).primaryKey()
+                    table.column("rate", .double)
+                    table.column("isBaseFiat", .boolean)
+                }
+                return true
+            } catch {
+                //table already exists
+                print(error)
+                return false
+            }
+        }
+    }
+    
+    func sqlInsertFiats(fiats: [SQLFiat]) -> Completable {
+        
+        return dbQueue.rx.write { db in
+            
+            fiats.forEach{ (fiat) in
+                let name = fiat.name
+                let rate = fiat.rate
+                let isBaseFiat = fiat.isBaseFiat
+                
+                var sqlFiat = SQLFiat(name: name, rate: rate, isBaseFiat: isBaseFiat)
+                
+                do {
+                    try sqlFiat.insert(db)
+                } catch {
+                    print(error)
+                }
+            }
+        }
+    }
+    
+    func getFiats() -> Single<[SQLFiat]> {
+        return dbQueue.rx.read { db in
+            try SQLFiat.fetchAll(db)
+        }
+    }
+    
+    func setBaseFiat(chosenFiat: SQLFiat) -> Completable {
+        
+        return dbQueue.rx.write { db in
+            do {
+                if var fiat = try SQLFiat.fetchOne(db, sql: "SELECT * FROM SQLFiat WHERE isBaseFiat = true") {
+                    print(fiat.name)
+                    fiat.isBaseFiat = false
+                    try fiat.update(db)
+                }
+                if var fiat = try SQLFiat.filter(key: ["name": chosenFiat.name]).fetchOne(db) {
+                    print(fiat.name)
+                    fiat.isBaseFiat = true
+                    try fiat.update(db)
+                }
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
+    func getBaseFiat() -> Single<SQLFiat> {
+        return dbQueue.rx.read { db in
+            try SQLFiat.filter(Column("isBaseFiat")).fetchOne(db)!
+        }
+    }
+    
+    func createCryptoTable() -> Single<Bool> {
+        
+        return dbQueue.rx.writeAndReturn { db -> Bool in
+            do {
+                try db.create(table: "SQLCrypto") { table in
+                    table.column("id", .text)
+                    table.column("imageUrl", .text)
+                    table.column("linkUrl", .text)
+                    table.column("name", .text)
+                    table.column("symbol", .text)
+                    table.column("coinName", .text)
+                    table.column("fullName", .text)
+                    table.column("sortOrder", .text)
+                }
+                return true
+            } catch {
+                //table already exists
+                print(error)
+                return false
+            }
+        }
+    }
+    
+    func sqlInstertCrypto(cryptos: Crypto) -> Completable {
+        return dbQueue.rx.write { db in
+            cryptos.data.forEach { (crypto) in
+                
+                let id = crypto.value.id
+                let imageUrl = crypto.value.imageURL.map { cryptos.baseImageURL + $0 } ?? ""
+                let linkUrl = cryptos.baseLinkURL + crypto.value.url
+                let name = crypto.value.name
+                let symbol = crypto.value.symbol
+                let coinName = crypto.value.coinName
+                let fullName = crypto.value.fullName
+                let sortOrder = crypto.value.sortOrder
+                
+                var sqlCrypto = SQLCrypto(id: id, imageUrl: imageUrl, linkUrl: linkUrl, name: name, symbol: symbol, coinName: coinName, fullName: fullName, sortOrder: sortOrder)
+                
+                do {
+                    try sqlCrypto.insert(db)
+                } catch {
+                    print(error)
+                }
+            }
+        }
+    }
+    
+    func createExchangesTable() -> Single<Bool> {
+        
+        return dbQueue.rx.writeAndReturn { db -> Bool in
+            do {
+                try db.create(table: "SQLExchange") { table in
+                    table.column("name", .text)
+                    table.column("currencyConversions", .text)
+                }
+                return true
+            } catch {
+                //table already exists
+                print(error)
+                return false
+            }
+        }
+    }
+    
+    func sqlInsertExchanges(exchanges: [SQLExchange]) -> Completable {
+        
+        return dbQueue.rx.write { db in
+
+            exchanges.forEach { (exchange) in
+                
+                let name = exchange.name
+                let currencyConversions = exchange.currencyConversions
+                
+                var sqlExchange = SQLExchange(name: name, currencyConversions: currencyConversions)
+                
+                do {
+                    try sqlExchange.insert(db)
+                } catch {
+                    print(error)
+                }
+            }
+        }
+    }
+}

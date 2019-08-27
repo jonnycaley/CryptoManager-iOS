@@ -19,8 +19,8 @@ class SelectFiatViewController: UIViewController, BackClickProtocol, SelectFiatV
     let navigationBar = Bar()
     let tableView = UITableView()
     
-    var fiats: [Fiat]?
-
+    var fiats: [SQLFiat]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,16 +49,16 @@ class SelectFiatViewController: UIViewController, BackClickProtocol, SelectFiatV
     func placeNavigationBar() {
         navigationBar.buttonClickDelegate = self
         view.addSubview(navigationBar)
-        navigationBar.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.safeAreaLayoutGuide.trailingAnchor, centerX: nil, centerY: nil)
+        navigationBar.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: nil, trailing: view.safeAreaLayoutGuide.trailingAnchor, centerX: nil, centerY: nil)
     }
     
     func onBackPressed() {
         navigationController?.popViewController(animated: true)
     }
     
-    func loadFiats(fiats: [Fiat]) {
+    func loadFiats(fiats: [SQLFiat]) {
         self.fiats = fiats.sorted(by: { (fiat1, fiat2) -> Bool in
-            fiat1.fiat < fiat2.fiat
+            fiat1.name < fiat2.name
         })
         self.tableView.reloadData()
     }
@@ -71,6 +71,7 @@ class SelectFiatViewController: UIViewController, BackClickProtocol, SelectFiatV
         tableView.estimatedRowHeight = 60
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.backgroundColor = Theme.current.background
         view.addSubview(tableView)
         
         tableView.tableFooterView = UIView()
@@ -121,8 +122,13 @@ extension SelectFiatViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? FiatCell else {fatalError("unable to create cell")}
-        cell.fiatName.text = Utils.getFiatName(fiat: fiats?[indexPath.row].fiat)
-        cell.fiatCircle.text = fiats?[indexPath.row].fiat
+        
+        let fiat = fiats?[indexPath.row]
+        
+        cell.fiatName.text = Utils.getFiatName(fiat: fiat?.name)
+        cell.fiatCircle.text = fiat?.name
+        
+        cell.fiatTick.isHidden = !(fiat?.isBaseFiat ?? true)
         
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         return cell
@@ -130,6 +136,30 @@ extension SelectFiatViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectFiatPresenter.setBaseFiat(chosenFiat: fiats![indexPath.row])
+        
+        for index in 0...(getFiatsCount()-1) {
+            
+            let indexPathh = IndexPath(row: index, section: 0)
+            
+            let cell = tableView.cellForRow(at: indexPathh) as? FiatCell
+            
+            if(index == indexPath.row){
+                cell?.fiatTick.isHidden = false
+            } else {
+                cell?.fiatTick.isHidden = true
+            }
+        }
+    }
+    
+    func getFiatsCount() -> Int {
+        if let fiats = self.fiats {
+            return fiats.count
+        }
+        return 0
     }
 }
 

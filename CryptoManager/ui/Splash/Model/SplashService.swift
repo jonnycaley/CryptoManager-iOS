@@ -90,166 +90,30 @@ class SplashService {
             return Disposables.create()
         }
     }
-    
-    var database: Connection!
-    
-    func loadDatabase() {
-        do {
-            let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-            let fileUrl = documentDirectory.appendingPathComponent("fiats").appendingPathExtension("sqlite3")
-            let database = try Connection(fileUrl.path)
-            self.database = database
-        } catch {
-            print(error)
-        }
-    }
-        
-    let fiatsTable = Table("fiats")
-    
-    let fiat = Expression<String>("fiat")
-    let rate = Expression<Double>("rate")
-    let isBaseFiat = Expression<Bool>("isBaseFiat")
 
-    func createFiatsTable() -> Bool {
-        let createTable = self.fiatsTable.create { (table) in
-            table.column(self.fiat, primaryKey: true)
-            table.column(self.rate)
-            table.column(self.isBaseFiat)
-        }
-        do {
-            try self.database.run(createTable)
-            return true
-        } catch {
-            //table already exists
-            print(error)
-            return false
-        }
+    func createFiatsTable() -> Single<Bool> {
+        return SQLiteDataBase.sharedInstance.createFiatsTable()
     }
     
-    func sqlLoadFiats(fiats: [Fiat]) {
+    func sqlLoadFiats(fiats: [SQLFiat]) -> Completable {
+        return SQLiteDataBase.sharedInstance.sqlInsertFiats(fiats: fiats)
+    }
+    
+    func createCryptoTable() -> Single<Bool> {
+        return SQLiteDataBase.sharedInstance.createCryptoTable()
+    }
+    
+    func sqlLoadCrypto(cryptos: Crypto) -> Completable{
         
-        fiats.forEach { (fiat) in
-            
-            let insertFiat = self.fiatsTable.insert(self.fiat <- fiat.fiat, self.rate <- fiat.rate, self.isBaseFiat <- fiat.isBaseRate)
-            do {
-                try self.database.run(insertFiat)
-                print("inserted fiat")
-            } catch {
-                print(error)
-            }
-        }
+        return SQLiteDataBase.sharedInstance.sqlInstertCrypto(cryptos: cryptos)
     }
     
-    let cryptoTable = Table("Cryptos")
-
-    let id = Expression<String>("id")
-    let imageUrl = Expression<String>("imageUrl")
-    let linkUrl = Expression<String>("linkUrl")
-    let name = Expression<String>("name")
-    let symbol = Expression<String>("symbol")
-    let coinName = Expression<String>("coinName")
-    let fullName = Expression<String>("fullName")
-    let sortOrder = Expression<String>("sortOrder")
-    
-    let test = Expression<Array<String>>("test")
-    
-    func createCryptoTable() -> Bool {
-        let createTable = self.cryptoTable.create { (table) in
-            table.column(self.id, primaryKey: true)
-            table.column(self.imageUrl)
-            table.column(self.linkUrl)
-            table.column(self.name)
-            table.column(self.symbol)
-            table.column(self.coinName)
-            table.column(self.fullName)
-            table.column(self.sortOrder)
-        }
-        do {
-            try self.database.run(createTable)
-            return true
-        } catch {
-            print(error)
-            return false
-        }
+    func createExchangesTable() -> Single<Bool> {
+        return SQLiteDataBase.sharedInstance.createExchangesTable()
     }
     
-    func sqlLoadCrypto(cryptos: Crypto) {
-        
-        cryptos.data.forEach { (crypto) in
-            
-            let id = crypto.value.id
-            let imageUrl = crypto.value.imageURL.map { cryptos.baseImageURL + $0 }
-            let linkUrl = cryptos.baseLinkURL + crypto.value.url
-            let name = crypto.value.name
-            let symbol = crypto.value.symbol
-            let coinName = crypto.value.coinName
-            let fullName = crypto.value.fullName
-            let sortOrder = crypto.value.sortOrder
-            
-            let insertCrypto = self.cryptoTable.insert(
-                self.id <- id,
-                self.imageUrl <- imageUrl ?? "",
-                self.linkUrl <- linkUrl,
-                self.name <- name,
-                self.symbol <- symbol,
-                self.coinName <- coinName,
-                self.fullName <- fullName,
-                self.sortOrder <- sortOrder)
-            do {
-                try self.database.run(insertCrypto)
-                print("inserted crypto")
-            } catch {
-                print(error)
-            }
-        }
-    }
-    
-    func listSqlCrypto() {
-        do {
-            let cryptos = try self.database.prepare(self.cryptoTable)
-            for crypto in cryptos {
-                print(crypto[self.coinName])
-            }
-        } catch {
-            print(error)
-        }
-    }
-    
-    let exchangesTable = Table("Exchanges")
-    
-    let exchangesName = Expression<String>("name")
-    let currenciesAndConversions = Expression<String>("currenciesAndConversions")
-    
-    func createExchangesTable() -> Bool {
-        let createTable = self.exchangesTable.create { (table) in
-            //TODO
-            table.column(self.exchangesName, primaryKey: true)
-            table.column(self.currenciesAndConversions)
-        }
-        do {
-            try self.database.run(createTable)
-            return true
-        } catch {
-            print(error)
-            return false
-        }
-    }
-    
-    func sqlLoadExchanges(exchanges: [SQLExchange]?) {
-        exchanges?.forEach { (exchange) in
-            let name = exchange.exchange
-            let currencyConversions = exchange.currencyConversions
-            
-            let insertExchange = self.exchangesTable.insert(
-                self.exchangesName <- name,
-                self.currenciesAndConversions <- currencyConversions)
-            do {
-                try self.database.run(insertExchange)
-                print("Insterted exchange")
-            } catch {
-                print(error)
-            }
-        }
+    func sqlLoadExchanges(exchanges: [SQLExchange]) -> Completable {
+        return SQLiteDataBase.sharedInstance.sqlInsertExchanges(exchanges: exchanges)
     }
     
     func getExchanges() -> Single<String> {

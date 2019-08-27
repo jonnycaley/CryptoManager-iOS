@@ -13,7 +13,7 @@ class LightTheme: ThemeProtocol {
     
     var textSizeBody2: CGFloat = 14 as CGFloat
     
-    var accent: UIColor = UIColor(named: "Accent")!
+    var theme: UIColor = UIColor(named: "Theme")!
     var background: UIColor = UIColor(named: "BackgroundLightTheme")!
     var text: UIColor = UIColor(named: "TextLightTheme")!
     var backgroundSecondary: UIColor = UIColor(named: "BackgroundSecondaryLightTheme")!

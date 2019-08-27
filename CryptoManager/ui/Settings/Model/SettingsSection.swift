@@ -8,6 +8,7 @@
 
 protocol SectionType: CustomStringConvertible {
     var containsSwitch: Bool { get }
+    var arrowIndicator: Bool { get }
 }
 
 enum SettingsSection: Int, CaseIterable, CustomStringConvertible {
@@ -27,6 +28,13 @@ enum SettingsSection: Int, CaseIterable, CustomStringConvertible {
 enum GeneralOptions : Int, CaseIterable, SectionType {
     case SelectBaseCurrency
     case NightMode
+    
+    var arrowIndicator: Bool {
+        switch self {
+        case .SelectBaseCurrency: return true
+        case .NightMode: return false
+        }
+    }
     
     var containsSwitch: Bool {
         switch self {
@@ -50,7 +58,8 @@ enum DataOptions : Int, CaseIterable, SectionType {
     case DeletePortfolio
     
     var containsSwitch: Bool { return false }
-    
+    var arrowIndicator: Bool { return true }
+
     var description: String {
         switch self {
         case .BookmarkedArticles: return "Bookmarked Articles"
@@ -69,6 +78,7 @@ enum AboutOptions : Int, CaseIterable, SectionType {
     case Version
 
     var containsSwitch: Bool { return false }
+    var arrowIndicator: Bool { return true }
     
     var description: String {
         switch self {

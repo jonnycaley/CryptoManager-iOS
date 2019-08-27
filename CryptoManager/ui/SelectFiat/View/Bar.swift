@@ -24,7 +24,6 @@ class Bar: UINavigationBar {
         
         self.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.shadowImage = UIImage()
-        
         let navButton = navItem
         createBackBarButton(navigationItem: navButton)
         

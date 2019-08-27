@@ -16,7 +16,7 @@ protocol ThemeProtocol {
     var textSizeBody2: CGFloat { get }
     
 //  colors
-    var accent: UIColor { get }
+    var theme: UIColor { get }
     var background: UIColor { get }
     var text: UIColor { get }
     var backgroundSecondary: UIColor { get }

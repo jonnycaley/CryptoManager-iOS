@@ -9,6 +9,7 @@
 // plays the roll as the data provider
 
 import Foundation
+import RxSwift
 
 class SettingsService {
     
@@ -17,6 +18,10 @@ class SettingsService {
         let settings = ["Select Base Currency", "Night Mode", "Saved Articles", "Full Transaction History", "Delete All Articles", "Delete Portfolio", "Review This App", "Share This App", "Send Feedback"]
         
         return settings
+    }
+    
+    func getBaseFiat() -> Single<SQLFiat> {
+        return SQLiteDataBase.sharedInstance.getBaseFiat()
     }
     
 }

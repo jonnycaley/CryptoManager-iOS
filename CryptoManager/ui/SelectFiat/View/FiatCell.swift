@@ -23,7 +23,6 @@ class FiatCell: UITableViewCell {
         fiatCircle.text = "TES"
         fiatCircle.textColor = Theme.current.text
         fiatCircle.textAlignment = .center
-        
         fiatCircle.font = UIFont.systemFont(ofSize: 12.0)
         fiatCircle.layer.cornerRadius = size / 2
         fiatCircle.layer.masksToBounds = true
@@ -36,47 +35,43 @@ class FiatCell: UITableViewCell {
     lazy var fiatAbbreviaition: UILabel = {
         let fiatAbbreviaition = UILabel(frame: CGRect(x: 20, y: 20, width: 40, height: 20))
         fiatAbbreviaition.textAlignment = .center
-        fiatAbbreviaition.layer.borderColor = UIColor.blue.cgColor
-        fiatAbbreviaition.layer.borderWidth = 1
         return fiatAbbreviaition
     }()
-    
     
     lazy var fiatName: UILabel = {
         let fiatName = UILabel(frame: CGRect(x: 60, y: 20, width: 200, height: 20))
         fiatName.textAlignment = .left
-        fiatName.layer.borderColor = UIColor.green.cgColor
-        fiatName.layer.borderWidth = 1
+        fiatName.font = UIFont.systemFont(ofSize: Theme.current.textSizeBody2)
+        fiatName.textColor = Theme.current.text
         return fiatName
+    }()
+    
+    lazy var fiatTick: UIImageView = {
+        let fiatTickImage = UIImage(named: "tick")
+        
+        let tintedImage = fiatTickImage?.withRenderingMode(.alwaysTemplate)
+        var fiatImageView = UIImageView(image: tintedImage)
+        fiatImageView.tintColor = Theme.current.text
+//        fiatImageView.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+        return fiatImageView
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        self.backgroundColor = Theme.current.background
+        
         self.addSubview(fiatCircle)
         fiatCircle.translatesAutoresizingMaskIntoConstraints = false
         fiatCircle.anchor(top: nil, leading: self.leadingAnchor, bottom: nil, trailing: nil, centerX: nil, centerY: contentView.centerYAnchor, padding: UIEdgeInsets(top: 14, left: 14, bottom: 14, right: 14), size: CGSize(width: 45, height: 45))
         
+        self.addSubview(fiatTick)
+        fiatTick.translatesAutoresizingMaskIntoConstraints = false
+        fiatTick.anchor(top: nil, leading: nil, bottom: nil, trailing: contentView.trailingAnchor, centerX: nil, centerY: contentView.centerYAnchor, padding: UIEdgeInsets(top: 14, left: 14, bottom: 14, right: 14), size: CGSize(width: 45, height: 45))
+        
         self.addSubview(fiatName)
         fiatName.translatesAutoresizingMaskIntoConstraints = false
-        fiatName.anchor(top: nil, leading: fiatCircle.trailingAnchor, bottom: nil, trailing: contentView.trailingAnchor, centerX: nil, centerY: contentView.centerYAnchor, padding: UIEdgeInsets(top: 14, left: 14, bottom: 14, right: 14))
-        
-//        fiatName.leadingAnchor.constraint(equalTo: fiatCircle.trailingAnchor)
-//
-//        fiatCircle.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-//        fiatCircle.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-//        fiatCircle.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-//        cellView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-//        cellView.anchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor)
-//
-        
-        
-        
-//        fiatCircle.centerXAnchor.constraint(equalTo: fiatName)
-        
-//        fiatCircle.topAnchor.constraint(equalTo: profileImage.topAnchor).isActive = true
-//        fiatCircle.trailingAnchor.constraint(equalTo: profileImage.trailingAnchor, constant: 10).isActive = true
-
+        fiatName.anchor(top: nil, leading: fiatCircle.trailingAnchor, bottom: nil, trailing: fiatTick.leadingAnchor, centerX: nil, centerY: contentView.centerYAnchor, padding: UIEdgeInsets(top: 14, left: 14, bottom: 14, right: 14))
     }
     
     required init?(coder aDecoder: NSCoder) {

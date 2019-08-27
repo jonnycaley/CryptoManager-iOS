@@ -17,21 +17,28 @@ class SettingsViewController: UIViewController, SettingsViewDelegate, ThemeChang
     
     var tableView: UITableView!
     var customView: UIView!
-
+    
     var themeChangeDelegate: ThemeChangeProtocol?
     var newViewDelegate: NewViewControllerProtocol?
-
+    
+    var baseFiat: SQLFiat?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configureUI()
+        print("viewDidLoad")
+        
         settingsPresenter.setViewDelegate(settingsViewDelegate: self)
         settingsPresenter.getSettings()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        if(baseFiat != nil) {
+            settingsPresenter.getSettings()
+        }
+    }
     
     func configureUI() {
-        
         configureTableView()
         addStatusHeader() //has to happen after configureTableView
         view.addSubview(StatusBarCover())
@@ -42,10 +49,10 @@ class SettingsViewController: UIViewController, SettingsViewDelegate, ThemeChang
     }
     
     func configureTableView() {
-        
         if(tableView == nil){
-            
+            print("nil")
             tableView = UITableView()
+            print(tableView == nil)
             tableView.delegate = self
             tableView.dataSource = self
             tableView.rowHeight = 60
@@ -56,19 +63,26 @@ class SettingsViewController: UIViewController, SettingsViewDelegate, ThemeChang
             
             tableView.register(SettingsCell.self, forCellReuseIdentifier: reuseIdentifier)
             view.addSubview(tableView)
+            
             tableView.frame = view.frame
         } else {
+            print("notNil")
+            UIView.setAnimationsEnabled(false)
+            tableView.beginUpdates()
             tableView.reloadData()
+            //tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)      taken out cause didn't update with theme change
+            tableView.endUpdates()
+            UIView.setAnimationsEnabled(true)
         }
         tableView.backgroundColor = Theme.current.background
     }
     
-    func displaySettings(settings: (Array<String>)) {
-        print(settings)
+    func displaySettings(settings: Array<String>, baseFiat: SQLFiat) {
+        self.baseFiat = baseFiat
+        configureUI()
     }
     
     func onThemeChanged() {
-        
         configureUI()
         self.themeChangeDelegate?.onThemeChanged()
     }
@@ -117,6 +131,9 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         case .General:
             let general = GeneralOptions(rawValue: indexPath.row)
             cell.sectionType = general
+            if(general?.description == GeneralOptions.SelectBaseCurrency.description) {
+                cell.textLabel?.text = "\(cell.textLabel!.text!) \(baseFiat!.name) \(String(format: "%.2f", baseFiat!.rate))"
+            }
         case .Data:
             let data = DataOptions(rawValue: indexPath.row)
             cell.sectionType = data
@@ -138,8 +155,8 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         case .General:
             switch GeneralOptions(rawValue: indexPath.row) {
             case GeneralOptions(rawValue: 0)?:
-                print("Onclick")
-                toActivity(destinationController: SelectFiatViewController())
+                var controller = SelectFiatViewController()
+                toActivity(destinationController: controller)
             case GeneralOptions(rawValue: 1)?:
                 break
             case .none:
@@ -156,8 +173,8 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func toActivity(destinationController : UIViewController) {
-        self.newViewDelegate?.onNewView(destinationController: destinationController)
-//        self.navigationController?.pushViewController(destinationController, animated: true)
-//        self.present(destinationController, animated: true, completion: nil)
+        //        self.newViewDelegate?.onNewView(destinationController: destinationController)
+        self.navigationController?.pushViewController(destinationController, animated: true)
+        //        self.present(destinationController, animated: true, completion: nil)
     }
 }

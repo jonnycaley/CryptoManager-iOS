@@ -20,9 +20,10 @@
 		A04A7FFD22F97C51008FC4DE /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04A7FFC22F97C51008FC4DE /* SplashViewController.swift */; };
 		A04A7FFF22F99586008FC4DE /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04A7FFE22F99586008FC4DE /* SettingsCell.swift */; };
 		A04A800122FAF2EF008FC4DE /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04A800022FAF2EF008FC4DE /* SettingsSection.swift */; };
+		A04CA32D23101F1500FB04C6 /* SQLiteDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CA32C23101F1500FB04C6 /* SQLiteDataBase.swift */; };
 		A0513C35230C00C50094D7E7 /* SelectFiatPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0513C34230C00C50094D7E7 /* SelectFiatPresenter.swift */; };
 		A0513C39230C02510094D7E7 /* SelectFiatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0513C38230C02510094D7E7 /* SelectFiatService.swift */; };
-		A0513C3C230C055C0094D7E7 /* Fiat.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0513C3B230C055C0094D7E7 /* Fiat.swift */; };
+		A0513C3C230C055C0094D7E7 /* SQLFiat.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0513C3B230C055C0094D7E7 /* SQLFiat.swift */; };
 		A0513C40230C08130094D7E7 /* SelectFiatViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0513C3F230C08130094D7E7 /* SelectFiatViewDelegate.swift */; };
 		A0513C42230C0FA90094D7E7 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0513C41230C0FA90094D7E7 /* Utils.swift */; };
 		A0513C44230C11C80094D7E7 /* FiatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0513C43230C11C80094D7E7 /* FiatCell.swift */; };
@@ -36,9 +37,9 @@
 		A055EAF922F76E4B003A2F24 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055EAF822F76E4B003A2F24 /* SettingsViewController.swift */; };
 		A08B8AD52302EA6B00D6615F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08B8AD42302EA6B00D6615F /* Constants.swift */; };
 		A08B8AD92302F38700D6615F /* Rates.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08B8AD82302F38700D6615F /* Rates.swift */; };
-		A08B8ADE230316C400D6615F /* SQLExchangeRates.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08B8ADD230316C400D6615F /* SQLExchangeRates.swift */; };
 		A08B8AE42304181A00D6615F /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08B8AE32304181A00D6615F /* Crypto.swift */; };
 		A08B8AEB230489B900D6615F /* Exchanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08B8AEA230489B900D6615F /* Exchanges.swift */; };
+		A0E30AA32311781600EC13E2 /* SQLCrypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E30AA22311781600EC13E2 /* SQLCrypto.swift */; };
 		A0F2E3A822FD5ED600406AFC /* StatusBarCover.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F2E3A722FD5ED600406AFC /* StatusBarCover.swift */; };
 		A0F2E3AF22FDE8DD00406AFC /* SplashService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F2E3AE22FDE8DD00406AFC /* SplashService.swift */; };
 		A0F2E3B122FDE93E00406AFC /* SplashViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F2E3B022FDE93E00406AFC /* SplashViewDelegate.swift */; };
@@ -83,9 +84,10 @@
 		A04A7FFC22F97C51008FC4DE /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		A04A7FFE22F99586008FC4DE /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		A04A800022FAF2EF008FC4DE /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
+		A04CA32C23101F1500FB04C6 /* SQLiteDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteDataBase.swift; sourceTree = "<group>"; };
 		A0513C34230C00C50094D7E7 /* SelectFiatPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectFiatPresenter.swift; sourceTree = "<group>"; };
 		A0513C38230C02510094D7E7 /* SelectFiatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectFiatService.swift; sourceTree = "<group>"; };
-		A0513C3B230C055C0094D7E7 /* Fiat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fiat.swift; sourceTree = "<group>"; };
+		A0513C3B230C055C0094D7E7 /* SQLFiat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLFiat.swift; sourceTree = "<group>"; };
 		A0513C3F230C08130094D7E7 /* SelectFiatViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectFiatViewDelegate.swift; sourceTree = "<group>"; };
 		A0513C41230C0FA90094D7E7 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		A0513C43230C11C80094D7E7 /* FiatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiatCell.swift; sourceTree = "<group>"; };
@@ -105,9 +107,9 @@
 		A055EAF822F76E4B003A2F24 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		A08B8AD42302EA6B00D6615F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A08B8AD82302F38700D6615F /* Rates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rates.swift; sourceTree = "<group>"; };
-		A08B8ADD230316C400D6615F /* SQLExchangeRates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLExchangeRates.swift; sourceTree = "<group>"; };
 		A08B8AE32304181A00D6615F /* Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crypto.swift; sourceTree = "<group>"; };
 		A08B8AEA230489B900D6615F /* Exchanges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exchanges.swift; sourceTree = "<group>"; };
+		A0E30AA22311781600EC13E2 /* SQLCrypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLCrypto.swift; sourceTree = "<group>"; };
 		A0F2E3A722FD5ED600406AFC /* StatusBarCover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarCover.swift; sourceTree = "<group>"; };
 		A0F2E3AE22FDE8DD00406AFC /* SplashService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashService.swift; sourceTree = "<group>"; };
 		A0F2E3B022FDE93E00406AFC /* SplashViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewDelegate.swift; sourceTree = "<group>"; };
@@ -163,14 +165,6 @@
 				B3A7D4541333211354F267D2 /* Pods_CryptoManager.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		A04391F6230ABC5C009FF454 /* ExchangeRates */ = {
-			isa = PBXGroup;
-			children = (
-				A08B8ADD230316C400D6615F /* SQLExchangeRates.swift */,
-			);
-			path = ExchangeRates;
 			sourceTree = "<group>";
 		};
 		A04391F7230ADE3C009FF454 /* SelectFiat */ = {
@@ -270,10 +264,18 @@
 			path = Splash;
 			sourceTree = "<group>";
 		};
+		A04CA32A23101EE400FB04C6 /* SQL */ = {
+			isa = PBXGroup;
+			children = (
+				A04CA32C23101F1500FB04C6 /* SQLiteDataBase.swift */,
+			);
+			path = SQL;
+			sourceTree = "<group>";
+		};
 		A0513C3A230C04F10094D7E7 /* Fiats */ = {
 			isa = PBXGroup;
 			children = (
-				A0513C3B230C055C0094D7E7 /* Fiat.swift */,
+				A0513C3B230C055C0094D7E7 /* SQLFiat.swift */,
 			);
 			path = Fiats;
 			sourceTree = "<group>";
@@ -358,6 +360,7 @@
 		A08B8ADC2302F75600D6615F /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				A04CA32A23101EE400FB04C6 /* SQL */,
 				A08B8AD42302EA6B00D6615F /* Constants.swift */,
 				A0F2E3A722FD5ED600406AFC /* StatusBarCover.swift */,
 				A0FC979822FC2C5900C9C399 /* Resources */,
@@ -379,9 +382,9 @@
 		A08B8AE02303178E00D6615F /* SQL */ = {
 			isa = PBXGroup;
 			children = (
+				A04391F4230ABC1B009FF454 /* SQLExchange.swift */,
+				A0E30AA1231177BF00EC13E2 /* Crypto */,
 				A0513C3A230C04F10094D7E7 /* Fiats */,
-				A04391F6230ABC5C009FF454 /* ExchangeRates */,
-				A08B8AE92304899700D6615F /* Exchanges */,
 			);
 			path = SQL;
 			sourceTree = "<group>";
@@ -397,7 +400,7 @@
 		A08B8AE22304180F00D6615F /* CryptoCompare */ = {
 			isa = PBXGroup;
 			children = (
-				A08B8AE623046DA700D6615F /* AllExchanges */,
+				A08B8AE92304899700D6615F /* Exchanges */,
 				A08B8AE5230422D800D6615F /* AllCurrencies */,
 			);
 			path = CryptoCompare;
@@ -411,21 +414,21 @@
 			path = AllCurrencies;
 			sourceTree = "<group>";
 		};
-		A08B8AE623046DA700D6615F /* AllExchanges */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = AllExchanges;
-			sourceTree = "<group>";
-		};
 		A08B8AE92304899700D6615F /* Exchanges */ = {
 			isa = PBXGroup;
 			children = (
 				A08B8AEA230489B900D6615F /* Exchanges.swift */,
 				A04391F2230AB3A9009FF454 /* CurrencyAndConversions.swift */,
-				A04391F4230ABC1B009FF454 /* SQLExchange.swift */,
 			);
 			path = Exchanges;
+			sourceTree = "<group>";
+		};
+		A0E30AA1231177BF00EC13E2 /* Crypto */ = {
+			isa = PBXGroup;
+			children = (
+				A0E30AA22311781600EC13E2 /* SQLCrypto.swift */,
+			);
+			path = Crypto;
 			sourceTree = "<group>";
 		};
 		A0F2E3AB22FDE88E00406AFC /* Presenter */ = {
@@ -681,7 +684,6 @@
 				A0F2E3A822FD5ED600406AFC /* StatusBarCover.swift in Sources */,
 				A055EAC922F757F4003A2F24 /* PortfolioViewController.swift in Sources */,
 				A055EAF522F76831003A2F24 /* MarketsViewController.swift in Sources */,
-				A08B8ADE230316C400D6615F /* SQLExchangeRates.swift in Sources */,
 				A0439201230AF200009FF454 /* RootViewController.swift in Sources */,
 				A04A7FFA22F8BDA5008FC4DE /* TabBarController.swift in Sources */,
 				A0513C39230C02510094D7E7 /* SelectFiatService.swift in Sources */,
@@ -694,6 +696,7 @@
 				A0FC979A22FC2C6C00C9C399 /* Theme.swift in Sources */,
 				A04A7FFD22F97C51008FC4DE /* SplashViewController.swift in Sources */,
 				A08B8AD92302F38700D6615F /* Rates.swift in Sources */,
+				A0E30AA32311781600EC13E2 /* SQLCrypto.swift in Sources */,
 				A04A7FF122F82CC0008FC4DE /* SettingsViewDelegate.swift in Sources */,
 				A04A800122FAF2EF008FC4DE /* SettingsSection.swift in Sources */,
 				A08B8AD52302EA6B00D6615F /* Constants.swift in Sources */,
@@ -707,8 +710,9 @@
 				A0F2E3AF22FDE8DD00406AFC /* SplashService.swift in Sources */,
 				A0F2E3B122FDE93E00406AFC /* SplashViewDelegate.swift in Sources */,
 				A0439209230B17B4009FF454 /* Bar.swift in Sources */,
+				A04CA32D23101F1500FB04C6 /* SQLiteDataBase.swift in Sources */,
 				A08B8AEB230489B900D6615F /* Exchanges.swift in Sources */,
-				A0513C3C230C055C0094D7E7 /* Fiat.swift in Sources */,
+				A0513C3C230C055C0094D7E7 /* SQLFiat.swift in Sources */,
 				A04391F3230AB3A9009FF454 /* CurrencyAndConversions.swift in Sources */,
 				A04391F9230ADE5B009FF454 /* SelectFiatViewController.swift in Sources */,
 				A0FC97A622FC36DF00C9C399 /* DarkTheme.swift in Sources */,

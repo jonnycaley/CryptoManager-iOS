@@ -9,5 +9,5 @@
 import Foundation
 
 protocol SelectFiatViewDelegate: NSObjectProtocol {
-    func loadFiats(fiats: [Fiat])
+    func loadFiats(fiats: [SQLFiat])
 }
