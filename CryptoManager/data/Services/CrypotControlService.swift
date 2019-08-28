@@ -24,7 +24,6 @@ class CryptoControlService: NSObject {
                        headers: nil)
                 .validate()
                 .responseJSON { response in
-                    print(response.data)
                     switch response.result {
                     case .success:
                         guard let data = response.data else {

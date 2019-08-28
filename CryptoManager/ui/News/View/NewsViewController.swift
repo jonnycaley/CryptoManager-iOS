@@ -16,20 +16,40 @@ class NewsViewController: UIViewController, ThemeChangeProtocol, NewsViewDelegat
     
     var statusBar: UIView!
     var loadingOverlay: UIActivityIndicatorView!
+    
+    var mainView: MainView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.edgesForExtendedLayout = UIRectEdge()
+        self.extendedLayoutIncludesOpaqueBars = false
+        self.automaticallyAdjustsScrollViewInsets = false
+        
         configureUI()
         
         newsPresenter.setViewDelegate(newsViewDelegate: self)
         newsPresenter.attachView()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        print("viewDidAppear")
+    func loadTopArticle(news: NewsElement) {
+        mainView = MainView()
+        view.addSubview(mainView)
+        
+        let imgUrl = URL(string: news.originalImageURL!)!
+        let data = try? Data(contentsOf: imgUrl)
+        mainView.headerImage.image = UIImage(data: data!)
+        
+        mainView.anchor(top: statusBar.bottomAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, centerX:
+            nil, centerY: nil)
+    }
+    
+    func hideLoadingScreen() {
+        loadingOverlay.removeFromSuperview()
     }
     
     func configureUI() {
+        
         statusBar = StatusBarCover()
         view.addSubview(statusBar) //has to happen after configureTableView
         
@@ -40,7 +60,16 @@ class NewsViewController: UIViewController, ThemeChangeProtocol, NewsViewDelegat
     }
     
     func onThemeChanged() {
-        print("NewsViewController onThemeChanged")
         configureUI()
     }
+}
+
+extension UIView{
+    // For insert layer in Foreground
+    func addBlackGradientLayerInForeground(frame: CGRect, colors:[UIColor]){
+        let gradient = CAGradientLayer()
+        gradient.frame = frame
+        gradient.colors = colors.map{$0.cgColor}
+        self.layer.addSublayer(gradient)
+}
 }

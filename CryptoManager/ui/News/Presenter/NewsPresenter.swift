@@ -32,9 +32,8 @@ class NewsPresenter {
             .subscribe{ event in
                 switch event {
                 case .success(let news):
-                    news.forEach{ newsItem in
-                        print(newsItem.publishedAt)
-                    }
+                    self.newsViewDelegate?.loadTopArticle(news: news.first { $0.originalImageURL != nil }! )
+                    self.newsViewDelegate?.hideLoadingScreen()
                 case .error(let error):
                     debugPrint(error)
                     print(error.localizedDescription)
