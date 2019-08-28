@@ -26,11 +26,14 @@ class NewsPresenter {
     func attachView() {
         //start stuff here
         newsService.getNews()
+            .map{ (newsItems) -> News in
+                newsItems.filter { $0.originalImageURL != nil }.sorted(by: { $0.publishedAt ?? "" > $1.publishedAt ?? "" })
+            }
             .subscribe{ event in
                 switch event {
                 case .success(let news):
                     news.forEach{ newsItem in
-                        print(newsItem.newsDescription)
+                        print(newsItem.publishedAt)
                     }
                 case .error(let error):
                     debugPrint(error)

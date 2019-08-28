@@ -10,11 +10,12 @@ import UIKit
 
 class NewsViewController: UIViewController, ThemeChangeProtocol, NewsViewDelegate {
     
-    var customView: UIView!
-    
     var themeChangeDelegate: ThemeChangeProtocol?
     
     private var newsPresenter = NewsPresenter(newsService: NewsService())
+    
+    var statusBar: UIView!
+    var loadingOverlay: UIActivityIndicatorView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,16 +25,18 @@ class NewsViewController: UIViewController, ThemeChangeProtocol, NewsViewDelegat
         newsPresenter.attachView()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        
+    override func viewDidAppear(_ animated: Bool) {
+        print("viewDidAppear")
     }
     
     func configureUI() {
-        addStatusHeader() //has to happen after configureTableView
-    }
-    
-    func addStatusHeader() {
-        view.addSubview(StatusBarCover())
+        statusBar = StatusBarCover()
+        view.addSubview(statusBar) //has to happen after configureTableView
+        
+        loadingOverlay = LoadingOverlay.init(style: .whiteLarge)
+        view.addSubview(loadingOverlay)
+        
+        loadingOverlay.anchor(top: statusBar.bottomAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, centerX: nil, centerY: nil)
     }
     
     func onThemeChanged() {

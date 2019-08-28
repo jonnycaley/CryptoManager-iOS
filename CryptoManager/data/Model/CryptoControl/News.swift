@@ -7,17 +7,17 @@ import Foundation
 
 // MARK: - NewsElement
 struct NewsElement: Codable {
-    let id: String
-    let hotness, activityHotness: Double
-    let primaryCategory: String
-    let words: Int
-    let similarArticles: [SimilarArticle]
-    let coins: [Coin]
-    let newsDescription, publishedAt, title: String
-    let url: String
-    let source: Source
-    let sourceDomain: String
-    let originalImageURL: String
+    let id: String?
+    let hotness, activityHotness: Double?
+    let primaryCategory: String?
+    let words: Int?
+    let similarArticles: [SimilarArticle]?
+    let coins: [Coin]?
+    let newsDescription, publishedAt, title: String?
+    let url: String?
+    let source: Source?
+    let sourceDomain: String?
+    let originalImageURL: String?
     
     enum CodingKeys: String, CodingKey {
         case id = "_id"
@@ -30,7 +30,7 @@ struct NewsElement: Codable {
 
 // MARK: - Coin
 struct Coin: Codable {
-    let id, name, tradingSymbol, slug: String
+    let id, name, tradingSymbol, slug: String?
     
     enum CodingKeys: String, CodingKey {
         case id = "_id"
@@ -40,8 +40,8 @@ struct Coin: Codable {
 
 // MARK: - SimilarArticle
 struct SimilarArticle: Codable {
-    let id, title, publishedAt, sourceDomain: String
-    let url: String
+    let id, title, publishedAt, sourceDomain: String?
+    let url: String?
     let thumbnail: String?
     
     enum CodingKeys: String, CodingKey {
@@ -52,8 +52,8 @@ struct SimilarArticle: Codable {
 
 // MARK: - Source
 struct Source: Codable {
-    let id, name: String
-    let url: String
+    let id, name: String?
+    let url: String?
     let favicon: String?
     
     enum CodingKeys: String, CodingKey {
