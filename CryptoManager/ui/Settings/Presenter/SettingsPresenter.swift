@@ -8,12 +8,14 @@
 
 import Foundation
 import RxSwift
+import Reachability
 
 class SettingsPresenter {
     
     private let settingsService: SettingsService //model
     weak private var settingsViewDelegate: SettingsViewDelegate? //view functions
     
+    let reachability = Reachability()
     let disposeBag = DisposeBag()
     
     init(settingsService: SettingsService){
@@ -25,7 +27,6 @@ class SettingsPresenter {
     }
     
     func getSettings() {
-        
         settingsService.getBaseFiat()
             .subscribe { event in
                 switch event {

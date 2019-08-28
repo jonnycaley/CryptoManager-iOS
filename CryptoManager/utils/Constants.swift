@@ -15,5 +15,16 @@ struct Constants{
     
     static let CRYPTOCOMPARE_ALLCRYPTO = "all/coinlist"
     static let CRYPTOCOMPARE_ALLEXCHANGES = "all/exchanges"
-
+    
+    
+    static let CRYPTOCONTROL_URL = "https://cryptocontrol.io/api/v1/public/"
+    static let CRYPTOCONTROL_NAME = "key"
+    static let CRYPTOCONTROL_KEY = "131b3d9bbeb43c45507794aa7206d118"
+    
+    static let CRYPTOCONTROL_NEWS = "news"
+    
+    static let COINMARKETCAP_URL = "https://pro-api.coinmarketcap.com/v1/"
+    static let COINMARKETCAP_NAME = "CMC_PRO_API_KEY"
+    static let COINMARKETCAP_KEY = "a17fe7b8-33e3-4a80-a1ee-7e4ffce2078f"
+    
 }

@@ -8,16 +8,24 @@
 
 import UIKit
 
-class NewsViewController: UIViewController, ThemeChangeProtocol {
+class NewsViewController: UIViewController, ThemeChangeProtocol, NewsViewDelegate {
     
     var customView: UIView!
     
     var themeChangeDelegate: ThemeChangeProtocol?
+    
+    private var newsPresenter = NewsPresenter(newsService: NewsService())
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         configureUI()
+        
+        newsPresenter.setViewDelegate(newsViewDelegate: self)
+        newsPresenter.attachView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
     }
     
     func configureUI() {
@@ -32,5 +40,4 @@ class NewsViewController: UIViewController, ThemeChangeProtocol {
         print("NewsViewController onThemeChanged")
         configureUI()
     }
-
 }

@@ -28,9 +28,7 @@ class SplashPresenter {
         self.splashViewDelegate = splashViewDelegate
     }
     
-    func onInit() {
-//        splashService.loadDatabase()
-        
+    func onInit() {        
         splashService.createFiatsTable()
             .subscribe { event in
                 switch event {
@@ -46,11 +44,6 @@ class SplashPresenter {
                 }
             }
             .disposed(by: disposeBag)
-        
-//        if(splashService.createFiatsTable()){
-//            print("loading base fiats")
-//            loadBaseFiats()
-//        }
         
         splashService.createCryptoTable()
             .subscribe { event in
@@ -131,8 +124,7 @@ class SplashPresenter {
         splashService.getExchanges()
             .flatMapCompletable({ (json) -> Completable in
                 var formattedExchanges = self.formatExchanges(str: json)
-                 return
-                    self.splashService.sqlLoadExchanges(exchanges: formattedExchanges)
+                 return self.splashService.sqlLoadExchanges(exchanges: formattedExchanges)
             })
             .subscribe { event in
                 switch event {
@@ -165,27 +157,15 @@ class SplashPresenter {
                 var sqlExchanges = [SQLExchange]()
                 
                 exchanges.forEach { (exchange) in
-//                    print("Exchange", exchange.exchange)
-//                    print("Currencies")
                     var currencyAndConverters = [String: [String]]()
             
                     exchange.currencyConversions.forEach({ (currencyAndConversions) in
                         currencyAndConverters[currencyAndConversions.base] = currencyAndConversions.rates
-//                        print(CurrencyAndConversions.base)
-//                        print(CurrencyAndConversions.rates)
                     })
                     
                     sqlExchanges.append(SQLExchange.init(name: exchange.exchange, currencyConversions: currencyAndConverters.description))
                 }
-                
-//                sqlExchanges.forEach { (exchange) in
-//                    print(exchange.exchange)
-//                    print(exchange.currencyConversions)
-//                }
-                
                 return sqlExchanges
-                
-                //TODO: CREATE AND SAVE THE VALUES TO THE EXCHANGES TABLE WOOOOO
             }
         } catch {
             print(error)

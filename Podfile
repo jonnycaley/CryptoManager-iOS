@@ -8,5 +8,6 @@ target 'CryptoManager' do
   pod 'Alamofire', '~> 5.0.0-beta.5'
   pod 'SQLite.swift', '~> 0.12.0'
   pod 'SwiftyJSON', '~> 4.0'
-  pod 'RxGRDB', '~> v0.17.0'
+  pod 'RxGRDB', '~> 0.17.0'
+  pod 'ReachabilitySwift'
 end
