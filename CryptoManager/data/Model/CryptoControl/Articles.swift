@@ -6,12 +6,12 @@
 import Foundation
 
 // MARK: - NewsElement
-struct NewsElement: Codable {
+struct Article: Codable {
     let id: String?
     let hotness, activityHotness: Double?
     let primaryCategory: String?
     let words: Int?
-    let similarArticles: [SimilarArticle]?
+    let similarArticles: [SimilarArticles]?
     let coins: [Coin]?
     let newsDescription, publishedAt, title: String?
     let url: String?
@@ -39,7 +39,7 @@ struct Coin: Codable {
 }
 
 // MARK: - SimilarArticle
-struct SimilarArticle: Codable {
+struct SimilarArticles: Codable {
     let id, title, publishedAt, sourceDomain: String?
     let url: String?
     let thumbnail: String?
@@ -62,4 +62,4 @@ struct Source: Codable {
     }
 }
 
-typealias News = [NewsElement]
+typealias Articles = [Article]

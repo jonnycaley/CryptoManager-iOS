@@ -84,6 +84,8 @@ class SelectFiatViewController: UIViewController, BackClickProtocol, SelectFiatV
 extension UIView {
     func anchor(top: NSLayoutYAxisAnchor?, leading: NSLayoutXAxisAnchor?, bottom: NSLayoutYAxisAnchor?, trailing: NSLayoutXAxisAnchor?, centerX: NSLayoutXAxisAnchor?, centerY: NSLayoutYAxisAnchor?, padding: UIEdgeInsets = .zero, size: CGSize = .zero) {
         
+        self.translatesAutoresizingMaskIntoConstraints = false
+        
         if let top = top {
             topAnchor.constraint(equalTo: top, constant: padding.top).isActive = true
         }
@@ -125,7 +127,7 @@ extension SelectFiatViewController: UITableViewDelegate, UITableViewDataSource {
         
         let fiat = fiats?[indexPath.row]
         
-        cell.fiatName.text = Utils.getFiatName(fiat: fiat?.name)
+        cell.fiatName.text = fiat?.name.getFiatName()
         cell.fiatCircle.text = fiat?.name
         
         cell.fiatTick.isHidden = !(fiat?.isBaseFiat ?? true)
@@ -142,11 +144,8 @@ extension SelectFiatViewController: UITableViewDelegate, UITableViewDataSource {
         selectFiatPresenter.setBaseFiat(chosenFiat: fiats![indexPath.row])
         
         for index in 0...(getFiatsCount()-1) {
-            
             let indexPathh = IndexPath(row: index, section: 0)
-            
             let cell = tableView.cellForRow(at: indexPathh) as? FiatCell
-            
             if(index == indexPath.row){
                 cell?.fiatTick.isHidden = false
             } else {
@@ -166,13 +165,5 @@ extension SelectFiatViewController: UITableViewDelegate, UITableViewDataSource {
 extension SelectFiatViewController: UINavigationBarDelegate {
     func position(for bar: UIBarPositioning) -> UIBarPosition {
         return .topAttached
-    }
-}
-
-extension UIImageView {
-    func setImageColor(color: UIColor) {
-        let templateImage = image?.withRenderingMode(.alwaysTemplate)
-        image = templateImage
-        tintColor = color
     }
 }

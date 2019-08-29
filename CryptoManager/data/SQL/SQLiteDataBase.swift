@@ -74,6 +74,16 @@ class SQLiteDataBase {
         }
     }
     
+    func sqlRemoveSavedArticle(article: Article) -> Completable {
+        return dbQueue.rx.write { db in
+            do {
+                try db.execute(sql: "DELETE FROM SQLArticle WHERE id = '\(article.id!)'")
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
     func getFiats() -> Single<[SQLFiat]> {
         return dbQueue.rx.read { db in
             try SQLFiat.fetchAll(db)
@@ -85,12 +95,10 @@ class SQLiteDataBase {
         return dbQueue.rx.write { db in
             do {
                 if var fiat = try SQLFiat.fetchOne(db, sql: "SELECT * FROM SQLFiat WHERE isBaseFiat = true") {
-                    print(fiat.name)
                     fiat.isBaseFiat = false
                     try fiat.update(db)
                 }
                 if var fiat = try SQLFiat.filter(key: ["name": chosenFiat.name]).fetchOne(db) {
-                    print(fiat.name)
                     fiat.isBaseFiat = true
                     try fiat.update(db)
                 }
@@ -111,7 +119,7 @@ class SQLiteDataBase {
         return dbQueue.rx.writeAndReturn { db -> Bool in
             do {
                 try db.create(table: "SQLCrypto") { table in
-                    table.column("id", .text)
+                    table.column("id", .text).primaryKey()
                     table.column("imageUrl", .text)
                     table.column("linkUrl", .text)
                     table.column("name", .text)
@@ -158,7 +166,7 @@ class SQLiteDataBase {
         return dbQueue.rx.writeAndReturn { db -> Bool in
             do {
                 try db.create(table: "SQLExchange") { table in
-                    table.column("name", .text)
+                    table.column("name", .text).primaryKey()
                     table.column("currencyConversions", .text)
                 }
                 return true
@@ -170,10 +178,74 @@ class SQLiteDataBase {
         }
     }
     
+    func createBookmarkedArticlesTable() -> Single<Bool> {
+        
+        return dbQueue.rx.writeAndReturn { db -> Bool in
+            do {
+                try db.create(table: "SQLArticle") { table in
+                    table.column("id", .text).primaryKey()
+                    table.column("hotness", .double)
+                    table.column("activityHotness", .double)
+                    table.column("primaryCategory", .text)
+                    table.column("words", .integer)
+                    table.column("coins", .text) //[Coin]?
+                    table.column("newsDescription", .text)
+                    table.column("publishedAt", .text)
+                    table.column("title", .text)
+                    table.column("url", .text)
+                    table.column("originalImageURL", .text)
+                }
+                return true
+            } catch {
+                //table already exists
+                print(error)
+                return false
+            }
+        }
+    }
+    
+    func getSavedArticles() -> Single<[SQLArticle]>{
+        return dbQueue.rx.read { db in
+            try SQLArticle.fetchAll(db)
+        }
+    }
+    
+    func getSavedArticleCount(article : Article) -> Single<Int> {
+        return dbQueue.rx.read { db in
+            try SQLArticle.filter(key: ["id": article.id]).fetchCount(db)
+        }
+    }
+    
+    func sqlInsertSavedArticle(article: Article) -> Completable {
+        
+        return dbQueue.rx.write { db in
+            
+            guard let id = article.id else {return}
+            guard let hotness = article.hotness else {return}
+            guard let activityHotness = article.activityHotness else {return}
+            guard let primaryCategory = article.primaryCategory else {return}
+            guard let words = article.words else {return}
+            guard let coins = article.coins else {return}
+            guard let newsDescription = article.newsDescription else {return}
+            guard let publishedAt = article.publishedAt else {return}
+            guard let title = article.title else {return}
+            guard let url = article.url else {return}
+            guard let originalImageURL = article.originalImageURL else {return}
+
+            var sqlArticle = SQLArticle(id: id, hotness: hotness, activityHotness: activityHotness, primaryCategory: primaryCategory, words: words, coins: String(describing: coins), newsDescription: newsDescription, publishedAt: publishedAt, title: title, url: url, originalImageURL: originalImageURL)
+            
+            do {
+                try sqlArticle.insert(db)
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
     func sqlInsertExchanges(exchanges: [SQLExchange]) -> Completable {
         
         return dbQueue.rx.write { db in
-
+            
             exchanges.forEach { (exchange) in
                 
                 let name = exchange.name

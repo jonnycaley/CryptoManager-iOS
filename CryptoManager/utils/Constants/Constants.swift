@@ -6,7 +6,8 @@
 //  Copyright © 2019 jonnycaley. All rights reserved.
 //
 
-struct Constants{
+struct Constants {
+    
     static let EXCHANGERATES_URL = "https://api.exchangeratesapi.io/latest?base=USD"
 
     static let CRYPTOCOMPARE_URL = "https://min-api.cryptocompare.com/data/"

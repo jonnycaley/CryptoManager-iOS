@@ -42,6 +42,10 @@ class SplashService {
         return SQLiteDataBase.sharedInstance.createExchangesTable()
     }
     
+    func createBookmarkedArticlesTable() -> Single<Bool> {
+        return SQLiteDataBase.sharedInstance.createBookmarkedArticlesTable()
+    }
+    
     func sqlLoadExchanges(exchanges: [SQLExchange]) -> Completable {
         return SQLiteDataBase.sharedInstance.sqlInsertExchanges(exchanges: exchanges)
     }

@@ -9,6 +9,6 @@
 import Foundation
 
 protocol NewsViewDelegate: NSObjectProtocol {
-    func loadTopArticle(news: NewsElement)
+    func loadTopArticle(news: Article, isSaved: Bool)
     func hideLoadingScreen()
 }

@@ -6,19 +6,26 @@
 //  Copyright © 2019 jonnycaley. All rights reserved.
 //
 
+import Foundation
 import UIKit
+import QuartzCore
+import FaveButton
 
-class NewsViewController: UIViewController, ThemeChangeProtocol, NewsViewDelegate {
+class NewsViewController: UIViewController, ThemeChangeProtocol, NewsViewDelegate, BookmarkChangedProtocol {
     
     var themeChangeDelegate: ThemeChangeProtocol?
     
     private var newsPresenter = NewsPresenter(newsService: NewsService())
     
+    var bookmakChangedDelegate: BookmarkChangedProtocol?
+    
     var statusBar: UIView!
     var loadingOverlay: UIActivityIndicatorView!
     
     var mainView: MainView!
-
+    
+    var topArticle: Article!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,19 +36,36 @@ class NewsViewController: UIViewController, ThemeChangeProtocol, NewsViewDelegat
         configureUI()
         
         newsPresenter.setViewDelegate(newsViewDelegate: self)
+        
         newsPresenter.attachView()
     }
     
-    func loadTopArticle(news: NewsElement) {
+    func loadTopArticle(news: Article, isSaved: Bool) {
+        topArticle = news
         mainView = MainView()
         view.addSubview(mainView)
         
-        let imgUrl = URL(string: news.originalImageURL!)!
-        let data = try? Data(contentsOf: imgUrl)
-        mainView.headerImage.image = UIImage(data: data!)
+        guard let urlStr = news.originalImageURL else { return }
+        guard let imageUrl = URL(string: urlStr) else { return }
+        guard let data = try? Data(contentsOf: imageUrl) else { return }
+            
+        mainView.headerImage.image = UIImage(data: data)
+        mainView.titleText.text = news.title
+        mainView.readLengthText.text = newsPresenter.getReadLength(wordsCount: news.words)
         
+        if isSaved {
+            mainView.bookmarkButton.setImage(UIImage(named: "bookmark_filled_white"), for: .normal)
+        } else {
+            mainView.bookmarkButton.setImage(UIImage(named: "bookmark_outline_white"), for: .normal)
+        }
+        
+        guard let publishedAtStr = news.publishedAt else { return }
+        mainView.dateText.text = " • " + newsPresenter.getDate(dateStr: publishedAtStr)
+                        
         mainView.anchor(top: statusBar.bottomAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, centerX:
             nil, centerY: nil)
+        
+        mainView.delegate = self
     }
     
     func hideLoadingScreen() {
@@ -59,17 +83,15 @@ class NewsViewController: UIViewController, ThemeChangeProtocol, NewsViewDelegat
         loadingOverlay.anchor(top: statusBar.bottomAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, centerX: nil, centerY: nil)
     }
     
+    func addTopArticleToBookmarks() {
+        newsPresenter.addArticleToBookmarks(article: topArticle)
+    }
+    
+    func removeTopArticleFromBookmarks() {
+        newsPresenter.removeArticleFromBookmarks(article: topArticle)
+    }
+    
     func onThemeChanged() {
         configureUI()
     }
-}
-
-extension UIView{
-    // For insert layer in Foreground
-    func addBlackGradientLayerInForeground(frame: CGRect, colors:[UIColor]){
-        let gradient = CAGradientLayer()
-        gradient.frame = frame
-        gradient.colors = colors.map{$0.cgColor}
-        self.layer.addSublayer(gradient)
-}
 }

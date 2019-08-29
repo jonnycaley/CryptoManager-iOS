@@ -171,3 +171,4 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         self.navigationController?.pushViewController(destinationController, animated: true)
     }
 }
+

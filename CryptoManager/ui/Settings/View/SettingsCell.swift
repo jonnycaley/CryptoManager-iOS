@@ -33,7 +33,6 @@ class SettingsCell: UITableViewCell {
     
     lazy var switchControl: UISwitch = {
         let switchControl = UISwitch()
-                
         switchControl.isOn = UserDefaults.standard.bool(forKey: "isDarkTheme")
         switchControl.onTintColor = Theme.current.theme
         switchControl.translatesAutoresizingMaskIntoConstraints = false

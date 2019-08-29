@@ -10,9 +10,11 @@ import UIKit
 
 class DarkTheme: ThemeProtocol {
     var mainFontName: String = "Roboto-Regular"
-    
+    var boldFontName: String = "Roboto-Bold"
+
+    var textSizeBody1: CGFloat = 18 as CGFloat
     var textSizeBody2: CGFloat = 14 as CGFloat
-    
+
     var theme: UIColor = UIColor(named: "Theme")!
     var background: UIColor = UIColor(named: "BackgroundDarkTheme")!
     var text: UIColor = UIColor(named: "TextDarkTheme")!

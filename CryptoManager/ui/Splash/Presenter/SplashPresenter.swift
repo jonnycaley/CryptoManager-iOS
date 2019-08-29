@@ -79,6 +79,21 @@ class SplashPresenter {
             }
             .disposed(by: disposeBag)
         
+        splashService.createBookmarkedArticlesTable()
+            .subscribe { event in
+                switch event {
+                case .success(let isTableCreated):
+                    if(isTableCreated){
+                        print("bookmarkTableCreated")
+                    } else {
+                        print("bookmarkTable NOT Created")
+                    }
+                case .error(let error):
+                    print("Error: ", error)
+                }
+            }
+            .disposed(by: disposeBag)
+        
         
         self.splashViewDelegate?.toMainTabActivity()
     }

@@ -11,10 +11,12 @@ import UIKit
 protocol ThemeProtocol {
 //  fonts
     var mainFontName: String { get }
-    
+    var boldFontName: String { get }
+
 //  text sizes
+    var textSizeBody1: CGFloat { get }
     var textSizeBody2: CGFloat { get }
-    
+
 //  colors
     var theme: UIColor { get }
     var background: UIColor { get }

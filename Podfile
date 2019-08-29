@@ -10,4 +10,5 @@ target 'CryptoManager' do
   pod 'SwiftyJSON', '~> 4.0'
   pod 'RxGRDB', '~> 0.17.0'
   pod 'ReachabilitySwift'
+  pod 'FaveButton'
 end

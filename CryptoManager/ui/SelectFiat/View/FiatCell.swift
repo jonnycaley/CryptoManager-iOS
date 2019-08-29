@@ -27,7 +27,6 @@ class FiatCell: UITableViewCell {
         fiatCircle.layer.cornerRadius = size / 2
         fiatCircle.layer.masksToBounds = true
         fiatCircle.layer.backgroundColor = Theme.current.backgroundSecondary.cgColor
-        
         fiatCircle.translatesAutoresizingMaskIntoConstraints = false
         return fiatCircle
     }()

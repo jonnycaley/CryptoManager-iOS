@@ -14,7 +14,7 @@ class CryptoControlService: NSObject {
     
     static let shared = CryptoControlService()
     
-    func getTopNews() -> Single<News> {
+    func getTopNews() -> Single<Articles> {
         return Single.create { single -> Disposable in
             
             AF.request(Constants.CRYPTOCONTROL_URL + Constants.CRYPTOCONTROL_NEWS,
@@ -34,7 +34,7 @@ class CryptoControlService: NSObject {
                         }
                         do {
                             print("trying")
-                            let response = try JSONDecoder().decode(News.self, from: data)
+                            let response = try JSONDecoder().decode(Articles.self, from: data)
                             print("Success")
                             single(.success(response))
                         } catch {
