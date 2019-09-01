@@ -38,7 +38,6 @@ class SettingsViewController: UIViewController, SettingsViewDelegate, ThemeChang
     func configureUI() {
         configureTableView()
         addStatusHeader() //has to happen after configureTableView
-        view.addSubview(StatusBarCover())
     }
     
     func addStatusHeader() {
@@ -151,7 +150,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             switch GeneralOptions(rawValue: indexPath.row) {
             case GeneralOptions(rawValue: 0)?:
                 var controller = SelectFiatViewController()
-                toActivity(destinationController: controller)
+                self.navigationController?.pushViewController(controller, animated: true)
             case GeneralOptions(rawValue: 1)?:
                 break
             case .none:
@@ -167,8 +166,4 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func toActivity(destinationController : UIViewController) {
-        self.navigationController?.pushViewController(destinationController, animated: true)
-    }
 }
-

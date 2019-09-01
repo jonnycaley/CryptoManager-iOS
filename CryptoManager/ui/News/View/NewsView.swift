@@ -11,12 +11,12 @@ import UIKit
 import QuartzCore
 import FaveButton
 
-class MainView: UIView {
+class NewsView: UIView {
     
     let headerHeight = 200
     let headerWidth = Int(UIScreen.main.bounds.size.width)
     
-    var delegate: BookmarkChangedProtocol?
+    var delegate: MainViewOnClickProtocol?
     
 //    var article : Article!
     
@@ -63,6 +63,7 @@ class MainView: UIView {
     
     lazy var contentView: UIView = {
         var contentView = UIView()
+        contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleContentClick)))
         return contentView
     }()
     
@@ -84,22 +85,12 @@ class MainView: UIView {
     
     lazy var bookmarkButton: UIButton = {
         var bookmarkButton = UIButton(type: .custom)
-        bookmarkButton.tintColor = Theme.current.background
+        bookmarkButton.tintColor = .white
         bookmarkButton.isUserInteractionEnabled = true
         bookmarkButton.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
         bookmarkButton.addTarget(self, action: #selector(handleBookmarkAction), for: .touchUpInside)
         return bookmarkButton
     }()
-    
-    @objc private func handleBookmarkAction() {
-        if(bookmarkButton.image(for: .normal) == UIImage(named: "bookmark_outline_white")){
-            self.delegate?.addTopArticleToBookmarks()
-            bookmarkButton.setImage(UIImage(named: "bookmark_filled_white"), for: .normal)
-        } else {
-            self.delegate?.removeTopArticleFromBookmarks()
-            bookmarkButton.setImage(UIImage(named: "bookmark_outline_white"), for: .normal)
-        }
-    }
     
     func setupViews() {
         self.addSubview(headerImage)
@@ -113,7 +104,6 @@ class MainView: UIView {
     }
     
     func setupConstraints() {
-        
         headerImage.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: nil, trailing: self.trailingAnchor, centerX: nil, centerY: nil, size: CGSize(width: headerWidth, height: headerHeight))
         
         contentView.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: headerImage.bottomAnchor, trailing: self.trailingAnchor, centerX: nil, centerY: nil, padding: UIEdgeInsets(top: Dimensions.margin, left: Dimensions.margin, bottom: Dimensions.margin, right: Dimensions.margin), size: CGSize(width: headerWidth, height: headerHeight))
@@ -125,7 +115,10 @@ class MainView: UIView {
         bookmarkButton.anchor(top: nil, leading: nil, bottom: contentView.bottomAnchor, trailing: contentView.trailingAnchor, centerX: nil, centerY: nil, padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0), size: CGSize(width: 25, height: 25))
         
         titleText.anchor(top: nil, leading: contentView.leadingAnchor, bottom: bookmarkButton.topAnchor, trailing: contentView.trailingAnchor, centerX: nil, centerY: nil, padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
-        
+    }
+    
+    func updateTheme() {
+        self.backgroundColor = Theme.current.backgroundSecondary
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -133,7 +126,26 @@ class MainView: UIView {
     }
 }
 
-protocol BookmarkChangedProtocol {
+//onclicks
+extension NewsView {
+    
+    @objc private func handleBookmarkAction() {
+        if(bookmarkButton.image(for: .normal) == UIImage(named: "bookmark_outline_black")){
+            self.delegate?.addTopArticleToBookmarks()
+            bookmarkButton.setImage(UIImage(named: "bookmark_filled_black"), for: .normal)
+        } else {
+            self.delegate?.removeTopArticleFromBookmarks()
+            bookmarkButton.setImage(UIImage(named: "bookmark_outline_black"), for: .normal)
+        }
+    }
+    
+    @objc private func handleContentClick() {
+        self.delegate?.openHeaderArticle()
+    }
+}
+
+protocol MainViewOnClickProtocol {
     func addTopArticleToBookmarks()
     func removeTopArticleFromBookmarks()
+    func openHeaderArticle()
 }

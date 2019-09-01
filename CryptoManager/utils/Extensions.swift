@@ -109,3 +109,67 @@ extension Date {
         }
     }
 }
+
+
+extension UIView {
+    func anchor(top: NSLayoutYAxisAnchor?, leading: NSLayoutXAxisAnchor?, bottom: NSLayoutYAxisAnchor?, trailing: NSLayoutXAxisAnchor?, centerX: NSLayoutXAxisAnchor?, centerY: NSLayoutYAxisAnchor?, padding: UIEdgeInsets = .zero, size: CGSize = .zero) {
+        
+        self.translatesAutoresizingMaskIntoConstraints = false
+        
+        if let top = top {
+            topAnchor.constraint(equalTo: top, constant: padding.top).isActive = true
+        }
+        if let leading = leading {
+            leadingAnchor.constraint(equalTo: leading, constant: padding.left).isActive = true //leftest part
+        }
+        if let bottom = bottom {
+            bottomAnchor.constraint(equalTo: bottom, constant: -padding.bottom).isActive = true
+        }
+        if let trailing = trailing {
+            trailingAnchor.constraint(equalTo: trailing, constant: -padding.right).isActive = true //rightest part
+        }
+        if let centerX = centerX {
+            centerXAnchor.constraint(equalTo: centerX).isActive = true
+        }
+        if let centerY = centerY {
+            centerYAnchor.constraint(equalTo: centerY).isActive = true
+        }
+        
+        if size.width != 0 {
+            widthAnchor.constraint(equalToConstant: size.width).isActive = true
+        }
+        if size.height != 0 {
+            heightAnchor.constraint(equalToConstant: size.height).isActive = true
+        }
+    }
+}
+
+extension Article {
+    func convertToSQLArticle() -> SQLArticle {
+        
+        let id = self.id ?? ""
+        let hotness = self.hotness ?? 0
+        let activityHotness = self.activityHotness ?? 0
+        let primaryCategory = self.primaryCategory ?? ""
+        let words = self.words ?? 0
+        let coins = self.coins ?? Array()
+        let newsDescription = self.newsDescription ?? ""
+        let publishedAt = self.publishedAt ?? ""
+        let title = self.title ?? ""
+        let url = self.url ?? ""
+        let originalImageURL = self.originalImageURL ?? ""
+                
+        var sqlArticle = SQLArticle(id: id, hotness: hotness, activityHotness: activityHotness, primaryCategory: primaryCategory, words: words, coins: String(describing: coins), newsDescription: newsDescription, publishedAt: publishedAt, title: title, url: url, originalImageURL: originalImageURL)
+        return sqlArticle
+    }
+}
+
+extension Int {
+    func getReadLength() -> String {
+        if(self == nil){
+            return "1 min read"
+        } else {
+            return "\(String((self/(130)+1))) min read"
+        }
+    }
+}

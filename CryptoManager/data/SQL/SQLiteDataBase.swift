@@ -74,10 +74,10 @@ class SQLiteDataBase {
         }
     }
     
-    func sqlRemoveSavedArticle(article: Article) -> Completable {
+    func sqlRemoveSavedArticle(articleId: String) -> Completable {
         return dbQueue.rx.write { db in
             do {
-                try db.execute(sql: "DELETE FROM SQLArticle WHERE id = '\(article.id!)'")
+                try db.execute(sql: "DELETE FROM SQLArticle WHERE id = '\(articleId)'")
             } catch {
                 print(error)
             }
@@ -210,29 +210,17 @@ class SQLiteDataBase {
         }
     }
     
-    func getSavedArticleCount(article : Article) -> Single<Int> {
+    func getSavedArticleCount(articleId : String) -> Single<Int> {
         return dbQueue.rx.read { db in
-            try SQLArticle.filter(key: ["id": article.id]).fetchCount(db)
+            try SQLArticle.filter(key: ["id": articleId]).fetchCount(db)
         }
     }
     
-    func sqlInsertSavedArticle(article: Article) -> Completable {
+    func sqlInsertSavedArticle(article: SQLArticle) -> Completable {
         
         return dbQueue.rx.write { db in
             
-            guard let id = article.id else {return}
-            guard let hotness = article.hotness else {return}
-            guard let activityHotness = article.activityHotness else {return}
-            guard let primaryCategory = article.primaryCategory else {return}
-            guard let words = article.words else {return}
-            guard let coins = article.coins else {return}
-            guard let newsDescription = article.newsDescription else {return}
-            guard let publishedAt = article.publishedAt else {return}
-            guard let title = article.title else {return}
-            guard let url = article.url else {return}
-            guard let originalImageURL = article.originalImageURL else {return}
-
-            var sqlArticle = SQLArticle(id: id, hotness: hotness, activityHotness: activityHotness, primaryCategory: primaryCategory, words: words, coins: String(describing: coins), newsDescription: newsDescription, publishedAt: publishedAt, title: title, url: url, originalImageURL: originalImageURL)
+            var sqlArticle = article
             
             do {
                 try sqlArticle.insert(db)

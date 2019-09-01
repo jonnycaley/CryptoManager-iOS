@@ -18,15 +18,15 @@ class NewsService {
         return SQLiteDataBase.sharedInstance.getSavedArticles()
     }
     
-    func getSavedArticleCount(article: Article) -> Single<Int> {
-        return SQLiteDataBase.sharedInstance.getSavedArticleCount(article: article)
+    func getSavedArticleCount(articleId: String) -> Single<Int> {
+        return SQLiteDataBase.sharedInstance.getSavedArticleCount(articleId: articleId)
     }
     
-    func saveArticle(article: Article) -> Completable {
+    func saveArticle(article: SQLArticle) -> Completable {
         return SQLiteDataBase.sharedInstance.sqlInsertSavedArticle(article: article)
     }
     
-    func removeArticleFromBookmarks(article: Article) -> Completable {
-        return SQLiteDataBase.sharedInstance.sqlRemoveSavedArticle(article: article)
+    func removeArticleFromBookmarks(articleId: String) -> Completable {
+        return SQLiteDataBase.sharedInstance.sqlRemoveSavedArticle(articleId: articleId)
     }
 }

@@ -14,7 +14,7 @@
 		A03793F1231684180012CEEE /* CryptoCompareService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03793F0231684180012CEEE /* CryptoCompareService.swift */; };
 		A03793F323168BBF0012CEEE /* CrypotControlService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03793F223168BBF0012CEEE /* CrypotControlService.swift */; };
 		A03793F82316A9BB0012CEEE /* LoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03793F72316A9BB0012CEEE /* LoadingScreen.swift */; };
-		A03794002316DAF20012CEEE /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03793FF2316DAF20012CEEE /* MainView.swift */; };
+		A03794002316DAF20012CEEE /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03793FF2316DAF20012CEEE /* NewsView.swift */; };
 		A04391F3230AB3A9009FF454 /* CurrencyAndConversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04391F2230AB3A9009FF454 /* CurrencyAndConversions.swift */; };
 		A04391F5230ABC1B009FF454 /* SQLExchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04391F4230ABC1B009FF454 /* SQLExchange.swift */; };
 		A04391F9230ADE5B009FF454 /* SelectFiatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04391F8230ADE5B009FF454 /* SelectFiatViewController.swift */; };
@@ -44,6 +44,10 @@
 		A055EAF522F76831003A2F24 /* MarketsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055EAF422F76831003A2F24 /* MarketsViewController.swift */; };
 		A055EAF722F76E3A003A2F24 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055EAF622F76E3A003A2F24 /* NewsViewController.swift */; };
 		A055EAF922F76E4B003A2F24 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055EAF822F76E4B003A2F24 /* SettingsViewController.swift */; };
+		A06B7E2323199E9900B65995 /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B7E2223199E9900B65995 /* ArticleViewController.swift */; };
+		A06B7E252319A5B800B65995 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B7E242319A5B800B65995 /* WebView.swift */; };
+		A06B7E2A2319B87E00B65995 /* ArticlePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B7E292319B87E00B65995 /* ArticlePresenter.swift */; };
+		A06B7E2C2319B90200B65995 /* ArticleViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B7E2B2319B90200B65995 /* ArticleViewDelegate.swift */; };
 		A08B8AD52302EA6B00D6615F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08B8AD42302EA6B00D6615F /* Constants.swift */; };
 		A08B8AD92302F38700D6615F /* Rates.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08B8AD82302F38700D6615F /* Rates.swift */; };
 		A08B8AE42304181A00D6615F /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08B8AE32304181A00D6615F /* Crypto.swift */; };
@@ -90,7 +94,7 @@
 		A03793F0231684180012CEEE /* CryptoCompareService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoCompareService.swift; sourceTree = "<group>"; };
 		A03793F223168BBF0012CEEE /* CrypotControlService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrypotControlService.swift; sourceTree = "<group>"; };
 		A03793F72316A9BB0012CEEE /* LoadingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoadingScreen.swift; path = News/View/LoadingScreen.swift; sourceTree = "<group>"; };
-		A03793FF2316DAF20012CEEE /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		A03793FF2316DAF20012CEEE /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
 		A04391F2230AB3A9009FF454 /* CurrencyAndConversions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyAndConversions.swift; sourceTree = "<group>"; };
 		A04391F4230ABC1B009FF454 /* SQLExchange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLExchange.swift; sourceTree = "<group>"; };
 		A04391F8230ADE5B009FF454 /* SelectFiatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectFiatViewController.swift; sourceTree = "<group>"; };
@@ -127,6 +131,10 @@
 		A055EAF422F76831003A2F24 /* MarketsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketsViewController.swift; sourceTree = "<group>"; };
 		A055EAF622F76E3A003A2F24 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		A055EAF822F76E4B003A2F24 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		A06B7E2223199E9900B65995 /* ArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
+		A06B7E242319A5B800B65995 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		A06B7E292319B87E00B65995 /* ArticlePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlePresenter.swift; sourceTree = "<group>"; };
+		A06B7E2B2319B90200B65995 /* ArticleViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewDelegate.swift; sourceTree = "<group>"; };
 		A08B8AD42302EA6B00D6615F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A08B8AD82302F38700D6615F /* Rates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rates.swift; sourceTree = "<group>"; };
 		A08B8AE32304181A00D6615F /* Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crypto.swift; sourceTree = "<group>"; };
@@ -204,7 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				A055EAF622F76E3A003A2F24 /* NewsViewController.swift */,
-				A03793FF2316DAF20012CEEE /* MainView.swift */,
+				A03793FF2316DAF20012CEEE /* NewsView.swift */,
 				A03793EE231680CC0012CEEE /* NewsViewDelegate.swift */,
 			);
 			path = View;
@@ -413,6 +421,33 @@
 			path = CryptoManagerUITests;
 			sourceTree = "<group>";
 		};
+		A06B7E2123199E7B00B65995 /* Article */ = {
+			isa = PBXGroup;
+			children = (
+				A06B7E282319B86A00B65995 /* View */,
+				A06B7E272319B85D00B65995 /* Presenter */,
+			);
+			path = Article;
+			sourceTree = "<group>";
+		};
+		A06B7E272319B85D00B65995 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				A06B7E292319B87E00B65995 /* ArticlePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		A06B7E282319B86A00B65995 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A06B7E2223199E9900B65995 /* ArticleViewController.swift */,
+				A06B7E242319A5B800B65995 /* WebView.swift */,
+				A06B7E2B2319B90200B65995 /* ArticleViewDelegate.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		A08B8ADA2302F73E00D6615F /* data */ = {
 			isa = PBXGroup;
 			children = (
@@ -426,6 +461,7 @@
 		A08B8ADB2302F74400D6615F /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				A06B7E2123199E7B00B65995 /* Article */,
 				A03793F72316A9BB0012CEEE /* LoadingScreen.swift */,
 				A0439208230B17B4009FF454 /* Bar.swift */,
 				A04391FD230AF110009FF454 /* Root */,
@@ -777,6 +813,7 @@
 				A0FC97A222FC358600C9C399 /* ThemeProtocol.swift in Sources */,
 				A0513C42230C0FA90094D7E7 /* Utils.swift in Sources */,
 				A03793ED231680720012CEEE /* NewsService.swift in Sources */,
+				A06B7E252319A5B800B65995 /* WebView.swift in Sources */,
 				A0513C35230C00C50094D7E7 /* SelectFiatPresenter.swift in Sources */,
 				A03793F82316A9BB0012CEEE /* LoadingScreen.swift in Sources */,
 				A0FC97A422FC36D500C9C399 /* LightTheme.swift in Sources */,
@@ -795,10 +832,11 @@
 				A04A7FF322F82F76008FC4DE /* SettingsPresenter.swift in Sources */,
 				A055EAF922F76E4B003A2F24 /* SettingsViewController.swift in Sources */,
 				A0522D412317C52B0043AFBB /* Dimensions.swift in Sources */,
-				A03794002316DAF20012CEEE /* MainView.swift in Sources */,
+				A03794002316DAF20012CEEE /* NewsView.swift in Sources */,
 				A03793EB231680450012CEEE /* NewsPresenter.swift in Sources */,
 				A04A7FEF22F8291C008FC4DE /* SettingsService.swift in Sources */,
 				A04391F5230ABC1B009FF454 /* SQLExchange.swift in Sources */,
+				A06B7E2C2319B90200B65995 /* ArticleViewDelegate.swift in Sources */,
 				A055EAF722F76E3A003A2F24 /* NewsViewController.swift in Sources */,
 				A03793F1231684180012CEEE /* CryptoCompareService.swift in Sources */,
 				A04A7FFF22F99586008FC4DE /* SettingsCell.swift in Sources */,
@@ -807,9 +845,11 @@
 				A0439209230B17B4009FF454 /* Bar.swift in Sources */,
 				A04CA32D23101F1500FB04C6 /* SQLiteDataBase.swift in Sources */,
 				A08B8AEB230489B900D6615F /* Exchanges.swift in Sources */,
+				A06B7E2A2319B87E00B65995 /* ArticlePresenter.swift in Sources */,
 				A0B53F3A231821F0002C225C /* Articles.swift in Sources */,
 				A0513C3C230C055C0094D7E7 /* SQLFiat.swift in Sources */,
 				A0B53F3F23182867002C225C /* Extensions.swift in Sources */,
+				A06B7E2323199E9900B65995 /* ArticleViewController.swift in Sources */,
 				A04391F3230AB3A9009FF454 /* CurrencyAndConversions.swift in Sources */,
 				A04391F9230ADE5B009FF454 /* SelectFiatViewController.swift in Sources */,
 				A03793F323168BBF0012CEEE /* CrypotControlService.swift in Sources */,

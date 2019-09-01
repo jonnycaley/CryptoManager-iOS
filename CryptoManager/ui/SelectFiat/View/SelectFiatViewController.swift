@@ -10,11 +10,11 @@ import UIKit
 
 private let reuseIdentifier = "FiatCell"
 
-class SelectFiatViewController: UIViewController, BackClickProtocol, SelectFiatViewDelegate {
+class SelectFiatViewController: UIViewController, ArticleViewOnClickProtocol, SelectFiatViewDelegate {
     
     private let selectFiatPresenter = SelectFiatPresenter(selectFiatService: SelectFiatService())
     
-    var buttonClickDelegate: BackClickProtocol?
+    var buttonClickDelegate: ArticleViewOnClickProtocol?
     
     let navigationBar = Bar()
     let tableView = UITableView()
@@ -47,7 +47,7 @@ class SelectFiatViewController: UIViewController, BackClickProtocol, SelectFiatV
     }
 
     func placeNavigationBar() {
-        navigationBar.buttonClickDelegate = self
+        navigationBar.articleClickDelegate = self
         view.addSubview(navigationBar)
         navigationBar.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: nil, trailing: view.safeAreaLayoutGuide.trailingAnchor, centerX: nil, centerY: nil)
     }
@@ -78,39 +78,6 @@ class SelectFiatViewController: UIViewController, BackClickProtocol, SelectFiatV
         tableView.anchor(top: navigationBar.bottomAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: view.bottomAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor, centerX: nil, centerY: nil)
         
         tableView.register(FiatCell.self, forCellReuseIdentifier: reuseIdentifier)
-    }
-}
-
-extension UIView {
-    func anchor(top: NSLayoutYAxisAnchor?, leading: NSLayoutXAxisAnchor?, bottom: NSLayoutYAxisAnchor?, trailing: NSLayoutXAxisAnchor?, centerX: NSLayoutXAxisAnchor?, centerY: NSLayoutYAxisAnchor?, padding: UIEdgeInsets = .zero, size: CGSize = .zero) {
-        
-        self.translatesAutoresizingMaskIntoConstraints = false
-        
-        if let top = top {
-            topAnchor.constraint(equalTo: top, constant: padding.top).isActive = true
-        }
-        if let leading = leading {
-            leadingAnchor.constraint(equalTo: leading, constant: padding.left).isActive = true //leftest part
-        }
-        if let bottom = bottom {
-            bottomAnchor.constraint(equalTo: bottom, constant: -padding.bottom).isActive = true
-        }
-        if let trailing = trailing {
-            trailingAnchor.constraint(equalTo: trailing, constant: -padding.right).isActive = true //rightest part
-        }
-        if let centerX = centerX {
-            centerXAnchor.constraint(equalTo: centerX).isActive = true
-        }
-        if let centerY = centerY {
-            centerYAnchor.constraint(equalTo: centerY).isActive = true
-        }
-        
-        if size.width != 0 {
-            widthAnchor.constraint(equalToConstant: size.width).isActive = true
-        }
-        if size.height != 0 {
-            heightAnchor.constraint(equalToConstant: size.height).isActive = true
-        }
     }
 }
 
@@ -159,6 +126,14 @@ extension SelectFiatViewController: UITableViewDelegate, UITableViewDataSource {
             return fiats.count
         }
         return 0
+    }
+    
+    func addArticleToBookmarks() {
+        //not needed
+    }
+    
+    func removeArticleFromBookmarks() {
+        //not needed
     }
 }
 

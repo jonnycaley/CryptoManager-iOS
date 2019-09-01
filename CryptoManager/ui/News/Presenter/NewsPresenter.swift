@@ -23,20 +23,23 @@ class NewsPresenter {
         self.newsViewDelegate = newsViewDelegate
     }
     
+    func updateSavedArticles() {
+       
+    
+    }
+    
     func attachView() {
         //start stuff here
         
         Single.zip(newsService.getNews(), newsService.getSavedArticles(), resultSelector: { news, savedArticles in
-            
             guard let headerItem = (news.filter { $0.originalImageURL != nil }.sorted(by: { $0.publishedAt ?? "" > $1.publishedAt ?? "" }).first) else { return }
-//            var remainderItems = news.filter { $0.id != headerItem.id }.sorted(by: { $0.publishedAt ?? "" > $1.publishedAt ?? "" })
-            
+            //            var remainderItems = news.filter { $0.id != headerItem.id }.sorted(by: { $0.publishedAt ?? "" > $1.publishedAt ?? "" })
             self.newsViewDelegate?.loadTopArticle(news: headerItem, isSaved: (savedArticles.filter{ $0.id == headerItem.id }.count > 0))
         }).observeOn(MainScheduler.instance)
             .subscribe{ event in
                 switch event {
                 case .success(_):
-                    self.newsViewDelegate?.hideLoadingScreen()
+                    self.newsViewDelegate?.hideLoadingOverlay()
                 case .error(let error):
                     print(error)
                 }
@@ -46,10 +49,10 @@ class NewsPresenter {
     
     func addArticleToBookmarks(article: Article) {
         
-        newsService.getSavedArticleCount(article: article)
+        newsService.getSavedArticleCount(articleId: article.id ?? "")
             .filter{ $0 == 0}
             .asObservable()
-            .flatMap{ _ -> Completable in self.newsService.saveArticle(article: article) }
+            .flatMap{ _ -> Completable in self.newsService.saveArticle(article: article.convertToSQLArticle()) }
             .subscribe{ event in
                 switch event {
                 case .error(let error):
@@ -59,12 +62,11 @@ class NewsPresenter {
                 }
             }
             .disposed(by: disposeBag)
-        
     }
     
     func removeArticleFromBookmarks(article: Article) {
         
-        newsService.removeArticleFromBookmarks(article: article)
+        newsService.removeArticleFromBookmarks(articleId: article.id ?? "")
             .subscribe{ event in
                 switch event {
                 case .error(let error):
@@ -74,22 +76,12 @@ class NewsPresenter {
                 }
             }
             .disposed(by: disposeBag)
-        
-    }
-    
-    func getReadLength(wordsCount: Int?) -> String {
-        if(wordsCount == nil){
-            return "1 min read"
-        } else {
-            return "\(String((wordsCount! - 1)/(130 + 1))) min read"
-        }
     }
     
     func getDate(dateStr: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.000'Z'"
         let date = dateFormatter.date(from: dateStr)
-        
         return date?.timeAgoDisplay() ?? "just now"
     }
 }
